@@ -73,8 +73,21 @@ const AmbassadorHome: React.FC = () => {
 
   const getStatusLabel = (status: Lead['status']) => {
     switch (status) {
-      case 'new': return 'Nouveau';
-      case 'contacted': return 'Contacté';
+      case 'new':
+        return 'Nouveau';
+      case 'contacted':
+        return 'Contacté';
+      case 'qualified':
+        return 'Qualifié';
+      case 'converted':
+        return 'Converti';
+      default:
+        return status;
+    }
+  };
+
+  return (
+    <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card className="p-6">
           <div className="flex items-center justify-between mb-4">
