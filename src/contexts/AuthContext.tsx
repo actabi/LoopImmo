@@ -2,11 +2,21 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User, UserRole } from '../types';
 import { mockUsers } from '../data/mockData';
 
+export interface RegisterData {
+  email: string;
+  password?: string;
+  firstName: string;
+  lastName: string;
+  phone?: string;
+  roles: UserRole[];
+}
+
 interface AuthContextType {
   user: User | null;
   activeRole: UserRole;
   setActiveRole: (role: UserRole) => void;
   login: (email: string, password: string) => Promise<void>;
+  register: (data: RegisterData) => Promise<void>;
   logout: () => void;
   isLoading: boolean;
   addRole: (role: UserRole) => Promise<void>;
@@ -59,6 +69,27 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  const register = async (data: RegisterData) => {
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    const newUser: User = {
+      id: Date.now().toString(),
+      email: data.email,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      phone: data.phone,
+      roles: data.roles,
+      createdAt: new Date()
+    };
+
+    mockUsers.push(newUser);
+    setUser(newUser);
+    setActiveRole(data.roles[0]);
+    localStorage.setItem('user', JSON.stringify(newUser));
+    localStorage.setItem('activeRole', data.roles[0]);
+  };
+
   const logout = () => {
     setUser(null);
     setActiveRole('buyer');
@@ -94,8 +125,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       user, 
       activeRole,
       setActiveRole: handleSetActiveRole,
-      login, 
-      logout, 
+      login,
+      register,
+      logout,
       isLoading,
       addRole
     }}>
