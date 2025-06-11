@@ -301,6 +301,42 @@ export const mockUsers: User[] = [
     roles: ['ambassador'],
     phone: '0698765432',
     createdAt: new Date('2023-12-01')
+  },
+  {
+    id: 'amb2',
+    email: 'ambassadeur2@test.com',
+    firstName: 'Sophie',
+    lastName: 'Martin',
+    roles: ['ambassador'],
+    phone: '0698765433',
+    createdAt: new Date('2023-12-05')
+  },
+  {
+    id: 'amb3',
+    email: 'ambassadeur3@test.com',
+    firstName: 'Pierre',
+    lastName: 'Bernard',
+    roles: ['ambassador'],
+    phone: '0698765434',
+    createdAt: new Date('2023-12-10')
+  },
+  {
+    id: 'amb4',
+    email: 'ambassadeur4@test.com',
+    firstName: 'Marc',
+    lastName: 'Dubois',
+    roles: ['ambassador'],
+    phone: '0698765435',
+    createdAt: new Date('2023-12-15')
+  },
+  {
+    id: 'amb5',
+    email: 'ambassadeur5@test.com',
+    firstName: 'Claire',
+    lastName: 'Durand',
+    roles: ['ambassador'],
+    phone: '0698765436',
+    createdAt: new Date('2023-12-20')
   }
 ];
 
@@ -319,6 +355,66 @@ export const mockAmbassadors: Ambassador[] = [
     verifiedProperties: ['1'],
     completedVisits: 45,
     activeProperties: 3
+  },
+  {
+    id: 'amb2',
+    userId: 'amb2',
+    zone: 'Lyon Ouest',
+    commission: 0.25,
+    totalSales: 5,
+    totalEarnings: 12500,
+    rating: 4.6,
+    specialties: ['Maisons', 'Familles'],
+    availability: 'Disponible en semaine',
+    bio: 'Expert du secteur ouest lyonnais depuis 2 ans.',
+    verifiedProperties: ['2'],
+    completedVisits: 30,
+    activeProperties: 2
+  },
+  {
+    id: 'amb3',
+    userId: 'amb3',
+    zone: 'Lyon 3ème',
+    commission: 0.3,
+    totalSales: 10,
+    totalEarnings: 30000,
+    rating: 4.7,
+    specialties: ['Studios', 'Investisseurs'],
+    availability: 'Disponible 6j/7',
+    bio: "Conseiller dynamique spécialisé dans l'est de Lyon.",
+    verifiedProperties: [],
+    completedVisits: 60,
+    activeProperties: 4
+  },
+  {
+    id: 'amb4',
+    userId: 'amb4',
+    zone: 'Lyon Métropole',
+    commission: 0.28,
+    totalSales: 12,
+    totalEarnings: 48000,
+    rating: 4.9,
+    specialties: ['Tous types de biens'],
+    availability: 'Disponible sur rendez-vous',
+    bio: 'Ambassadeur historique avec un large réseau.',
+    verifiedProperties: [],
+    completedVisits: 70,
+    activeProperties: 5
+  },
+  {
+    id: 'amb5',
+    userId: 'amb5',
+    zone: 'Villeurbanne',
+    commission: 0.27,
+    totalSales: 6,
+    totalEarnings: 15000,
+    rating: 4.5,
+    specialties: ['Biens étudiants', 'Petits budgets'],
+    availability: 'Disponible le week-end',
+    bio: 'Connaisseur du marché villeurbannais.',
+    verifiedProperties: [],
+    completedVisits: 20,
+    activeProperties: 1
   }
 ];
 
