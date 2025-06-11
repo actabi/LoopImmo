@@ -11,7 +11,7 @@ import {
 import { formatPrice } from '../../utils/calculations';
 import { cn } from '../../utils/cn';
 
-import { mockManagedProperties } from "../../mocks";
+import { getManagedProperties } from "../../services/dataService";
 interface ManagedProperty {
   id: string;
   title: string;
@@ -39,6 +39,8 @@ interface ManagedProperty {
 export const AmbassadorPropertiesPage: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
   const [selectedProperty, setSelectedProperty] = useState<ManagedProperty | null>(null);
+
+  const managedProperties = getManagedProperties();
 
   const handleSaveProperty = (data: any) => {
     console.log('Saving property:', data);
@@ -97,7 +99,7 @@ export const AmbassadorPropertiesPage: React.FC = () => {
 
         {/* Properties List */}
         <div className="space-y-4">
-          {mockManagedProperties.map((property) => (
+          {managedProperties.map((property) => (
             <Card key={property.id} className="overflow-hidden">
               <div className="p-6">
                 <div className="flex items-start justify-between">
@@ -218,7 +220,7 @@ export const AmbassadorPropertiesPage: React.FC = () => {
         </div>
 
         {/* Empty State */}
-        {mockManagedProperties.length === 0 && (
+        {managedProperties.length === 0 && (
           <Card className="p-12 text-center">
             <Home className="w-16 h-16 text-gray-300 mx-auto mb-4" />
             <h3 className="text-lg font-semibold text-gray-900 mb-2">

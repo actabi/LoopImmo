@@ -1,4 +1,6 @@
-import { PRICE_TIERS } from '../data/mockData';
+import { getPriceTiers } from '../services/dataService';
+
+const PRICE_TIERS = getPriceTiers();
 
 export function calculateFee(price: number) {
   const tier = PRICE_TIERS.find(t => price >= t.min && price <= t.max);

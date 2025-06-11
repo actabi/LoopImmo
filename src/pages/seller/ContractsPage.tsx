@@ -12,8 +12,7 @@ import {
 } from 'lucide-react';
 import { formatPrice } from '../../utils/calculations';
 import { cn } from '../../utils/cn';
-import { mockProperties } from '../../data/mockData';
-import { mockContracts, mockTimelines } from "../../mocks";
+import { getProperties, getContracts, getTimelines } from "../../services/dataService";
 
 interface Contract {
   id: string;
@@ -64,8 +63,12 @@ export const ContractsPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showSignatureModal, setShowSignatureModal] = useState(false);
 
+  const properties = getProperties();
+  const contracts = getContracts();
+  const timelines = getTimelines();
+
   // Filtrer les contrats
-  const filteredContracts = mockContracts.filter(contract => {
+  const filteredContracts = contracts.filter(contract => {
     const matchesProperty = selectedProperty === 'all' || contract.propertyId === selectedProperty;
     const matchesType = selectedType === 'all' || contract.type === selectedType;
     const matchesSearch = searchQuery === '' || 
@@ -77,8 +80,8 @@ export const ContractsPage: React.FC = () => {
 
   // Statistiques par bien
   const getPropertyContractStats = (propertyId: string) => {
-    const propertyContracts = mockContracts.filter(c => c.propertyId === propertyId);
-    const timeline = mockTimelines.find(t => t.propertyId === propertyId);
+    const propertyContracts = contracts.filter(c => c.propertyId === propertyId);
+    const timeline = timelines.find(t => t.propertyId === propertyId);
       case 'offer': return TrendingUp;
       case 'promise': return FileSignature;
       case 'sale': return Stamp;
@@ -193,7 +196,7 @@ export const ContractsPage: React.FC = () => {
                   <Home className="w-4 h-4 inline mr-2" />
                   Tous les biens
                 </button>
-                {mockProperties.map((property) => {
+                {properties.map((property) => {
                   const stats = getPropertyContractStats(property.id);
                   return (
                     <button
@@ -255,8 +258,8 @@ export const ContractsPage: React.FC = () => {
 
         {/* Chronologie par bien (si un bien est sélectionné) */}
         {selectedProperty !== 'all' && (() => {
-          const property = mockProperties.find(p => p.id === selectedProperty);
-          const timeline = mockTimelines.find(t => t.propertyId === selectedProperty);
+          const property = properties.find(p => p.id === selectedProperty);
+          const timeline = timelines.find(t => t.propertyId === selectedProperty);
           
           if (!timeline) return null;
 
@@ -342,7 +345,7 @@ export const ContractsPage: React.FC = () => {
           ) : (
             filteredContracts.map((contract) => {
               const Icon = getContractIcon(contract.type);
-              const property = mockProperties.find(p => p.id === contract.propertyId);
+              const property = properties.find(p => p.id === contract.propertyId);
               const allSigned = contract.parties.every(p => p.signed);
               const pendingSignatures = contract.parties.filter(p => !p.signed).length;
               
@@ -534,8 +537,8 @@ export const ContractsPage: React.FC = () => {
               Progression des ventes par bien
             </h2>
             <div className="grid gap-4">
-              {mockProperties.map((property) => {
-                const timeline = mockTimelines.find(t => t.propertyId === property.id);
+              {properties.map((property) => {
+                const timeline = timelines.find(t => t.propertyId === property.id);
                 const stats = getPropertyContractStats(property.id);
                 const currentStep = timeline?.steps.find(s => s.status === 'current');
                 const completedSteps = timeline?.steps.filter(s => s.status === 'completed').length || 0;

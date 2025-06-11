@@ -7,7 +7,7 @@ import {
   XCircle, Euro, MessageSquare, Phone, Mail, Calendar,
   TrendingUp, AlertCircle, ChevronRight, Filter
 } from 'lucide-react';
-import { mockReferrals } from '../../data/mockReferrals';
+import { getReferrals } from '../../services/dataService';
 import { AmbassadorReferral } from '../../types';
 import { cn } from '../../utils/cn';
 
@@ -15,8 +15,9 @@ export const ReferralManagement: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'sent' | 'received'>('sent');
   const [selectedStatus, setSelectedStatus] = useState<string>('all');
 
-  const sentReferrals = mockReferrals.filter(r => r.referringAmbassadorId === '3');
-  const receivedReferrals = mockReferrals.filter(r => r.receivingAmbassadorId === '3');
+  const referrals = getReferrals();
+  const sentReferrals = referrals.filter(r => r.referringAmbassadorId === '3');
+  const receivedReferrals = referrals.filter(r => r.receivingAmbassadorId === '3');
 
   const getStatusBadge = (status: AmbassadorReferral['status']) => {
     const config = {

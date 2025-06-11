@@ -10,7 +10,7 @@ import {
   FileText, Upload, BarChart3, Zap, Shield, ChevronRight,
   Building, Download, Info, Rocket, FileCheck, AlertTriangle
 } from 'lucide-react';
-import { mockProperties } from '../data/mockData';
+import { getProperties } from '../services/dataService';
 import { formatPrice, formatPercentage } from '../utils/calculations';
 import { cn } from '../utils/cn';
 
@@ -38,8 +38,10 @@ export const SellerPage: React.FC = () => {
   const [showBoostModal, setShowBoostModal] = useState(false);
   const [activeTab, setActiveTab] = useState<'overview' | 'analytics' | 'documents'>('overview');
 
+  const properties = getProperties();
+
   // Mock data for demonstration
-  const userProperties = mockProperties.slice(0, 3);
+  const userProperties = properties.slice(0, 3);
   
   const quickStats: QuickStats = {
     totalViews: 1846,

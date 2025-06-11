@@ -8,7 +8,7 @@ import {
   Heart, Calendar, ChevronDown, Map, List, Grid3x3
 } from 'lucide-react';
 import { formatPrice } from '../../utils/calculations';
-import { mockProperties } from '../../data/mockData';
+import { getProperties } from '../../services/dataService';
 
 export const BuyerSearch: React.FC = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list' | 'map'>('grid');
@@ -19,6 +19,8 @@ export const BuyerSearch: React.FC = () => {
     rooms: '',
     location: ''
   });
+
+  const properties = getProperties();
 
   return (
     <DashboardLayout role="buyer">
@@ -121,7 +123,7 @@ export const BuyerSearch: React.FC = () => {
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-lg font-semibold text-gray-900">
-              {mockProperties.length} biens trouvés
+              {properties.length} biens trouvés
             </h2>
             <p className="text-sm text-gray-600">
               Correspondant à vos critères de recherche
@@ -152,7 +154,7 @@ export const BuyerSearch: React.FC = () => {
         {/* Results Grid */}
         {viewMode === 'grid' && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {mockProperties.map((property) => (
+            {properties.map((property) => (
               <Card key={property.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                 <div className="relative h-48">
                   <img 
@@ -212,7 +214,7 @@ export const BuyerSearch: React.FC = () => {
 
         {viewMode === 'list' && (
           <div className="space-y-4">
-            {mockProperties.map((property) => (
+            {properties.map((property) => (
               <Card key={property.id} className="p-6 hover:shadow-lg transition-shadow">
                 <div className="flex gap-6">
                   <img 

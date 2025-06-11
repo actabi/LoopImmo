@@ -11,7 +11,7 @@ import {
   ChevronRight, Paperclip, FileX, RefreshCw
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
-import { mockProperties } from '../../data/mockData';
+import { getProperties } from '../../services/dataService';
 
 interface Document {
   id: string;
@@ -45,6 +45,8 @@ export const DocumentsPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showUploadModal, setShowUploadModal] = useState(false);
   const [showRequirementsModal, setShowRequirementsModal] = useState(false);
+
+  const properties = getProperties();
 
   // Documents requis
   const documentRequirements: DocumentRequirement[] = [
@@ -258,7 +260,7 @@ export const DocumentsPage: React.FC = () => {
   // Calculer les statistiques par bien
   const getPropertyStats = (propertyId: string) => {
     const propertyDocs = documents.filter(d => d.propertyId === propertyId);
-    const property = mockProperties.find(p => p.id === propertyId);
+    const property = properties.find(p => p.id === propertyId);
     const requiredDocs = documentRequirements.filter(req => 
       req.category === 'property' && 
       req.required &&
@@ -282,8 +284,8 @@ export const DocumentsPage: React.FC = () => {
 
   // Statistiques globales
   const globalStats = {
-    totalProperties: mockProperties.length,
-    completeProperties: mockProperties.filter(p => getPropertyStats(p.id).completion === 100).length,
+    totalProperties: properties.length,
+    completeProperties: properties.filter(p => getPropertyStats(p.id).completion === 100).length,
     totalDocuments: documents.length,
     validDocuments: documents.filter(d => d.status === 'valid').length,
     pendingDocuments: documents.filter(d => d.status === 'pending').length,
@@ -400,7 +402,7 @@ export const DocumentsPage: React.FC = () => {
                   <Home className="w-4 h-4 inline mr-2" />
                   Tous les biens
                 </button>
-                {mockProperties.map((property) => {
+                {properties.map((property) => {
                   const stats = getPropertyStats(property.id);
                   return (
                     <button
@@ -466,7 +468,7 @@ export const DocumentsPage: React.FC = () => {
         {selectedProperty !== 'all' && (
           <Card className="p-6 bg-gradient-to-r from-primary-50 to-primary-100">
             {(() => {
-              const property = mockProperties.find(p => p.id === selectedProperty);
+              const property = properties.find(p => p.id === selectedProperty);
               const stats = getPropertyStats(selectedProperty);
               const requiredDocs = documentRequirements.filter(req => 
                 req.category === 'property' && 
@@ -561,7 +563,7 @@ export const DocumentsPage: React.FC = () => {
           ) : (
             <div className="grid gap-4">
               {filteredDocuments.map((doc) => {
-                const property = doc.propertyId ? mockProperties.find(p => p.id === doc.propertyId) : null;
+                const property = doc.propertyId ? properties.find(p => p.id === doc.propertyId) : null;
                 
                 return (
                   <Card key={doc.id} className="p-6">

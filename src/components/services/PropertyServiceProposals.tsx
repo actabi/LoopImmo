@@ -9,7 +9,7 @@ import {
   ChevronDown, ChevronUp, Plus, Check, X, Clock, MessageSquare,
   Filter, Search
 } from 'lucide-react';
-import { mockServiceProviders, mockServiceProposals } from '../../data/mockServiceProviders';
+import { getServiceProviders, getServiceProposals } from '../../services/dataService';
 import { cn } from '../../utils/cn';
 
 interface PropertyServiceProposalsProps {
@@ -21,11 +21,12 @@ export const PropertyServiceProposals: React.FC<PropertyServiceProposalsProps> =
   property,
   userRole
 }) => {
+  const serviceProviders = getServiceProviders();
+  const [activeProposals] = useState<ServiceProposal[]>(
+    getServiceProposals().filter(p => p.propertyId === property.id)
+  );
   const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
   const [selectedProviders, setSelectedProviders] = useState<{[key: string]: ServiceProvider}>({});
-  const [activeProposals] = useState<ServiceProposal[]>(
-    mockServiceProposals.filter(p => p.propertyId === property.id)
-  );
   const [filterType, setFilterType] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -97,7 +98,7 @@ export const PropertyServiceProposals: React.FC<PropertyServiceProposalsProps> =
   };
 
   const getProvidersForCategory = (category: string) => {
-    return mockServiceProviders
+    return serviceProviders
       .filter(p => p.type === category)
       .filter(p => 
         searchQuery === '' || 

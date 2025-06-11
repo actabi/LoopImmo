@@ -12,7 +12,7 @@ import {
   Send, UserCheck, ShieldCheck, ArrowRight
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
-import { mockProposals } from "../../mocks";
+import { getProposals } from "../../services/dataService";
 import { formatPrice } from '../../utils/calculations';
 
 // Types pour les propositions
@@ -179,15 +179,17 @@ export const ProposePropertyPage: React.FC = () => {
   const [selectedProposal, setSelectedProposal] = useState<PropertyProposal | null>(null);
   const [activeTab, setActiveTab] = useState<'all' | 'pending' | 'approved'>('all');
 
+  const proposals = getProposals();
+
   // Filtrer les propositions
   const getFilteredProposals = () => {
     switch (activeTab) {
       case 'pending':
-        return mockProposals.filter(p => p.status === 'pending_owner' || p.status === 'pending_staff');
+        return proposals.filter(p => p.status === 'pending_owner' || p.status === 'pending_staff');
       case 'approved':
-        return mockProposals.filter(p => p.status === 'approved');
+        return proposals.filter(p => p.status === 'approved');
       default:
-        return mockProposals;
+        return proposals;
     }
   };
 
@@ -195,10 +197,10 @@ export const ProposePropertyPage: React.FC = () => {
 
   // Stats
   const stats = {
-    total: mockProposals.length,
-    pending: mockProposals.filter(p => p.status === 'pending_owner' || p.status === 'pending_staff').length,
-    approved: mockProposals.filter(p => p.status === 'approved').length,
-    potentialCommission: mockProposals.reduce((sum, p) => sum + p.estimatedCommission, 0)
+    total: proposals.length,
+    pending: proposals.filter(p => p.status === 'pending_owner' || p.status === 'pending_staff').length,
+    approved: proposals.filter(p => p.status === 'approved').length,
+    potentialCommission: proposals.reduce((sum, p) => sum + p.estimatedCommission, 0)
   };
 
   if (showForm) {

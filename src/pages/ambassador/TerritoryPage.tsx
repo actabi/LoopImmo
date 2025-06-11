@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
-import { mockZones } from "../../mocks";
+import { getZones } from "../../services/dataService";
 // Types pour le territoire
 interface Zone {
   id: string;
@@ -219,6 +219,8 @@ const ZoneCard: React.FC<{ zone: Zone; onAction: () => void }> = ({ zone, onActi
 export const TerritoryPage: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState<'overview' | 'zones' | 'performance'>('overview');
 
+  const zones = getZones();
+
   return (
     <DashboardLayout role="ambassador">
       <div className="space-y-6">
@@ -395,7 +397,7 @@ export const TerritoryPage: React.FC = () => {
 
         {selectedTab === 'zones' && (
           <div className="grid lg:grid-cols-2 gap-6">
-            {mockZones.map(zone => (
+            {zones.map(zone => (
               <ZoneCard 
                 key={zone.id} 
                 zone={zone}
@@ -411,7 +413,7 @@ export const TerritoryPage: React.FC = () => {
             <Card className="p-6">
               <h3 className="font-semibold text-gray-900 mb-4">Performance par zone</h3>
               <div className="space-y-4">
-                {mockZones
+                {zones
                   .filter(z => z.status === 'active')
                   .map(zone => (
                     <div key={zone.id}>

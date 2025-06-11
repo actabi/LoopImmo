@@ -8,13 +8,13 @@ import {
   Camera, FileText, BarChart3, Trash2, Copy, Archive
 } from 'lucide-react';
 import { formatPrice } from '../../utils/calculations';
-import { mockProperties } from '../../data/mockData';
+import { getProperties } from '../../services/dataService';
 import { cn } from '../../utils/cn';
 
 export const PropertiesPage: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'active' | 'draft' | 'sold'>('all');
   
-  const properties = mockProperties.filter(p => p.sellerId === '1');
+  const properties = getProperties().filter(p => p.sellerId === '1');
   const filteredProperties = filter === 'all' 
     ? properties 
     : properties.filter(p => p.status === filter);
