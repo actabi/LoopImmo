@@ -13,7 +13,7 @@ import {
 import { cn } from '../../utils/cn';
 import { formatPrice } from '../../utils/calculations';
 
-import { mockVisits } from "../../mocks";
+import { getVisits } from "../../services/dataService";
 // Types pour les visites
 interface AmbassadorVisit {
   id: string;
@@ -183,22 +183,24 @@ export const AmbassadorVisitsManagementPage: React.FC = () => {
   const [selectedVisit, setSelectedVisit] = useState<AmbassadorVisit | null>(null);
   const [filterStatus, setFilterStatus] = useState<string>('all');
 
+  const visits = getVisits();
+
   // Filtrer les visites
-  const filteredVisits = filterStatus === 'all' 
-    ? mockVisits 
-    : mockVisits.filter(v => v.status === filterStatus);
+  const filteredVisits = filterStatus === 'all'
+    ? visits
+    : visits.filter(v => v.status === filterStatus);
 
   // Visites du jour
-  const todayVisits = mockVisits.filter(v => 
+  const todayVisits = visits.filter(v =>
     v.date.toDateString() === new Date().toDateString()
   ).sort((a, b) => a.time.localeCompare(b.time));
 
   // Stats
   const stats = {
-    scheduled: mockVisits.filter(v => v.status === 'scheduled' || v.status === 'confirmed').length,
-    completed: mockVisits.filter(v => v.status === 'completed').length,
-    cancelled: mockVisits.filter(v => v.status === 'cancelled').length,
-    totalCommission: mockVisits.filter(v => v.status === 'completed').reduce((sum, v) => sum + (v.commission || 0), 0),
+    scheduled: visits.filter(v => v.status === 'scheduled' || v.status === 'confirmed').length,
+    completed: visits.filter(v => v.status === 'completed').length,
+    cancelled: visits.filter(v => v.status === 'cancelled').length,
+    totalCommission: visits.filter(v => v.status === 'completed').reduce((sum, v) => sum + (v.commission || 0), 0),
     avgRating: 4.8,
     conversionRate: 65
   };

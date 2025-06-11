@@ -8,13 +8,15 @@ import {
   Trash2, Bell, TrendingDown, Clock, Filter, SortDesc
 } from 'lucide-react';
 import { formatPrice } from '../../utils/calculations';
-import { mockProperties } from '../../data/mockData';
+import { getProperties } from '../../services/dataService';
 
 export const BuyerFavorites: React.FC = () => {
   const [sortBy, setSortBy] = useState<'recent' | 'price' | 'surface'>('recent');
+
+  const properties = getProperties();
   
   // Simuler des favoris avec des métadonnées supplémentaires
-  const favorites = mockProperties.slice(0, 5).map((property, index) => ({
+  const favorites = properties.slice(0, 5).map((property, index) => ({
     ...property,
     savedDate: new Date(Date.now() - index * 86400000).toLocaleDateString('fr-FR'),
     priceChange: index === 1 ? -15000 : index === 3 ? -8000 : 0,

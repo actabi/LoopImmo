@@ -8,7 +8,7 @@ import {
   ChevronRight, Eye, Heart, Share2, UserPlus,
   TrendingUp, Clock, CheckCircle, AlertCircle
 } from 'lucide-react';
-import { mockTerritoryProperties } from '../../data/mockReferrals';
+import { getTerritoryProperties } from '../../services/dataService';
 import { cn } from '../../utils/cn';
 
 export const TerritoryAlerts: React.FC = () => {
@@ -16,7 +16,7 @@ export const TerritoryAlerts: React.FC = () => {
   const [showReferralModal, setShowReferralModal] = useState(false);
   const [filter, setFilter] = useState<'all' | 'referral_enabled' | 'my_zone'>('all');
 
-  const properties = mockTerritoryProperties.filter(p => {
+  const properties = getTerritoryProperties().filter(p => {
     if (filter === 'referral_enabled') return p.allowsReferrals;
     if (filter === 'my_zone') return true; // Filter by ambassador's territory
     return true;

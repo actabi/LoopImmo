@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User, UserRole } from '../types';
-import { mockUsers } from '../data/mockData';
+import { getUsers } from '../services/dataService';
 
 export interface RegisterData {
   email: string;
@@ -57,7 +57,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = async (email: string, password: string) => {
     // Mock authentication
-    const user = mockUsers.find(u => u.email === email);
+    const user = getUsers().find(u => u.email === email);
     
     if (user && password === 'test123') {
       setUser(user);
@@ -83,7 +83,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       createdAt: new Date()
     };
 
-    mockUsers.push(newUser);
+    getUsers().push(newUser);
     setUser(newUser);
     setActiveRole(data.roles[0]);
     localStorage.setItem('user', JSON.stringify(newUser));

@@ -28,6 +28,16 @@ Lint the project:
 npm run lint
 ```
 
+### Mock data service
+
+The project uses a small data service located in `src/services/dataService.ts` to
+provide application data. When the `VITE_USE_MOCKS` environment variable is set
+to `true` (the default), the service returns arrays from the mock files under
+`src/data` and `src/mocks`. Set `VITE_USE_MOCKS=false` to disable these mocks –
+the functions will then throw errors until real API calls are implemented.
+This design makes it easy to replace the mock logic with actual HTTP requests in
+the future.
+
 
 ## License
 

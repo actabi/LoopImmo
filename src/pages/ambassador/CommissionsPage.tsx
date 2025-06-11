@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
 import { formatPrice } from '../../utils/calculations';
-import { mockCommissions } from "../../mocks";
+import { getCommissions } from "../../services/dataService";
 
 // Types pour les commissions
 interface Commission {
@@ -264,8 +264,10 @@ export const CommissionsPage: React.FC = () => {
   const [filterType, setFilterType] = useState<string>('all');
   const [filterStatus, setFilterStatus] = useState<string>('all');
 
+  const commissions = getCommissions();
+
   // Filtrer les commissions
-  const filteredCommissions = mockCommissions.filter(commission => {
+  const filteredCommissions = commissions.filter(commission => {
     if (filterType !== 'all' && commission.type !== filterType) return false;
     if (filterStatus !== 'all' && commission.status !== filterStatus) return false;
     return true;

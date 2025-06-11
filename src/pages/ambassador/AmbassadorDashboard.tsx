@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { formatPrice } from '../../utils/calculations';
 import { cn } from '../../utils/cn';
-import { mockStats, mockLeads, mockDashboardCommissions } from "../../mocks";
+import { getStats, getLeads, getDashboardCommissions } from "../../services/dataService";
 
 // Import des pages existantes
 import { AmbassadorPropertiesPage } from './PropertiesPage';
@@ -61,6 +61,10 @@ interface Commission {
 
 
 const AmbassadorHome: React.FC = () => {
+  const stats = getStats();
+  const leads = getLeads();
+  const dashboardCommissions = getDashboardCommissions();
+
   const getStatusColor = (status: Lead['status']) => {
     switch (status) {
       case 'new': return 'info';
@@ -96,12 +100,12 @@ const AmbassadorHome: React.FC = () => {
             </div>
             <Badge variant="success" size="sm">
               <ArrowUp className="w-3 h-3 mr-1" />
-              +{mockStats.monthlyGrowth}%
+              +{stats.monthlyGrowth}%
             </Badge>
           </div>
           <p className="text-sm text-gray-600 mb-1">Gains totaux</p>
-          <p className="text-2xl font-bold text-gray-900">{formatPrice(mockStats.totalEarnings)}</p>
-          <p className="text-xs text-gray-500 mt-1">Commission moyenne: {formatPrice(mockStats.averageCommission)}</p>
+          <p className="text-2xl font-bold text-gray-900">{formatPrice(stats.totalEarnings)}</p>
+          <p className="text-xs text-gray-500 mt-1">Commission moyenne: {formatPrice(stats.averageCommission)}</p>
         </Card>
 
         <Card className="p-6">
@@ -109,7 +113,7 @@ const AmbassadorHome: React.FC = () => {
             <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
               <Trophy className="w-6 h-6 text-blue-600" />
             </div>
-            <span className="text-2xl font-bold text-gray-900">{mockStats.totalSales}</span>
+            <span className="text-2xl font-bold text-gray-900">{stats.totalSales}</span>
           </div>
           <p className="text-sm text-gray-600 mb-1">Ventes réalisées</p>
           <div className="flex items-center gap-2 mt-2">
@@ -125,7 +129,7 @@ const AmbassadorHome: React.FC = () => {
             <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
               <Home className="w-6 h-6 text-purple-600" />
             </div>
-            <span className="text-2xl font-bold text-gray-900">{mockStats.activeProperties}</span>
+            <span className="text-2xl font-bold text-gray-900">{stats.activeProperties}</span>
           </div>
           <p className="text-sm text-gray-600 mb-1">Biens actifs</p>
           <p className="text-xs text-gray-500 mt-1">3 nouvelles opportunités cette semaine</p>
@@ -136,7 +140,7 @@ const AmbassadorHome: React.FC = () => {
             <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
               <Target className="w-6 h-6 text-orange-600" />
             </div>
-            <span className="text-2xl font-bold text-gray-900">{mockStats.conversionRate}%</span>
+            <span className="text-2xl font-bold text-gray-900">{stats.conversionRate}%</span>
           </div>
           <p className="text-sm text-gray-600 mb-1">Taux de conversion</p>
           <p className="text-xs text-gray-500 mt-1">Moyenne réseau: 18%</p>
@@ -207,7 +211,7 @@ const AmbassadorHome: React.FC = () => {
               </div>
 
               <div className="space-y-3">
-                {mockLeads.map((lead) => (
+                {leads.map((lead) => (
                   <div key={lead.id} className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                     <div className="flex items-start justify-between mb-2">
                       <div>
@@ -258,7 +262,7 @@ const AmbassadorHome: React.FC = () => {
               <h2 className="text-lg font-semibold text-gray-900 mb-4">Commissions récentes</h2>
               
               <div className="space-y-3">
-                {mockDashboardCommissions.slice(0, 3).map((commission) => (
+                {dashboardCommissions.slice(0, 3).map((commission) => (
                   <div key={commission.id} className="pb-3 border-b last:border-0">
                     <div className="flex items-start justify-between mb-1">
                       <p className="text-sm font-medium text-gray-900">{commission.propertyTitle}</p>

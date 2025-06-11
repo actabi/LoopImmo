@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
-import { mockEnrichedLeads } from "../../mocks";
+import { getEnrichedLeads } from "../../services/dataService";
 // Types étendus pour les leads
 interface ExtendedLead {
   id: string;
@@ -106,12 +106,14 @@ export const LeadsPage: React.FC = () => {
   const [selectedView, setSelectedView] = useState<'priority' | 'all' | 'scheduled'>('priority');
   const [selectedLead, setSelectedLead] = useState<ExtendedLead | null>(null);
 
+  const leads = getEnrichedLeads();
+
   // Calculs des métriques
   const metrics = {
-    totalLeads: mockEnrichedLeads.length,
-    newLeads: mockEnrichedLeads.filter(l => l.status === 'new').length,
-    urgentLeads: mockEnrichedLeads.filter(l => l.urgency === 'immediate' || l.urgency === 'high').length,
-    scheduledVisits: mockEnrichedLeads.filter(l => l.status === 'visit_scheduled').length,
+    totalLeads: leads.length,
+    newLeads: leads.filter(l => l.status === 'new').length,
+    urgentLeads: leads.filter(l => l.urgency === 'immediate' || l.urgency === 'high').length,
+    scheduledVisits: leads.filter(l => l.status === 'visit_scheduled').length,
     conversionRate: 35,
     avgResponseTime: 4.5
   };
@@ -120,16 +122,16 @@ export const LeadsPage: React.FC = () => {
   const getFilteredLeads = () => {
     switch (selectedView) {
       case 'priority':
-        return mockEnrichedLeads
+        return leads
           .filter(l => l.status === 'new' || l.urgency === 'immediate' || l.urgency === 'high')
           .sort((a, b) => {
             const urgencyOrder = { immediate: 0, high: 1, medium: 2, low: 3 };
             return urgencyOrder[a.urgency] - urgencyOrder[b.urgency];
           });
       case 'scheduled':
-        return mockEnrichedLeads.filter(l => l.nextAction);
+        return leads.filter(l => l.nextAction);
       default:
-        return mockEnrichedLeads;
+        return leads;
     }
   };
 

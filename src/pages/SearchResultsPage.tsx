@@ -9,7 +9,8 @@ import { Footer } from '../components/layout/Footer';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
-import { mockProperties } from '../data/mockData';
+import { getProperties } from '../services/dataService';
+import { Property } from '../types';
 import { cn } from '../utils/cn';
 
 type ViewMode = 'grid' | 'list' | 'map';
@@ -30,13 +31,15 @@ export const SearchResultsPage: React.FC = () => {
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
   const [rooms, setRooms] = useState<number | null>(null);
 
+  const properties = getProperties();
+
   // Get search parameters
   const location = searchParams.get('location') || '';
   const type = searchParams.get('type') || '';
   const budget = searchParams.get('budget') || '';
 
   // Filter properties based on search criteria
-  const filteredProperties = mockProperties.filter(property => {
+  const filteredProperties = properties.filter(property => {
     let matches = true;
     
     if (location && !property.location.city.toLowerCase().includes(location.toLowerCase())) {
@@ -102,7 +105,7 @@ export const SearchResultsPage: React.FC = () => {
     });
   };
 
-  const PropertyCard = ({ property }: { property: typeof mockProperties[0] }) => {
+  const PropertyCard = ({ property }: { property: Property }) => {
     const isFavorite = favorites.has(property.id);
     const daysAgo = Math.floor((new Date().getTime() - property.createdAt.getTime()) / (1000 * 60 * 60 * 24));
     

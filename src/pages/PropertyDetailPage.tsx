@@ -9,7 +9,7 @@ import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
-import { mockProperties } from '../data/mockData';
+import { getProperties } from '../services/dataService';
 import { cn } from '../utils/cn';
 
 export const PropertyDetailPage: React.FC = () => {
@@ -20,8 +20,10 @@ export const PropertyDetailPage: React.FC = () => {
   const [selectedVisitSlot, setSelectedVisitSlot] = useState<string | null>(null);
   const [showContactForm, setShowContactForm] = useState(false);
 
+  const properties = getProperties();
+
   // Find property - in real app, fetch from API
-  const property = mockProperties.find(p => p.id === id);
+  const property = properties.find(p => p.id === id);
 
   if (!property) {
     return (
@@ -46,7 +48,7 @@ export const PropertyDetailPage: React.FC = () => {
     setCurrentImageIndex((prev) => (prev - 1 + property.photos.length) % property.photos.length);
   };
 
-  const similarProperties = mockProperties.filter(p => 
+  const similarProperties = properties.filter(p =>
     p.id !== property.id && 
     p.type === property.type && 
     Math.abs(p.price - property.price) < 100000

@@ -9,7 +9,7 @@ import {
   Info, ChevronLeft
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
-import { mockPropertyPhotos } from "../../mocks";
+import { getPropertyPhotos } from "../../services/dataService";
 
 interface PropertyPhotos {
   propertyId: string;
@@ -28,6 +28,8 @@ interface PropertyPhotos {
 export const AmbassadorPhotosPage: React.FC = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [selectedPhotos, setSelectedPhotos] = useState<string[]>([]);
+
+  const propertyPhotos = getPropertyPhotos();
 
   const handlePhotoSelect = (photoId: string) => {
     if (selectedPhotos.includes(photoId)) {
@@ -52,7 +54,7 @@ export const AmbassadorPhotosPage: React.FC = () => {
               Retour aux biens
             </Button>
             <h1 className="text-2xl font-bold text-gray-900">Photos du bien</h1>
-            <p className="text-gray-600 mt-1">{mockPropertyPhotos.propertyTitle}</p>
+            <p className="text-gray-600 mt-1">{propertyPhotos.propertyTitle}</p>
           </div>
           <Button variant="primary">
             <Upload className="w-4 h-4 mr-2" />
@@ -65,11 +67,11 @@ export const AmbassadorPhotosPage: React.FC = () => {
           <div className="flex items-center gap-4">
             <Home className="w-5 h-5 text-gray-500" />
             <div>
-              <p className="font-medium text-gray-900">{mockPropertyPhotos.propertyTitle}</p>
-              <p className="text-sm text-gray-600">{mockPropertyPhotos.propertyAddress}</p>
+              <p className="font-medium text-gray-900">{propertyPhotos.propertyTitle}</p>
+              <p className="text-sm text-gray-600">{propertyPhotos.propertyAddress}</p>
             </div>
             <Badge variant="info" className="ml-auto">
-              {mockPropertyPhotos.photos.length} photos
+              {propertyPhotos.photos.length} photos
             </Badge>
           </div>
         </Card>
@@ -135,7 +137,7 @@ export const AmbassadorPhotosPage: React.FC = () => {
         {/* Photos Grid/List */}
         {viewMode === 'grid' ? (
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {mockPropertyPhotos.photos.map((photo) => (
+            {propertyPhotos.photos.map((photo) => (
               <Card key={photo.id} className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
                 <div className="relative aspect-square">
                   <img 
@@ -187,7 +189,7 @@ export const AmbassadorPhotosPage: React.FC = () => {
           </div>
         ) : (
           <div className="space-y-2">
-            {mockPropertyPhotos.photos.map((photo) => (
+            {propertyPhotos.photos.map((photo) => (
               <Card key={photo.id} className="p-4 hover:shadow-md transition-shadow">
                 <div className="flex items-center gap-4">
                   <input
@@ -238,7 +240,7 @@ export const AmbassadorPhotosPage: React.FC = () => {
         )}
 
         {/* Empty State */}
-        {mockPropertyPhotos.photos.length === 0 && (
+        {propertyPhotos.photos.length === 0 && (
           <Card className="p-12 text-center">
             <Camera className="w-16 h-16 text-gray-300 mx-auto mb-4" />
             <h3 className="text-lg font-semibold text-gray-900 mb-2">

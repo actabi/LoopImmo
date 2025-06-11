@@ -12,8 +12,7 @@ import {
 } from 'lucide-react';
 import { formatPrice } from '../../utils/calculations';
 import { cn } from '../../utils/cn';
-import { mockProperties } from '../../data/mockData';
-import { mockPayments } from "../../mocks";
+import { getProperties, getPayments } from "../../services/dataService";
 
 interface Payment {
   id: string;
@@ -160,9 +159,12 @@ export const PaymentsPage: React.FC = () => {
   const [showSavingsCalculator, setShowSavingsCalculator] = useState(false);
   const [selectedTab, setSelectedTab] = useState<'overview' | 'schedule' | 'history' | 'boost'>('overview');
 
+  const properties = getProperties();
+  const payments = getPayments();
+
   // Calculer les économies par bien
   const calculateSavings = (propertyId: string): Savings => {
-    const property = mockProperties.find(p => p.id === propertyId);
+    const property = properties.find(p => p.id === propertyId);
     if (!property) return { propertyId, traditionalFee: 0, loopImmoFee: 0, saved: 0, percentage: 0 };
 
     const traditionalFee = property.price * 0.05; // 5% en moyenne
@@ -174,23 +176,23 @@ export const PaymentsPage: React.FC = () => {
   };
 
   // Statistiques globales
-  const totalPaid = mockPayments
+  const totalPaid = payments
     .filter(p => p.status === 'completed')
     .reduce((sum, p) => sum + p.amount, 0);
 
-  const totalPending = mockPayments
+  const totalPending = payments
     .filter(p => p.status === 'scheduled' || p.status === 'pending')
     .reduce((sum, p) => sum + p.amount, 0);
 
-  const totalSavings = mockProperties.reduce((sum, property) => {
+  const totalSavings = properties.reduce((sum, property) => {
     const savings = calculateSavings(property.id);
     return sum + savings.saved;
   }, 0);
 
   // Filtrer les paiements
-  const filteredPayments = selectedProperty === 'all' 
-    ? mockPayments 
-    : mockPayments.filter(p => p.propertyId === selectedProperty);
+  const filteredPayments = selectedProperty === 'all'
+    ? payments
+    : payments.filter(p => p.propertyId === selectedProperty);
 
   const filteredSchedules = selectedProperty === 'all'
     ? paymentSchedules
@@ -231,7 +233,7 @@ export const PaymentsPage: React.FC = () => {
             </div>
             <div className="text-right">
               <p className="text-3xl font-bold text-green-600">{formatPrice(totalSavings)}</p>
-              <p className="text-sm text-gray-600 mt-1">économisés sur {mockProperties.length} biens</p>
+              <p className="text-sm text-gray-600 mt-1">économisés sur {properties.length} biens</p>
             </div>
           </div>
         </div>
@@ -245,7 +247,7 @@ export const PaymentsPage: React.FC = () => {
             Simulateur d'économies détaillé
           </h3>
           <div className="grid lg:grid-cols-2 gap-6">
-            {mockProperties.map((property) => {
+            {properties.map((property) => {
               const savings = calculateSavings(property.id);
               return (
                 <div key={property.id} className="bg-white rounded-lg p-4">
@@ -335,7 +337,7 @@ export const PaymentsPage: React.FC = () => {
                 <div>
                   <p className="text-sm text-gray-600">Économie moyenne</p>
                   <p className="text-2xl font-bold text-gray-900">
-                    {Math.round(totalSavings / mockProperties.length / 1000)}k€
+                    {Math.round(totalSavings / properties.length / 1000)}k€
                   </p>
                 </div>
               </div>
@@ -347,10 +349,10 @@ export const PaymentsPage: React.FC = () => {
             <div className="p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Prochains paiements</h3>
               <div className="space-y-3">
-                {mockPayments
+                {payments
                   .filter(p => p.status === 'scheduled' || p.status === 'pending')
                   .map((payment) => {
-                    const property = mockProperties.find(p => p.id === payment.propertyId);
+                    const property = properties.find(p => p.id === payment.propertyId);
                     return (
                       <div key={payment.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                         <div>
@@ -413,7 +415,7 @@ export const PaymentsPage: React.FC = () => {
             )}
 
             <div className="space-y-4">
-              {mockProperties.map((property) => {
+              {properties.map((property) => {
                 const propertySchedules = filteredSchedules.filter(s => s.propertyId === property.id);
                 return (
                   <div key={property.id} className="border rounded-lg p-4">
@@ -484,7 +486,7 @@ export const PaymentsPage: React.FC = () => {
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Historique des transactions</h3>
             <div className="space-y-3">
               {filteredPayments.map((payment) => {
-                const property = mockProperties.find(p => p.id === payment.propertyId);
+                const property = properties.find(p => p.id === payment.propertyId);
                 return (
                   <div key={payment.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                     <div className="flex items-center gap-4">
