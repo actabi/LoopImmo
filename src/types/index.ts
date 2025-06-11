@@ -154,3 +154,59 @@ export interface AmbassadorReferral {
   convertedAt?: Date;
   notes?: string;
 }
+
+export interface ServiceProvider {
+  id: string;
+  name: string;
+  type:
+    | 'photographer'
+    | 'diagnostician'
+    | 'home_stager'
+    | 'financial_advisor'
+    | 'notary'
+    | 'lawyer'
+    | 'contractor';
+  description: string;
+  rating: number;
+  reviewCount: number;
+  price: number;
+  priceUnit: 'fixed' | 'hourly' | 'percentage';
+  availability: 'immediate' | 'within_24h' | 'within_week';
+  specialties: string[];
+  certifications: string[];
+  location?: string;
+  distance?: string;
+  portfolio?: string[];
+  verified: boolean;
+}
+
+export interface ServiceProposal {
+  id: string;
+  propertyId: string;
+  providerId: string;
+  provider: ServiceProvider;
+  status: 'pending' | 'accepted' | 'rejected';
+  proposedDate: Date;
+  message: string;
+  createdAt: Date;
+  customPrice?: number;
+}
+
+export interface Subscription {
+  id: string;
+  userId: string;
+  plan: string;
+  status: string;
+  startDate: Date;
+  features: string[];
+  price: number;
+  billingCycle: 'monthly' | 'yearly' | 'one-time';
+}
+
+export interface SubscriptionFeature {
+  id: string;
+  name: string;
+  description: string;
+  plans: string[];
+  category: 'search' | 'support' | 'analytics' | 'priority' | 'tools';
+}
