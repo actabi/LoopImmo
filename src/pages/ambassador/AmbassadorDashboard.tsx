@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, Navigate, Link, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, Link } from 'react-router-dom';
 import { DashboardLayout } from '../../components/dashboard/DashboardLayout';
 import { Card } from '../../components/ui/Card';
 import { Badge } from '../../components/ui/Badge';
@@ -352,7 +352,6 @@ const AmbassadorHome: React.FC = () => {
 };
 
 export const AmbassadorDashboard: React.FC = () => {
-  const location = useLocation();
 
   return (
     <Routes>
