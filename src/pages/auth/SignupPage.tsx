@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, ArrowLeft, User } from 'lucide-react';
+import { useAuth } from '../../contexts/AuthContext';
 
 export const SignupPage: React.FC = () => {
   const navigate = useNavigate();
+  const { register: registerUser } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -14,14 +16,25 @@ export const SignupPage: React.FC = () => {
     lastName: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       alert('Les mots de passe ne correspondent pas');
       return;
     }
-    // TODO: Implement signup logic
-    navigate('/login');
+    try {
+      await registerUser({
+        email: formData.email,
+        password: formData.password,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        roles: ['buyer']
+      });
+      navigate('/login');
+    } catch (err) {
+      console.error("Erreur lors de l'inscription:", err);
+      alert("Une erreur est survenue lors de l'inscription");
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
