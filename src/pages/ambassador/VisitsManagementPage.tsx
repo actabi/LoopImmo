@@ -13,6 +13,7 @@ import {
 import { cn } from '../../utils/cn';
 import { formatPrice } from '../../utils/calculations';
 
+import { mockVisits } from "../../mocks";
 // Types pour les visites
 interface AmbassadorVisit {
   id: string;
@@ -45,69 +46,6 @@ interface AmbassadorVisit {
 }
 
 // Mock data enrichi
-const mockVisits: AmbassadorVisit[] = [
-  {
-    id: 'V001',
-    propertyId: '1',
-    propertyTitle: 'T3 Lumineux - Montchat',
-    propertyAddress: '45 rue de la République, Lyon 3',
-    propertyPrice: 285000,
-    propertyImage: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?w=400',
-    buyerName: 'Marie Dubois',
-    buyerPhone: '06 12 34 56 78',
-    buyerEmail: 'marie.dubois@email.com',
-    buyerScore: 85,
-    date: new Date(Date.now() + 1000 * 60 * 60 * 24),
-    time: '14:00',
-    duration: 45,
-    status: 'confirmed',
-    distance: 2.5,
-    travelTime: 15,
-    commission: 150
-  },
-  {
-    id: 'V002',
-    propertyId: '2',
-    propertyTitle: 'T4 Standing - Foch',
-    propertyAddress: '12 avenue Foch, Lyon 6',
-    propertyPrice: 365000,
-    propertyImage: 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?w=400',
-    buyerName: 'Jean Martin',
-    buyerPhone: '06 23 45 67 89',
-    buyerEmail: 'jean.martin@email.com',
-    buyerScore: 92,
-    date: new Date(Date.now() + 1000 * 60 * 60 * 48),
-    time: '10:30',
-    duration: 60,
-    status: 'scheduled',
-    distance: 4.2,
-    travelTime: 25,
-    commission: 150
-  },
-  {
-    id: 'V003',
-    propertyId: '3',
-    propertyTitle: 'Studio Moderne - République',
-    propertyAddress: '23 place de la République, Lyon 2',
-    propertyPrice: 180000,
-    propertyImage: 'https://images.pexels.com/photos/1428348/pexels-photo-1428348.jpeg?w=400',
-    buyerName: 'Sophie Bernard',
-    buyerPhone: '06 34 56 78 90',
-    buyerEmail: 'sophie.bernard@email.com',
-    date: new Date(Date.now() - 1000 * 60 * 60 * 24),
-    time: '16:00',
-    duration: 30,
-    status: 'completed',
-    feedback: {
-      rating: 5,
-      comment: 'Très bon accueil, bien correspondant aux attentes',
-      interested: true
-    },
-    distance: 1.8,
-    travelTime: 12,
-    commission: 150
-  }
-];
 
 // Composant pour le calendrier de visites
 const VisitCalendar: React.FC<{ visits: AmbassadorVisit[] }> = ({ visits }) => {
