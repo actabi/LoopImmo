@@ -128,3 +128,29 @@ export interface PropertyStats {
   weeklyViewsChange: number;
   newOffers: number;
 }
+
+export interface AmbassadorReferral {
+  id: string;
+  propertyId: string;
+  propertyTitle: string;
+  referringAmbassadorId: string;
+  referringAmbassadorName: string;
+  receivingAmbassadorId?: string;
+  sellerId: string;
+  buyerId: string;
+  buyerName: string;
+  buyerContact: string;
+  buyerEmail: string;
+  status: 'pending' | 'accepted' | 'rejected' | 'converted';
+  type: 'buyer_lead';
+  message?: string;
+  commissionSplit: {
+    referring: number;
+    receiving: number;
+  };
+  potentialCommission: number;
+  createdAt: Date;
+  acceptedAt?: Date;
+  convertedAt?: Date;
+  notes?: string;
+}
