@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { formatPrice } from '../../utils/calculations';
 import { cn } from '../../utils/cn';
+import { mockStats, mockLeads, mockDashboardCommissions } from "../../mocks";
 
 // Import des pages existantes
 import { AmbassadorPropertiesPage } from './PropertiesPage';
@@ -57,84 +58,7 @@ interface Commission {
   paymentDate?: Date;
 }
 
-const mockStats: AmbassadorStats = {
-  totalSales: 12,
-  totalEarnings: 28800,
-  activeProperties: 5,
-  conversionRate: 24,
-  averageCommission: 2400,
-  monthlyGrowth: 15,
-  pendingCommissions: 4800,
-  nextPayout: new Date(Date.now() + 1000 * 60 * 60 * 24 * 15)
-};
 
-const mockLeads: Lead[] = [
-  {
-    id: '1',
-    name: 'Sophie Martin',
-    type: 'seller',
-    status: 'new',
-    value: 450000,
-    date: new Date(Date.now() - 1000 * 60 * 60 * 2),
-    property: 'Maison 5 pièces',
-    phone: '06 12 34 56 78',
-    email: 'sophie.martin@email.com',
-    notes: 'Souhaite vendre rapidement, déménagement professionnel'
-  },
-  {
-    id: '2',
-    name: 'Thomas Dubois',
-    type: 'buyer',
-    status: 'contacted',
-    value: 320000,
-    date: new Date(Date.now() - 1000 * 60 * 60 * 24),
-    property: 'Recherche T3/T4',
-    phone: '06 23 45 67 89',
-    email: 'thomas.dubois@email.com'
-  },
-  {
-    id: '3',
-    name: 'Marie Leroy',
-    type: 'seller',
-    status: 'qualified',
-    value: 280000,
-    date: new Date(Date.now() - 1000 * 60 * 60 * 24 * 3),
-    property: 'Appartement T3',
-    phone: '06 34 56 78 90',
-    email: 'marie.leroy@email.com'
-  }
-];
-
-const mockCommissions: Commission[] = [
-  {
-    id: '1',
-    propertyTitle: 'Appartement T4 - Lyon 6e',
-    sellerName: 'Jean Dupont',
-    salePrice: 380000,
-    commission: 2400,
-    status: 'paid',
-    saleDate: new Date(Date.now() - 1000 * 60 * 60 * 24 * 45),
-    paymentDate: new Date(Date.now() - 1000 * 60 * 60 * 24 * 30)
-  },
-  {
-    id: '2',
-    propertyTitle: 'Maison 5 pièces - Villeurbanne',
-    sellerName: 'Claire Bernard',
-    salePrice: 520000,
-    commission: 2400,
-    status: 'validated',
-    saleDate: new Date(Date.now() - 1000 * 60 * 60 * 24 * 10)
-  },
-  {
-    id: '3',
-    propertyTitle: 'Studio - Lyon 2e',
-    sellerName: 'Pierre Martin',
-    salePrice: 185000,
-    commission: 2400,
-    status: 'pending',
-    saleDate: new Date(Date.now() - 1000 * 60 * 60 * 24 * 5)
-  }
-];
 
 const AmbassadorHome: React.FC = () => {
   const getStatusColor = (status: Lead['status']) => {
@@ -151,36 +75,6 @@ const AmbassadorHome: React.FC = () => {
     switch (status) {
       case 'new': return 'Nouveau';
       case 'contacted': return 'Contacté';
-      case 'qualified': return 'Qualifié';
-      case 'converted': return 'Converti';
-      default: return status;
-    }
-  };
-
-  return (
-    <div className="space-y-6">
-      {/* Welcome Section */}
-      <div className="bg-gradient-to-r from-secondary-50 to-primary-50 rounded-xl p-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
-              Bonjour, Ambassadeur LoopImmo ! 👋
-            </h1>
-            <p className="text-gray-600">
-              Votre tableau de bord pour gérer vos leads et suivre vos commissions
-            </p>
-          </div>
-          <div className="text-right">
-            <p className="text-sm text-gray-600">Prochain versement</p>
-            <p className="text-lg font-semibold text-gray-900">
-              {mockStats.nextPayout.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })}
-            </p>
-            <p className="text-2xl font-bold text-secondary-600">{formatPrice(mockStats.pendingCommissions)}</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Stats Overview */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card className="p-6">
           <div className="flex items-center justify-between mb-4">
@@ -351,7 +245,7 @@ const AmbassadorHome: React.FC = () => {
               <h2 className="text-lg font-semibold text-gray-900 mb-4">Commissions récentes</h2>
               
               <div className="space-y-3">
-                {mockCommissions.slice(0, 3).map((commission) => (
+                {mockDashboardCommissions.slice(0, 3).map((commission) => (
                   <div key={commission.id} className="pb-3 border-b last:border-0">
                     <div className="flex items-start justify-between mb-1">
                       <p className="text-sm font-medium text-gray-900">{commission.propertyTitle}</p>
