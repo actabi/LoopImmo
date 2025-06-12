@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { ChevronDown, Home, Search, Users, Plus, Bell } from 'lucide-react';
+import { ChevronDown, Home, Search, Users, Plus, Bell, Shield } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { UserRole } from '../../types';
 import { cn } from '../../utils/cn';
@@ -17,6 +17,7 @@ const roleOptions: RoleOption[] = [
   { role: 'seller', label: 'Mode Vendeur', icon: Home, path: '/seller/dashboard' },
   { role: 'buyer', label: 'Mode Acheteur', icon: Search, path: '/buyer/dashboard' },
   { role: 'ambassador', label: 'Mode Ambassadeur', icon: Users, path: '/ambassador/dashboard' },
+  { role: 'trust_manager', label: 'Mode Trust Manager', icon: Shield, path: '/trust-manager/dashboard' },
 ];
 
 export const RoleSelector: React.FC = () => {
