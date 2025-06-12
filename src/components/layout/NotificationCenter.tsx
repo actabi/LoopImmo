@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Bell, X, Home, Search, Users, Clock, CheckCircle } from 'lucide-react';
+import { Bell, X, Home, Search, Users, Clock, CheckCircle, Shield } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { UserRole } from '../../types';
 import { cn } from '../../utils/cn';
@@ -68,6 +68,15 @@ const mockNotifications: Notification[] = [
       label: 'Devenir ambassadeur',
       onClick: () => console.log('Navigate to ambassador signup')
     }
+  },
+  {
+    id: '6',
+    role: 'trust_manager',
+    title: 'Nouvelle tâche assignée',
+    message: 'Vérifier le dossier de la propriété 1234',
+    time: new Date(Date.now() - 1000 * 60 * 20),
+    read: false,
+    type: 'info'
   }
 ];
 
@@ -81,7 +90,8 @@ export const NotificationCenter: React.FC = () => {
   const roleIcons = {
     seller: Home,
     buyer: Search,
-    ambassador: Users
+    ambassador: Users,
+    trust_manager: Shield
   };
 
   const unreadCount = mockNotifications.filter(n => !n.read).length;
