@@ -6,7 +6,7 @@ import {
   Camera, BarChart3, CreditCard, LogOut, Menu, X,
   Search, Heart, Eye, Target, DollarSign, Users,
   Briefcase, Award, Settings, HelpCircle, Zap, BookOpen,
-  CheckCircle, FileCheck, Shield
+  CheckCircle, FileCheck, Archive, Shield
 } from 'lucide-react';
 import { RoleSelector } from '../layout/RoleSelector';
 
@@ -58,10 +58,10 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, role
       { name: 'Tableau de bord', href: '/trust-manager/dashboard', icon: Home },
       { name: 'Tâches', href: '/trust-manager/tasks', icon: CheckCircle },
       { name: 'Validation', href: '/trust-manager/validation', icon: FileCheck },
-      { name: 'Qualité', href: '/trust-manager/quality-control', icon: Eye },
+      { name: 'Qualité', href: '/trust-manager/quality-control', icon: Camera },
       { name: 'Leads', href: '/trust-manager/lead-qualification', icon: Users },
       { name: 'Contrats', href: '/trust-manager/contracts', icon: FileText },
-      { name: 'Notaire', href: '/trust-manager/notary', icon: Briefcase },
+      { name: 'Notaire', href: '/trust-manager/notary', icon: Archive },
       { name: 'Conformité', href: '/trust-manager/compliance', icon: Shield },
     ],
   };
