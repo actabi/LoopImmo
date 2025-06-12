@@ -337,6 +337,15 @@ export const mockUsers: User[] = [
     roles: ['ambassador'],
     phone: '0698765436',
     createdAt: new Date('2023-12-20')
+  },
+  {
+    id: 'trust1',
+    email: 'trust@test.com',
+    firstName: 'Alice',
+    lastName: 'Trusted',
+    roles: ['trust_manager'],
+    phone: '0600000000',
+    createdAt: new Date('2024-01-10')
   }
 ];
 

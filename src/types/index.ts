@@ -1,4 +1,4 @@
-export type UserRole = 'buyer' | 'seller' | 'ambassador';
+export type UserRole = 'buyer' | 'seller' | 'ambassador' | 'trust_manager';
 
 export interface User {
   id: string;
