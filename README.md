@@ -61,3 +61,19 @@ psql "$DATABASE_URL" -f sql/sample_data.sql
 ```
 
 Replace `$DATABASE_URL` with your connection string. The scripts can be executed against any PostgreSQL instance, including cloud providers.
+
+## Backend server
+
+A minimal Express server located in the `server` directory exposes REST endpoints backed by PostgreSQL. Ensure you have loaded the schema and sample data, then add your database connection string to `.env.local`:
+
+```bash
+DATABASE_URL=postgres://user:password@localhost:5432/loopimmo
+```
+
+Start the server with:
+
+```bash
+npm run server
+```
+
+The API listens on port `3000` by default and currently exposes `/api/users` and `/api/properties` routes.
