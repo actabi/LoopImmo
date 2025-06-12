@@ -16,6 +16,7 @@ import { EstimationPage } from './pages/EstimationPage';
 import { SellerDashboard } from './pages/seller/SellerDashboard';
 import { BuyerDashboard } from './pages/buyer/BuyerDashboard';
 import { AmbassadorDashboard } from './pages/ambassador/AmbassadorDashboard';
+import { TrustManagerDashboard } from './pages/trust-manager/TrustManagerDashboard';
 
 // Import des pages Buyer
 import { BuyerSearch } from './pages/buyer/BuyerSearch';
@@ -68,6 +69,9 @@ function App() {
         {/* Routes Ambassadeur - Route principale avec sous-routes gérées dans AmbassadorDashboard */}
         <Route path="/ambassador/*" element={<AmbassadorDashboard />} />
         <Route path="/ambassador/onboarding" element={<AmbassadorOnboarding />} />
+
+        {/* Route Trust Manager */}
+        <Route path="/trust-manager/*" element={<TrustManagerDashboard />} />
       </Routes>
     </AuthProvider>
   );

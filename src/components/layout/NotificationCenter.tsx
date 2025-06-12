@@ -68,6 +68,15 @@ const mockNotifications: Notification[] = [
       label: 'Devenir ambassadeur',
       onClick: () => console.log('Navigate to ambassador signup')
     }
+  },
+  {
+    id: '6',
+    role: 'trust_manager',
+    title: 'Nouvelle tâche assignée',
+    message: 'Vérifier le dossier de la propriété 1234',
+    time: new Date(Date.now() - 1000 * 60 * 20),
+    read: false,
+    type: 'info'
   }
 ];
 
