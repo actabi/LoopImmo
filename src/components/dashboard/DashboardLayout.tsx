@@ -2,16 +2,17 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { 
-  Home, Building, Calendar, MessageSquare, FileText, 
+  Home, Building, Calendar, MessageSquare, FileText,
   Camera, BarChart3, CreditCard, LogOut, Menu, X,
   Search, Heart, Eye, Target, DollarSign, Users,
-  Briefcase, Award, Settings, HelpCircle, Zap, BookOpen
+  Briefcase, Award, Settings, HelpCircle, Zap, BookOpen,
+  CheckCircle, FileCheck, Shield
 } from 'lucide-react';
 import { RoleSelector } from '../layout/RoleSelector';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
-  role: 'buyer' | 'seller' | 'ambassador';
+  role: 'buyer' | 'seller' | 'ambassador' | 'trust_manager';
 }
 
 export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, role }) => {
@@ -52,6 +53,16 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, role
       { name: 'Visites', href: '/ambassador/visits', icon: Calendar },
       { name: 'Commissions', href: '/ambassador/commissions', icon: DollarSign },
       { name: 'Formation', href: '/ambassador/training', icon: BookOpen },
+    ],
+    trust_manager: [
+      { name: 'Tableau de bord', href: '/trust-manager/dashboard', icon: Home },
+      { name: 'Tâches', href: '/trust-manager/tasks', icon: CheckCircle },
+      { name: 'Validation', href: '/trust-manager/validation', icon: FileCheck },
+      { name: 'Qualité', href: '/trust-manager/quality-control', icon: Eye },
+      { name: 'Leads', href: '/trust-manager/lead-qualification', icon: Users },
+      { name: 'Contrats', href: '/trust-manager/contracts', icon: FileText },
+      { name: 'Notaire', href: '/trust-manager/notary', icon: Briefcase },
+      { name: 'Conformité', href: '/trust-manager/compliance', icon: Shield },
     ],
   };
 
