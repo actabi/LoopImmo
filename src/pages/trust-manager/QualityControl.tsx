@@ -1,11 +1,30 @@
 import React, { useState } from 'react';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
-import { 
-  Camera, FileText, CheckCircle, XCircle, AlertCircle,
-  Download, Eye, Maximize2, RotateCw, ZoomIn, Image,
-  Calendar, Shield, AlertTriangle, ChevronLeft, ChevronRight
+import {
+  Camera,
+  FileText,
+  CheckCircle,
+  XCircle,
+  AlertCircle,
+  Download,
+  Eye,
+  Maximize2,
+  RotateCw,
+  ZoomIn,
+  Image,
+  Calendar,
+  Shield,
+  AlertTriangle,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
+import {
+  qualityProperties,
+  qualityItemsData,
+  photoGuidelines as mockPhotoGuidelines,
+  diagnosticRequirements as mockDiagnosticRequirements,
+} from '../../mocks';
 
 interface QualityCheckItem {
   id: string;
@@ -22,116 +41,11 @@ export const QualityControl: React.FC = () => {
   const [selectedItem, setSelectedItem] = useState<QualityCheckItem | null>(null);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
 
-  // Mock data
-  const properties = [
-    {
-      id: '1',
-      title: 'Maison 5 pièces - Écully',
-      reference: 'REF-2024-003',
-      submittedBy: 'Jean Martin',
-      submittedAt: new Date('2024-01-15T09:00:00'),
-      totalItems: 18,
-      pendingItems: 5
-    },
-    {
-      id: '2',
-      title: 'Appartement T2 - Lyon 3',
-      reference: 'REF-2024-004',
-      submittedBy: 'Sophie Bernard',
-      submittedAt: new Date('2024-01-15T11:00:00'),
-      totalItems: 12,
-      pendingItems: 3
-    }
-  ];
+  const properties = qualityProperties;
+  const qualityItems: QualityCheckItem[] = qualityItemsData;
 
-  const qualityItems: QualityCheckItem[] = [
-    // Photos
-    {
-      id: 'photo-1',
-      type: 'photo',
-      name: 'Salon principal',
-      status: 'approved',
-      url: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800'
-    },
-    {
-      id: 'photo-2',
-      type: 'photo',
-      name: 'Cuisine équipée',
-      status: 'pending',
-      url: 'https://images.pexels.com/photos/1599791/pexels-photo-1599791.jpeg?auto=compress&cs=tinysrgb&w=800'
-    },
-    {
-      id: 'photo-3',
-      type: 'photo',
-      name: 'Chambre principale',
-      status: 'rejected',
-      issues: ['Photo trop sombre', 'Pièce non rangée'],
-      url: 'https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=800'
-    },
-    {
-      id: 'photo-4',
-      type: 'photo',
-      name: 'Salle de bain',
-      status: 'pending',
-      url: 'https://images.pexels.com/photos/1454804/pexels-photo-1454804.jpeg?auto=compress&cs=tinysrgb&w=800'
-    },
-    {
-      id: 'photo-5',
-      type: 'photo',
-      name: 'Vue extérieure',
-      status: 'approved',
-      url: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=800'
-    },
-    // Diagnostics
-    {
-      id: 'diag-1',
-      type: 'diagnostic',
-      name: 'DPE - Diagnostic Performance Énergétique',
-      status: 'approved',
-      date: new Date('2023-12-15')
-    },
-    {
-      id: 'diag-2',
-      type: 'diagnostic',
-      name: 'Diagnostic Amiante',
-      status: 'pending',
-      date: new Date('2023-11-20')
-    },
-    {
-      id: 'diag-3',
-      type: 'diagnostic',
-      name: 'Diagnostic Plomb',
-      status: 'rejected',
-      issues: ['Document expiré', 'Signature manquante'],
-      date: new Date('2020-06-10')
-    },
-    {
-      id: 'diag-4',
-      type: 'diagnostic',
-      name: 'État des risques et pollutions',
-      status: 'pending',
-      date: new Date('2024-01-10')
-    }
-  ];
-
-  const photoGuidelines = [
-    'Photos en haute résolution (min. 1920x1080)',
-    'Éclairage naturel privilégié',
-    'Pièces rangées et propres',
-    'Angles larges pour montrer l\'espace',
-    'Pas de personnes visibles',
-    'Pas de reflets dans les miroirs',
-    'Photos récentes (moins de 3 mois)'
-  ];
-
-  const diagnosticRequirements = [
-    'Documents datés de moins de 6 mois',
-    'Signature et cachet du diagnostiqueur',
-    'Numéro de certification visible',
-    'Toutes les pages du rapport',
-    'Format PDF lisible',
-    'Conformité aux normes en vigueur'
-  ];
+  const photoGuidelines = mockPhotoGuidelines;
+  const diagnosticRequirements = mockDiagnosticRequirements;
 
   const photos = qualityItems.filter(item => item.type === 'photo');
   const diagnostics = qualityItems.filter(item => item.type === 'diagnostic');

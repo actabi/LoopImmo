@@ -7,6 +7,7 @@ import {
   Phone, Mail, MapPin, Shield, TrendingUp
 } from 'lucide-react';
 import { formatPrice } from '../../utils/calculations';
+import { notaryFilesData } from '../../mocks';
 
 interface NotaryFile {
   id: string;
@@ -47,82 +48,7 @@ export const NotaryCoordination: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<string>('1');
   const [coordinationNotes, setCoordinationNotes] = useState('');
 
-  // Mock data
-  const notaryFiles: NotaryFile[] = [
-    {
-      id: '1',
-      property: {
-        title: 'Appartement T3 - Lyon 6ème',
-        price: 450000,
-        reference: 'REF-2024-001'
-      },
-      buyer: 'Jean Martin',
-      seller: 'Marie Dubois',
-      notary: {
-        name: 'Me. Dupont',
-        office: 'Étude Dupont & Associés',
-        email: 'contact@dupont-notaires.fr',
-        phone: '04 78 12 34 56'
-      },
-      status: 'sent',
-      dates: {
-        compromis: new Date('2024-01-20'),
-        acteDefinitif: new Date('2024-03-20'),
-        created: new Date('2024-01-15'),
-        lastUpdate: new Date('2024-01-16')
-      },
-      documents: [
-        { name: 'Compromis signé', status: 'validated', required: true, uploadedAt: new Date('2024-01-20') },
-        { name: 'Pièces d\'identité', status: 'validated', required: true, uploadedAt: new Date('2024-01-18') },
-        { name: 'Titre de propriété', status: 'received', required: true, uploadedAt: new Date('2024-01-19') },
-        { name: 'Diagnostics techniques', status: 'validated', required: true, uploadedAt: new Date('2024-01-17') },
-        { name: 'État hypothécaire', status: 'pending', required: true },
-        { name: 'Certificat d\'urbanisme', status: 'pending', required: false }
-      ],
-      fundingStatus: {
-        totalAmount: 450000,
-        received: 90000,
-        distributed: false
-      }
-    },
-    {
-      id: '2',
-      property: {
-        title: 'Maison 5 pièces - Écully',
-        price: 680000,
-        reference: 'REF-2024-003'
-      },
-      buyer: 'Sophie Bernard',
-      seller: 'Pierre Leroy',
-      notary: {
-        name: 'Me. Martin',
-        office: 'SCP Martin & Partners',
-        email: 'etude@martin-notaires.fr',
-        phone: '04 78 98 76 54'
-      },
-      status: 'preparing',
-      dates: {
-        compromis: new Date('2024-01-22'),
-        acteDefinitif: new Date('2024-04-15'),
-        created: new Date('2024-01-16'),
-        lastUpdate: new Date('2024-01-16')
-      },
-      documents: [
-        { name: 'Compromis signé', status: 'pending', required: true },
-        { name: 'Pièces d\'identité', status: 'received', required: true, uploadedAt: new Date('2024-01-16') },
-        { name: 'Titre de propriété', status: 'pending', required: true },
-        { name: 'Diagnostics techniques', status: 'pending', required: true },
-        { name: 'État hypothécaire', status: 'pending', required: true },
-        { name: 'Certificat d\'urbanisme', status: 'pending', required: false }
-      ],
-      fundingStatus: {
-        totalAmount: 680000,
-        received: 0,
-        distributed: false
-      }
-    }
-  ];
-
+  const notaryFiles: NotaryFile[] = notaryFilesData;
   const currentFile = notaryFiles.find(f => f.id === selectedFile);
 
   const getStatusColor = (status: NotaryFile['status']) => {
