@@ -14,8 +14,8 @@ export const TrustManagerDashboard: React.FC = () => {
   return (
     <DashboardLayout role="trust_manager">
       <Routes>
-        <Route index element={<Navigate to="home" replace />} />
-        <Route path="home" element={<TrustManagerHome />} />
+        <Route index element={<Navigate to="/trust-manager/dashboard" replace />} />
+        <Route path="dashboard" element={<TrustManagerHome />} />
         <Route path="tasks" element={<TasksOverview />} />
         <Route path="validation" element={<PropertyValidation />} />
         <Route path="quality-control" element={<QualityControl />} />
