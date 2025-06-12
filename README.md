@@ -76,4 +76,7 @@ Start the server with:
 npm run server
 ```
 
+The script relies on `ts-node`'s ESM loader (via `ts-node-esm`), so ensure you
+are running Node.js 18 or later.
+
 The API listens on port `3000` by default and currently exposes `/api/users` and `/api/properties` routes.
