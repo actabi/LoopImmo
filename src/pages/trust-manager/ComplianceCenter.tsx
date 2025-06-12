@@ -1,75 +1,26 @@
 import React from 'react';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
-import { 
-  Shield, FileText, AlertTriangle, CheckCircle, 
-  Book, Download, ExternalLink, Calendar
+import {
+  Shield,
+  FileText,
+  AlertTriangle,
+  CheckCircle,
+  Book,
+  Download,
+  ExternalLink,
+  Calendar,
 } from 'lucide-react';
+import {
+  legalUpdatesData,
+  complianceChecklistData,
+  complianceResources,
+} from '../../mocks';
 
 export const ComplianceCenter: React.FC = () => {
-  const legalUpdates = [
-    {
-      id: 1,
-      title: 'Mise à jour Loi Climat et Résilience',
-      date: new Date(2024, 0, 15),
-      type: 'law',
-      impact: 'high',
-      summary: 'Interdiction de location des passoires thermiques (classe G) à partir de 2025'
-    },
-    {
-      id: 2,
-      title: 'Nouvelle réglementation DPE',
-      date: new Date(2024, 0, 10),
-      type: 'regulation',
-      impact: 'medium',
-      summary: 'Modification du calcul pour les petites surfaces'
-    },
-    {
-      id: 3,
-      title: 'Évolution des diagnostics amiante',
-      date: new Date(2023, 11, 20),
-      type: 'diagnostic',
-      impact: 'low',
-      summary: 'Extension de la liste des matériaux à contrôler'
-    }
-  ];
-
-  const complianceChecklist = [
-    { category: 'Mentions obligatoires', items: [
-      'Surface Carrez (si copropriété)',
-      'DPE avec classes énergie et GES',
-      'Montant des charges de copropriété',
-      'Nombre de lots dans la copropriété',
-      'Procédures en cours (si applicable)',
-      'Taxe foncière',
-      'Zone de risques naturels'
-    ]},
-    { category: 'Diagnostics techniques', items: [
-      'DPE (< 10 ans)',
-      'Amiante (avant 01/07/1997)',
-      'Plomb (avant 01/01/1949)',
-      'Termites (selon zone)',
-      'État des risques (ERP)',
-      'Électricité (> 15 ans)',
-      'Gaz (> 15 ans)',
-      'Assainissement non collectif'
-    ]},
-    { category: 'Documents contractuels', items: [
-      'Mandat de vente conforme',
-      'Compromis avec clauses suspensives',
-      'Attestation de superficie',
-      'État daté (si copropriété)',
-      'Règlement de copropriété',
-      'PV des 3 dernières AG'
-    ]}
-  ];
-
-  const resources = [
-    { title: 'Guide Loi Hoguet 2024', type: 'pdf', size: '2.3 MB' },
-    { title: 'Modèles de compromis', type: 'zip', size: '1.5 MB' },
-    { title: 'Check-list validation annonce', type: 'pdf', size: '450 KB' },
-    { title: 'Formation conformité légale', type: 'video', size: '45 min' }
-  ];
+  const legalUpdates = legalUpdatesData;
+  const complianceChecklist = complianceChecklistData;
+  const resources = complianceResources;
 
   return (
     <div className="space-y-6">

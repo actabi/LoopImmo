@@ -7,6 +7,11 @@ import {
   Download, Eye, MessageSquare
 } from 'lucide-react';
 import { formatPrice } from '../../utils/calculations';
+import {
+  pendingValidationProperties,
+  validationChecklistData,
+  validationPropertyDetails,
+} from '../../mocks';
 
 interface ValidationItem {
   id: string;
@@ -20,107 +25,9 @@ export const PropertyValidation: React.FC = () => {
   const [activeProperty, setActiveProperty] = useState<string | null>('1');
   const [validationNotes, setValidationNotes] = useState('');
 
-  // Mock data
-  const pendingProperties = [
-    {
-      id: '1',
-      title: 'Appartement T3 - Lyon 6ème',
-      reference: 'REF-2024-001',
-      price: 450000,
-      surface: 75,
-      seller: 'Marie Dubois',
-      submittedAt: new Date('2024-01-15T10:00:00'),
-      priority: 'high'
-    },
-    {
-      id: '2',
-      title: 'Maison 5 pièces - Écully',
-      reference: 'REF-2024-003',
-      price: 680000,
-      surface: 120,
-      seller: 'Jean Martin',
-      submittedAt: new Date('2024-01-15T09:00:00'),
-      priority: 'normal'
-    }
-  ];
-
-  const validationChecklist: ValidationItem[] = [
-    {
-      id: 'legal',
-      label: 'Mentions légales obligatoires',
-      status: 'valid',
-      required: true,
-      details: 'Surface Carrez, charges, taxe foncière'
-    },
-    {
-      id: 'carrez',
-      label: 'Surface Loi Carrez',
-      status: 'valid',
-      required: true,
-      details: '75 m² certifiés'
-    },
-    {
-      id: 'dpe',
-      label: 'DPE (Diagnostic Performance Énergétique)',
-      status: 'invalid',
-      required: true,
-      details: 'Document manquant ou expiré'
-    },
-    {
-      id: 'charges',
-      label: 'Montant des charges',
-      status: 'valid',
-      required: true,
-      details: '250€/mois incluant chauffage'
-    },
-    {
-      id: 'alur',
-      label: 'Conformité Loi ALUR',
-      status: 'pending',
-      required: true,
-      details: 'Vérification en cours'
-    },
-    {
-      id: 'photos',
-      label: 'Photos conformes',
-      status: 'valid',
-      required: true,
-      details: '12 photos HD, toutes pièces représentées'
-    },
-    {
-      id: 'description',
-      label: 'Description complète',
-      status: 'valid',
-      required: true,
-      details: 'Description détaillée et attractive'
-    },
-    {
-      id: 'diagnostics',
-      label: 'Diagnostics obligatoires',
-      status: 'invalid',
-      required: true,
-      details: 'Amiante et plomb manquants'
-    }
-  ];
-
-  const propertyDetails = {
-    type: 'Appartement',
-    surface: 75,
-    rooms: 3,
-    bedrooms: 2,
-    floor: 3,
-    elevator: true,
-    parking: true,
-    heating: 'Collectif',
-    construction: 1975,
-    charges: 250,
-    taxeFonciere: 1200,
-    copropriete: {
-      lots: 45,
-      chargesAnnuelles: 3000,
-      syndicName: 'Cabinet Immobilier Lyon'
-    }
-  };
+  const pendingProperties = pendingValidationProperties;
+  const validationChecklist: ValidationItem[] = validationChecklistData;
+  const propertyDetails = validationPropertyDetails;
 
   const getStatusIcon = (status: ValidationItem['status']) => {
     switch (status) {

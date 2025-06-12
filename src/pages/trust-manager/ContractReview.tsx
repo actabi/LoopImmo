@@ -7,6 +7,7 @@ import {
   Euro, User, Home, AlertTriangle, Clock
 } from 'lucide-react';
 import { formatPrice } from '../../utils/calculations';
+import { reviewContracts, mandatoryClausesList } from '../../mocks';
 
 interface ContractClause {
   id: string;
@@ -50,109 +51,11 @@ export const ContractReview: React.FC = () => {
   const [selectedContract, setSelectedContract] = useState<string>('1');
   const [reviewNotes, setReviewNotes] = useState('');
 
-  // Mock data
-  const contracts: Contract[] = [
-    {
-      id: '1',
-      type: 'compromis',
-      property: {
-        title: 'Appartement T3 - Lyon 6ème',
-        price: 450000,
-        reference: 'REF-2024-001'
-      },
-      buyer: {
-        name: 'Jean Martin',
-        email: 'jean.martin@email.com'
-      },
-      seller: {
-        name: 'Marie Dubois',
-        email: 'marie.dubois@email.com'
-      },
-      notary: {
-        name: 'Me. Dupont',
-        office: 'Étude Dupont & Associés'
-      },
-      dates: {
-        signature: new Date('2024-01-20'),
-        completion: new Date('2024-03-20')
-      },
-      status: 'pending_review',
-      clauses: [
-        {
-          id: '1',
-          type: 'suspensive',
-          title: 'Condition suspensive d\'obtention de prêt',
-          content: 'L\'acquéreur dispose d\'un délai de 45 jours pour obtenir un prêt de 360 000€ au taux maximum de 4.5%',
-          mandatory: true,
-          verified: true
-        },
-        {
-          id: '2',
-          type: 'suspensive',
-          title: 'Condition suspensive de vente du bien actuel',
-          content: 'La vente est conditionnée à la vente du bien situé au 123 rue Example, Lyon',
-          mandatory: false,
-          verified: true
-        },
-        {
-          id: '3',
-          type: 'particular',
-          title: 'Clause de non-concurrence',
-          content: 'Le vendeur s\'engage à ne pas exercer d\'activité commerciale similaire dans un rayon de 500m',
-          mandatory: false,
-          verified: false,
-          issues: ['Clause inhabituelle pour un bien résidentiel', 'Durée non précisée']
-        },
-        {
-          id: '4',
-          type: 'standard',
-          title: 'Garantie des vices cachés',
-          content: 'Le vendeur garantit l\'acquéreur contre les vices cachés conformément aux articles 1641 et suivants du Code civil',
-          mandatory: true,
-          verified: true
-        }
-      ]
-    },
-    {
-      id: '2',
-      type: 'promesse',
-      property: {
-        title: 'Maison 5 pièces - Écully',
-        price: 680000,
-        reference: 'REF-2024-003'
-      },
-      buyer: {
-        name: 'Sophie Bernard',
-        email: 'sophie.bernard@email.com'
-      },
-      seller: {
-        name: 'Pierre Leroy',
-        email: 'pierre.leroy@email.com'
-      },
-      notary: {
-        name: 'Me. Martin',
-        office: 'SCP Martin & Partners'
-      },
-      dates: {
-        signature: new Date('2024-01-22'),
-        completion: new Date('2024-04-15')
-      },
-      status: 'draft',
-      clauses: []
-    }
-  ];
 
+  const contracts: Contract[] = reviewContracts;
   const currentContract = contracts.find(c => c.id === selectedContract);
 
-  const mandatoryClauses = [
-    'Condition suspensive d\'obtention de prêt',
-    'Garantie des vices cachés',
-    'Servitudes et charges',
-    'État hypothécaire',
-    'Diagnostics techniques obligatoires',
-    'Surface Loi Carrez',
-    'Délai de rétractation'
-  ];
+  const mandatoryClauses = mandatoryClausesList;
 
   const getClauseIcon = (type: ContractClause['type']) => {
     switch (type) {
