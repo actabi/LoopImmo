@@ -30,6 +30,8 @@ export const LoginPage: React.FC = () => {
         navigate('/buyer/dashboard');
       } else if (formData.email.includes('ambassadeur')) {
         navigate('/ambassador/dashboard');
+      } else if (formData.email.includes('trust')) {
+        navigate('/trust-manager/dashboard');
       } else {
         // Par défaut, rediriger vers le dashboard vendeur
         navigate('/seller/dashboard');
@@ -46,11 +48,12 @@ export const LoginPage: React.FC = () => {
     });
   };
 
-  const fillTestCredentials = (role: 'buyer' | 'seller' | 'ambassador') => {
+  const fillTestCredentials = (role: 'buyer' | 'seller' | 'ambassador' | 'trust') => {
     const credentials = {
       buyer: { email: 'acheteur@test.com', password: 'test123' },
       seller: { email: 'vendeur@test.com', password: 'test123' },
-      ambassador: { email: 'ambassadeur@test.com', password: 'test123' }
+      ambassador: { email: 'ambassadeur@test.com', password: 'test123' },
+      trust: { email: 'trust@test.com', password: 'test123' }
     };
     
     setFormData({
@@ -113,6 +116,13 @@ export const LoginPage: React.FC = () => {
                       className="block w-full text-left text-sm text-blue-700 hover:text-blue-800 hover:bg-blue-100 rounded px-2 py-1 transition-colors"
                     >
                       <span className="font-medium">Ambassadeur :</span> ambassadeur@test.com / test123
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => fillTestCredentials('trust')}
+                      className="block w-full text-left text-sm text-blue-700 hover:text-blue-800 hover:bg-blue-100 rounded px-2 py-1 transition-colors"
+                    >
+                      <span className="font-medium">Trust Manager :</span> trust@test.com / test123
                     </button>
                   </div>
                 </div>
