@@ -143,7 +143,6 @@ app.get('/api/system/config', handlers.getSystemConfig);
 app.put('/api/system/config', handlers.updateSystemConfig);
 app.get('/api/system/stats', handlers.getSystemStats);
 
-
 app.get('/api/users', handlers.listUsers);
 app.get('/api/properties', handlers.listProperties);
 app.get('/api/properties/:id', handlers.getProperty);

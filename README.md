@@ -81,4 +81,4 @@ The script relies on `ts-node`'s ESM loader (via `ts-node-esm`). It uses the
 set using [`cross-env`](https://www.npmjs.com/package/cross-env), so ensure you
 are running Node.js 18 or later.
 
-The API listens on port `3000` by default and currently exposes `/api/users`, `/api/properties`, and `/api/properties/:id` routes.
+The API listens on port `3000` by default and currently exposes `/api/users` and `/api/properties` routes.
