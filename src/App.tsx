@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { LaunchPage } from './pages/LaunchPage';
 import { LandingPage } from './pages/LandingPage';
 import { LoginPage } from './pages/auth/LoginPage';
@@ -25,8 +25,7 @@ function App() {
 
   return (
     <AuthProvider>
-      <Router>
-        <Routes>
+      <Routes>
           {/* Page d'accueil - bascule selon le mode */}
           <Route path="/" element={isLaunchMode ? <LaunchPage /> : <LandingPage />} />
           
@@ -49,7 +48,6 @@ function App() {
             <Route path="/parametres" element={<SettingsPage />} />
           </Route>
         </Routes>
-      </Router>
     </AuthProvider>
   );
 }
