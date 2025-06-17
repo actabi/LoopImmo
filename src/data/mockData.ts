@@ -1,4 +1,12 @@
-import { Property, User, Visit, Offer, Ambassador } from '../types';
+import {
+  Property,
+  User,
+  Visit,
+  Offer,
+  Ambassador,
+  SavedSearch,
+  PropertyStats
+} from '../types';
 
 export const mockProperties: Property[] = [
   {
@@ -469,5 +477,66 @@ export const PRICE_TIERS = [
     max: Infinity,
     fee: 12000,
     color: 'bg-red-500'
+  }
+];
+
+export const mockPropertyStats: PropertyStats = {
+  views: 1846,
+  favorites: 75,
+  visits: 12,
+  offers: 3,
+  weeklyViewsChange: 12,
+  newOffers: 1
+};
+
+export const mockAmbassadorStats = {
+  score: 4.7,
+  monthlyEarnings: 2500,
+  activeLeads: 8,
+  level: 'Gold'
+};
+
+export const mockSavedSearches: SavedSearch[] = [
+  {
+    id: 'ss1',
+    name: 'Appartement T3 Lyon',
+    criteria: {
+      type: ['apartment'],
+      maxPrice: 300000,
+      minRooms: 3,
+      cities: ['Lyon']
+    },
+    alertEnabled: true,
+    createdAt: new Date('2024-02-01')
+  },
+  {
+    id: 'ss2',
+    name: 'Maison Villeurbanne',
+    criteria: {
+      type: ['house'],
+      maxPrice: 500000,
+      cities: ['Villeurbanne']
+    },
+    alertEnabled: false,
+    createdAt: new Date('2024-02-15')
+  }
+];
+
+export const mockUpcomingVisits: Visit[] = [
+  {
+    id: 'visit1',
+    propertyId: '1',
+    buyerId: 'buyer1',
+    date: new Date('2024-03-20'),
+    time: '14:00',
+    status: 'scheduled'
+  },
+  {
+    id: 'visit2',
+    propertyId: '2',
+    buyerId: 'buyer1',
+    date: new Date('2024-03-22'),
+    time: '10:00',
+    status: 'scheduled'
   }
 ];
