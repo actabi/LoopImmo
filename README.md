@@ -82,3 +82,16 @@ set using [`cross-env`](https://www.npmjs.com/package/cross-env), so ensure you
 are running Node.js 18 or later.
 
 The API listens on port `3000` by default and currently exposes `/api/users` and `/api/properties` routes.
+
+### Email configuration
+
+To enable email confirmations for newsletter signups, add your SMTP details in `.env.local` (or `.env` for production):
+
+```bash
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_USER=your_username
+SMTP_PASS=your_password
+EMAIL_FROM=noreply@example.com
+EMAIL_TO=admin@example.com
+```

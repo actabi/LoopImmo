@@ -9,12 +9,22 @@ export const LaunchPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    // Simuler l'envoi (à remplacer par un vrai appel API)
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubmitted(true);
-    setIsLoading(false);
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) {
+        throw new Error('Request failed');
+      }
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error(err);
+      alert("Erreur lors de l'inscription");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

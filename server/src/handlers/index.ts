@@ -12,3 +12,4 @@ export * from './analytics';
 export * from './messages';
 export * from './payments';
 export * from './system';
+export * from './newsletter';
