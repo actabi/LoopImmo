@@ -1,5 +1,6 @@
 import express from 'express';
 import { query } from './db';
+import { subscribeNewsletter } from './handlers';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -25,6 +26,8 @@ app.get('/api/properties', async (_req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+app.post('/api/subscribe', subscribeNewsletter);
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
