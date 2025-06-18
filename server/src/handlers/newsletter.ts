@@ -305,10 +305,9 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
               </div>
 
               <div class="referral-section">
-                <h2 class="referral-title">
-                  <span class="gift-icon">🎁</span>
+                <h3 class="referral-title">
                   Votre Code de Parrainage Exclusif
-                </h2>
+                </h3>
                 
                 <div class="referral-code">${referralCode}</div>
                 
