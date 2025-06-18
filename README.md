@@ -16,6 +16,17 @@ Start the development server with hot reload:
 npm run dev
 ```
 
+The frontend expects the API to be available on the URL specified by
+`VITE_API_URL` (default `http://localhost:3000`). When working locally, start the
+Express backend in another terminal:
+
+```bash
+npm run server
+```
+
+Vite is configured to proxy `/api` requests to this server during development.
+The proxy target is read from the `VITE_API_URL` variable.
+
 Build for production:
 
 ```bash
@@ -85,13 +96,5 @@ The API listens on port `3000` by default and currently exposes `/api/users` and
 
 ### Email configuration
 
-To enable email confirmations for newsletter signups, add your SMTP details in `.env.local` (or `.env` for production):
-
-```bash
-SMTP_HOST=smtp.example.com
-SMTP_PORT=587
-SMTP_USER=your_username
-SMTP_PASS=your_password
-EMAIL_FROM=noreply@example.com
-EMAIL_TO=admin@example.com
-```
+The SMTP credentials used to send confirmation emails are stored in `server/.env` on
+the backend server. Edit that file (or `server/.env.example`) to match your environment.
