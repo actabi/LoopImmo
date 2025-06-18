@@ -86,7 +86,7 @@ export const LaunchPage: React.FC = () => {
             {/* Badge d'annonce */}
             <div className="inline-flex items-center bg-gradient-to-r from-primary-100 to-secondary-100 text-primary-700 px-6 py-3 rounded-full text-sm font-bold mb-8 shadow-lg">
               <Sparkles className="w-5 h-5 mr-2" />
-              BÊTA OUVERTE - INSCRIVEZ-VOUS EN PRIORITÉ
+              BÊTA OUVERTE PROCHAINEMENT - INSCRIVEZ-VOUS EN PRIORITÉ
             </div>
 
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
@@ -398,10 +398,6 @@ export const LaunchPage: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Avantages Ambassadeurs */}
           <div>
-            <h3 className="text-3xl font-bold text-gray-900 mb-6">
-              Boostez vos revenus grâce au parrainage
-            </h3>
-
             <div className="space-y-4">
               <div className="flex items-start">
                 <Star className="w-6 h-6 text-accent-500 mr-3 flex-shrink-0 mt-1" />
@@ -444,11 +440,10 @@ export const LaunchPage: React.FC = () => {
                 <Star className="w-6 h-6 text-accent-500 mr-3 flex-shrink-0 mt-1" />
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1">
-                    Accès Prioritaire
+                     Boostez vos revenus grâce au parrainage
                   </h4>
                   <p className="text-gray-600">
-                    Soyez le premier informé des nouveaux mandats dans votre
-                    zone
+                    Générez un revenu complémentaire grâce à vos filleuls
                   </p>
                 </div>
               </div>
