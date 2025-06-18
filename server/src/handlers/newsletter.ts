@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import nodemailer from 'nodemailer';
 import path from 'path';
 import dotenv from 'dotenv';
+import QRCode from 'qrcode';
+import { Buffer } from 'buffer';
 
 // Load server-specific environment variables for email credentials
 // The handler lives in `server/src/handlers`, so the root `.env`
@@ -22,6 +24,7 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
   const referralLink = `${baseUrl}?ref=${referralCode}`;
 
   try {
+    const qrCodeBuffer: Buffer = await QRCode.toBuffer(referralLink);
     const smtpReady =
       process.env.SMTP_HOST &&
       process.env.SMTP_USER &&
@@ -49,7 +52,14 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
         to: email,
         subject: "Confirmation d'inscription",
         text: `Merci pour votre inscription à LoopImmo!\nVoici votre code de parrainage : ${referralCode}\nPartagez-le avec vos contacts : ${referralLink}`,
-        html: `<p>Merci pour votre inscription à LoopImmo!</p><p>Voici votre code de parrainage : <strong>${referralCode}</strong></p><p><a href="${referralLink}">Cliquez ici pour visiter le site</a></p>`,
+        html: `<p>Merci pour votre inscription à LoopImmo!</p><p>Voici votre code de parrainage : <strong>${referralCode}</strong></p><p><a href="${referralLink}">Cliquez ici pour visiter le site</a></p><p><img src="cid:qrcode" alt="QR code pour partager le lien" /></p>`,
+        attachments: [
+          {
+            filename: 'qrcode.png',
+            content: qrCodeBuffer,
+            cid: 'qrcode',
+          },
+        ],
       });
 
       if (process.env.EMAIL_TO) {
