@@ -96,6 +96,10 @@ are running Node.js 18 or later.
 
 The API listens on port `3000` by default and currently exposes `/api/users` and `/api/properties` routes.
 
+If your `DATABASE_URL` contains `sslmode=require` for a cloud database using a
+self-signed certificate, the server automatically disables certificate
+verification so that `pg` can connect without errors.
+
 ### Email configuration
 
 The SMTP credentials used to send confirmation emails are stored in `server/.env` on
