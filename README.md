@@ -23,6 +23,8 @@ Express backend in another terminal:
 ```bash
 npm run server
 ```
+Run this command from the project root so that the `cross-env` dependency can be
+resolved correctly.
 
 Vite is configured to proxy `/api` requests to this server during development.
 The proxy target is read from the `VITE_API_URL` variable.
@@ -75,7 +77,7 @@ Replace `$DATABASE_URL` with your connection string. The scripts can be executed
 
 ## Backend server
 
-A minimal Express server located in the `server` directory exposes REST endpoints backed by PostgreSQL. Ensure you have loaded the schema and sample data, then add your database connection string to `.env.local`:
+A minimal Express server located in the `server` directory exposes REST endpoints backed by PostgreSQL. Ensure you have loaded the schema and sample data, then add your database connection string to `server/.env`:
 
 ```bash
 DATABASE_URL=postgres://user:password@localhost:5432/loopimmo
@@ -87,7 +89,7 @@ Start the server with:
 npm run server
 ```
 
-The script relies on `ts-node`'s ESM loader (via `ts-node-esm`). It uses the
+The script runs `ts-node` and uses the
 `server/tsconfig.json` project via the `TS_NODE_PROJECT` environment variable,
 set using [`cross-env`](https://www.npmjs.com/package/cross-env), so ensure you
 are running Node.js 18 or later.
@@ -98,3 +100,5 @@ The API listens on port `3000` by default and currently exposes `/api/users` and
 
 The SMTP credentials used to send confirmation emails are stored in `server/.env` on
 the backend server. Edit that file (or `server/.env.example`) to match your environment.
+If these variables are missing, the newsletter endpoint simply logs a warning and
+does not attempt to send email, which avoids a 500 error during local testing.
