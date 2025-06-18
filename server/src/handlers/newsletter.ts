@@ -3,6 +3,8 @@ import nodemailer from 'nodemailer';
 import path from 'path';
 import dotenv from 'dotenv';
 import QRCode from 'qrcode';
+import { randomUUID } from 'crypto';
+import { query } from '../db';
 
 // Load server-specific environment variables for email credentials
 // The handler lives in `server/src/handlers`, so the root `.env`
@@ -23,7 +25,23 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
   const referralLink = `${baseUrl}?ref=${referralCode}`;
 
   try {
-    const qrCodeBuffer = await QRCode.toBuffer(referralLink);
+    const qrCodeDataUrl = await QRCode.toDataURL(referralLink);
+
+    const id = randomUUID();
+    await query(
+      'INSERT INTO users (id, email, first_name, last_name, roles, phone, avatar, referral_code, referred_by, created_at) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,NOW())',
+      [
+        id,
+        email,
+        '',
+        '',
+        [],
+        null,
+        null,
+        referralCode,
+        referredBy || null,
+      ]
+    );
     const smtpReady =
       process.env.SMTP_HOST &&
       process.env.SMTP_USER &&

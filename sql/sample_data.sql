@@ -1,12 +1,12 @@
 -- Sample data for LoopImmo database
 
 -- Users
-INSERT INTO users (id, email, first_name, last_name, roles, phone, created_at) VALUES
-  ('1', 'vendeur@test.com', 'Pierre', 'Dupont', ARRAY['seller','ambassador'], '0612345678', '2024-01-01'),
-  ('buyer1', 'acheteur@test.com', 'Marie', 'Martin', ARRAY['buyer'], '0687654321', '2024-01-05'),
-  ('amb1', 'ambassadeur@test.com', 'Jean', 'Bernard', ARRAY['ambassador'], '0698765432', '2023-12-01'),
-  ('amb2', 'ambassadeur2@test.com', 'Sophie', 'Martin', ARRAY['ambassador'], '0698765433', '2023-12-05'),
-  ('trust1', 'trust@test.com', 'Alice', 'Trusted', ARRAY['trust_manager'], '0600000000', '2024-01-10');
+INSERT INTO users (id, email, first_name, last_name, roles, phone, avatar, referral_code, referred_by, created_at) VALUES
+  ('1', 'vendeur@test.com', 'Pierre', 'Dupont', ARRAY['seller','ambassador'], '0612345678', NULL, 'CODE01', NULL, '2024-01-01'),
+  ('buyer1', 'acheteur@test.com', 'Marie', 'Martin', ARRAY['buyer'], '0687654321', NULL, 'CODE02', NULL, '2024-01-05'),
+  ('amb1', 'ambassadeur@test.com', 'Jean', 'Bernard', ARRAY['ambassador'], '0698765432', NULL, 'CODE03', NULL, '2023-12-01'),
+  ('amb2', 'ambassadeur2@test.com', 'Sophie', 'Martin', ARRAY['ambassador'], '0698765433', NULL, 'CODE04', NULL, '2023-12-05'),
+  ('trust1', 'trust@test.com', 'Alice', 'Trusted', ARRAY['trust_manager'], '0600000000', NULL, 'CODE05', NULL, '2024-01-10');
 
 -- Ambassadors
 INSERT INTO ambassadors (id, user_id, zone, commission, total_sales, total_earnings, rating, availability, bio) VALUES

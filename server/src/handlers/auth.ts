@@ -21,15 +21,26 @@ export const login = async (req: Request, res: Response) => {
 };
 
 export const register = async (req: Request, res: Response) => {
-  const { email, first_name, last_name, roles = [] } = req.body;
+  const { email, first_name, last_name, roles = [], referredBy } = req.body;
   if (!email || !first_name || !last_name) {
     return res.status(400).json({ error: 'missing fields' });
   }
   try {
     const id = randomUUID();
+    const referralCode = Math.random().toString(36).slice(2, 8).toUpperCase();
     const { rows } = await query(
-      'INSERT INTO users (id, email, first_name, last_name, roles, created_at) VALUES ($1, $2, $3, $4, $5, NOW()) RETURNING *',
-      [id, email, first_name, last_name, roles]
+      'INSERT INTO users (id, email, first_name, last_name, roles, phone, avatar, referral_code, referred_by, created_at) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,NOW()) RETURNING *',
+      [
+        id,
+        email,
+        first_name,
+        last_name,
+        roles,
+        null,
+        null,
+        referralCode,
+        referredBy || null,
+      ]
     );
     res.status(201).json(rows[0]);
   } catch (err) {
