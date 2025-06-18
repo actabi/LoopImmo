@@ -200,3 +200,11 @@ CREATE TABLE subscriptions (
   price NUMERIC,
   billing_cycle VARCHAR
 );
+
+CREATE TABLE newsletter_subscribers (
+  id VARCHAR PRIMARY KEY,
+  email VARCHAR NOT NULL UNIQUE,
+  referral_code VARCHAR NOT NULL,
+  referred_by VARCHAR,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
