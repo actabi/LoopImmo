@@ -75,7 +75,7 @@ Replace `$DATABASE_URL` with your connection string. The scripts can be executed
 
 ## Backend server
 
-A minimal Express server located in the `server` directory exposes REST endpoints backed by PostgreSQL. Ensure you have loaded the schema and sample data, then add your database connection string to `.env.local`:
+A minimal Express server located in the `server` directory exposes REST endpoints backed by PostgreSQL. Ensure you have loaded the schema and sample data, then add your database connection string to `server/.env`:
 
 ```bash
 DATABASE_URL=postgres://user:password@localhost:5432/loopimmo
@@ -87,7 +87,7 @@ Start the server with:
 npm run server
 ```
 
-The script relies on `ts-node`'s ESM loader (via `ts-node-esm`). It uses the
+The script runs `ts-node` and uses the
 `server/tsconfig.json` project via the `TS_NODE_PROJECT` environment variable,
 set using [`cross-env`](https://www.npmjs.com/package/cross-env), so ensure you
 are running Node.js 18 or later.
