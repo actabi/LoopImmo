@@ -4,7 +4,9 @@ import path from 'path';
 import dotenv from 'dotenv';
 
 // Load server-specific environment variables for email credentials
-dotenv.config({ path: path.resolve(__dirname, '../.env') });
+// The handler lives in `server/src/handlers`, so the root `.env`
+// resides two directories up from this file.
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 export const subscribeNewsletter = async (req: Request, res: Response) => {
   const { email } = req.body as { email?: string };

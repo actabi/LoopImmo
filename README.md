@@ -102,3 +102,12 @@ The SMTP credentials used to send confirmation emails are stored in `server/.env
 the backend server. Edit that file (or `server/.env.example`) to match your environment.
 If these variables are missing, the newsletter endpoint simply logs a warning and
 does not attempt to send email, which avoids a 500 error during local testing.
+If you set the variables to dummy values without a real SMTP server (for example
+`SMTP_HOST=localhost`), nodemailer will try to connect and the server may output an
+`ECONNREFUSED 127.0.0.1:587` error. Either configure valid credentials or remove the
+SMTP entries from `.env` so emails are skipped during development.
+
+This port `587` belongs to your email server, not the API. Even if `VITE_API_URL` points
+to `http://localhost:3000`, you still need a mail service listening on
+`localhost:587`. Without one, simply omit the `SMTP_*` variables so that email
+sending is skipped entirely.
