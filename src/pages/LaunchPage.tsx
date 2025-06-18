@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, Users, TrendingDown, Zap, Shield, Heart, ArrowRight, CheckCircle, Star, Sparkles } from 'lucide-react';
+import { Calendar, Users, TrendingDown, Zap, Shield, Heart, ArrowRight, CheckCircle, Star, Sparkles, Euro, Eye } from 'lucide-react';
 
 export const LaunchPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -165,6 +165,150 @@ export const LaunchPage: React.FC = () => {
               </p>
               <div className="text-3xl font-bold text-accent-600">3 sem.</div>
               <p className="text-sm text-gray-600">délai moyen de vente estimé</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Vendeurs */}
+      <section className="py-20 bg-gradient-to-b from-primary-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Vendeurs, économisez gros
+            </h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              Profitez d'un accompagnement complet et d'un réseau local tout en gardant la maîtrise de votre budget.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-4">
+              <div className="flex items-start">
+                <Euro className="w-6 h-6 text-primary-600 mr-3 flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-1">Forfait unique</h4>
+                  <p className="text-gray-600">De 2 500€ à 10 000€, aucune commission</p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <Users className="w-6 h-6 text-primary-600 mr-3 flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-1">Ambassadeurs proches</h4>
+                  <p className="text-gray-600">Des experts de votre quartier pour valoriser votre bien</p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <Shield className="w-6 h-6 text-primary-600 mr-3 flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-1">Sécurité maximale</h4>
+                  <p className="text-gray-600">Diagnostics, contrats et signature encadrés</p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <Zap className="w-6 h-6 text-primary-600 mr-3 flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-1">Vente rapide</h4>
+                  <p className="text-gray-600">Mise en avant optimale et suivi des visites</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-br from-primary-100 to-primary-200 rounded-3xl p-10 shadow-2xl">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Les étapes clés</h3>
+              <div className="space-y-6">
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center font-bold text-primary-600 mr-4">1</div>
+                  <p className="text-gray-800">Estimez votre bien gratuitement</p>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center font-bold text-primary-600 mr-4">2</div>
+                  <p className="text-gray-800">Publiez votre annonce accompagnée</p>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center font-bold text-primary-600 mr-4">3</div>
+                  <p className="text-gray-800">Recevez visites et offres</p>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center font-bold text-primary-600 mr-4">4</div>
+                  <p className="text-gray-800 font-semibold">Concluez chez le notaire</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Acheteurs */}
+      <section className="py-20 bg-gradient-to-b from-secondary-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Acheteurs, trouvez votre bonheur
+            </h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              Des biens sélectionnés par la communauté et un suivi personnalisé pour sécuriser votre achat.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="bg-gradient-to-br from-secondary-100 to-secondary-200 rounded-3xl p-10 shadow-2xl">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Parcours simplifié</h3>
+              <div className="space-y-6">
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center font-bold text-secondary-600 mr-4">1</div>
+                  <p className="text-gray-800">Créez vos alertes personnalisées</p>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center font-bold text-secondary-600 mr-4">2</div>
+                  <p className="text-gray-800">Visitez avec un ambassadeur local</p>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center font-bold text-secondary-600 mr-4">3</div>
+                  <p className="text-gray-800">Négociez au juste prix</p>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center font-bold text-secondary-600 mr-4">4</div>
+                  <p className="text-gray-800 font-semibold">Signez en toute sérénité</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div className="flex items-start">
+                <Shield className="w-6 h-6 text-secondary-600 mr-3 flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-1">Biens vérifiés</h4>
+                  <p className="text-gray-600">Documents et diagnostics contrôlés</p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <Eye className="w-6 h-6 text-secondary-600 mr-3 flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-1">Visites flexibles</h4>
+                  <p className="text-gray-600">Organisées selon vos disponibilités</p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <TrendingDown className="w-6 h-6 text-secondary-600 mr-3 flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-1">Frais réduits</h4>
+                  <p className="text-gray-600">Un prix plus juste grâce à la vente directe</p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <CheckCircle className="w-6 h-6 text-secondary-600 mr-3 flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-1">Accompagnement complet</h4>
+                  <p className="text-gray-600">Financement et démarches simplifiés</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
