@@ -8,6 +8,7 @@ export interface RegisterData {
   firstName: string;
   lastName: string;
   phone?: string;
+  referredBy?: string;
   roles: UserRole[];
 }
 
@@ -80,6 +81,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       lastName: data.lastName,
       phone: data.phone,
       roles: data.roles,
+      referralCode: Math.random().toString(36).slice(2, 8).toUpperCase(),
+      referredBy: data.referredBy,
       createdAt: new Date()
     };
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -53,6 +53,8 @@ export const RegisterPage: React.FC = () => {
   const [selectedRole, setSelectedRole] = useState<UserRole | null>(null);
   const { register: registerUser } = useAuth();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const referredBy = searchParams.get('ref') || undefined;
 
   const {
     register,
@@ -68,7 +70,8 @@ export const RegisterPage: React.FC = () => {
     try {
       await registerUser({
         ...data,
-        roles: [selectedRole]
+        roles: [selectedRole],
+        referredBy
       });
 
       // Go to step 3 (email verification)

@@ -8,6 +8,8 @@ export interface User {
   roles: UserRole[];
   phone?: string;
   avatar?: string;
+  referralCode?: string;
+  referredBy?: string;
   createdAt: Date;
   properties?: string[];
   savedSearches?: SavedSearch[];
