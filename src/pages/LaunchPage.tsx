@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import {
   Calendar,
   Users,
@@ -23,6 +24,8 @@ import {
 } from "../utils/calculations";
 
 export const LaunchPage: React.FC = () => {
+  const [searchParams] = useSearchParams();
+  const referredBy = searchParams.get("ref") || undefined;
   const [email, setEmail] = useState("");
   const [role, setRole] = useState<"seller" | "buyer" | "ambassador">("seller");
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -55,7 +58,7 @@ export const LaunchPage: React.FC = () => {
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, role }),
+        body: JSON.stringify({ email, role, referredBy }),
       });
       if (!res.ok) {
         throw new Error("Request failed");
