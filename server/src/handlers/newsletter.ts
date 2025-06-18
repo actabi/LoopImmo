@@ -29,8 +29,18 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
 
     const id = randomUUID();
     await query(
-      'INSERT INTO newsletter_subscribers (id, email, referral_code, referred_by, created_at) VALUES ($1,$2,$3,$4,NOW())',
-      [id, email, referralCode, referredBy || null]
+      'INSERT INTO users (id, email, first_name, last_name, roles, phone, avatar, referral_code, referred_by, created_at) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,NOW())',
+      [
+        id,
+        email,
+        '',
+        '',
+        [],
+        null,
+        null,
+        referralCode,
+        referredBy || null,
+      ]
     );
     const smtpReady =
       process.env.SMTP_HOST &&

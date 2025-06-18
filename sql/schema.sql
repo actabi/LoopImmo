@@ -9,6 +9,8 @@ CREATE TABLE users (
   roles TEXT[] NOT NULL,
   phone VARCHAR,
   avatar VARCHAR,
+  referral_code VARCHAR NOT NULL UNIQUE,
+  referred_by VARCHAR,
   created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
@@ -201,10 +203,3 @@ CREATE TABLE subscriptions (
   billing_cycle VARCHAR
 );
 
-CREATE TABLE newsletter_subscribers (
-  id VARCHAR PRIMARY KEY,
-  email VARCHAR NOT NULL UNIQUE,
-  referral_code VARCHAR NOT NULL,
-  referred_by VARCHAR,
-  created_at TIMESTAMP NOT NULL DEFAULT NOW()
-);
