@@ -1,3 +1,9 @@
+-- Supprime toutes les tables avec leurs dépendances
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO public;
+
 -- PostgreSQL database schema for LoopImmo
 -- Creates core tables for the application
 
