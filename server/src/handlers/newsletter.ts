@@ -60,7 +60,7 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
 
     let transporter: nodemailer.Transporter | undefined;
     if (smtpReady) {
-      transporter = nodemailer.createTransporter({
+      transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
         port: Number(process.env.SMTP_PORT),
         secure: Number(process.env.SMTP_PORT) === 465,
