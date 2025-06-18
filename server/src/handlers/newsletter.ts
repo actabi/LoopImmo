@@ -10,6 +10,8 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
     return res.status(400).json({ error: 'Email is required' });
   }
 
+  const referralCode = Math.random().toString(36).slice(2, 8).toUpperCase();
+
   try {
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
@@ -24,8 +26,8 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
     await transporter.sendMail({
       from: process.env.EMAIL_FROM,
       to: email,
-      subject: 'Confirmation d\'inscription',
-      text: 'Merci pour votre inscription à LoopImmo!',
+      subject: "Confirmation d'inscription",
+      text: `Merci pour votre inscription à LoopImmo!\nVoici votre code de parrainage : ${referralCode}\nPartagez-le avec vos contacts pour cumuler des primes.`,
     });
 
     if (process.env.EMAIL_TO) {
@@ -33,11 +35,11 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
         from: process.env.EMAIL_FROM,
         to: process.env.EMAIL_TO,
         subject: 'Nouvelle inscription',
-        text: `Nouvelle inscription : ${email}`,
+        text: `Nouvelle inscription : ${email} - Code ${referralCode}`,
       });
     }
 
-    res.status(200).json({ success: true });
+    res.status(200).json({ success: true, referralCode });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Unable to send email' });
