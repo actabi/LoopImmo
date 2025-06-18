@@ -63,12 +63,12 @@ export const LaunchPage: React.FC = () => {
                   <div className="flex items-center justify-center mb-6">
                     <Sparkles className="w-8 h-8 text-secondary-500 mr-3" />
                     <h3 className="text-2xl font-bold text-gray-900">
-                      Devenez ambassadeur fondateur
+                      Rejoignez la communauté LoopImmo
                     </h3>
                   </div>
                   
                   <p className="text-gray-600 mb-6">
-                    Inscrivez-vous pour recevoir votre code de parrainage et profitez de primes pour chaque vente de vos filleuls
+                    Inscrivez-vous pour être prévenu en avant-première du lancement. Vous recevrez également un code de parrainage à partager et des avantages pour chaque vente réalisée grâce à vos invitations.
                   </p>
                   
                   <div className="flex flex-col sm:flex-row gap-4">
@@ -294,7 +294,7 @@ export const LaunchPage: React.FC = () => {
             Ne manquez pas le lancement !
           </h2>
           <p className="text-xl text-gray-700 mb-8">
-            Inscrivez-vous maintenant et recevez votre lien de parrainage pour inviter votre réseau.
+            Inscrivez-vous maintenant pour être alerté du lancement. Un lien de parrainage vous sera aussi envoyé pour inviter vos proches.
           </p>
           
           {!isSubmitted && (
