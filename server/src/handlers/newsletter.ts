@@ -276,7 +276,7 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">🏠 LoopImmo</div>
+              <div class="logo">LoopImmo</div>
               <div class="subtitle">Votre partenaire immobilier de confiance</div>
             </div>
             
@@ -289,22 +289,18 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
               </p>
 
               <div class="benefits">
-                <h3 class="benefits-title">✨ Ce qui vous attend</h3>
+                <h3 class="benefits-title">Votre expérience LoopImmo, selon votre rôle</h3>
                 <div class="benefit-item">
                   <span class="benefit-icon">🚀</span>
-                  Accès prioritaire à notre plateforme révolutionnaire
+                  Vendeurs : estimation IA en 30 s, accompagnement personnalisé par notre expert interne et vos ambassadeurs locaux, le tout dans une offre jusqu’à 72 % moins chère qu’une agence.
                 </div>
                 <div class="benefit-item">
                   <span class="benefit-icon">💎</span>
-                  Offres immobilières exclusives et personnalisées
+                  Acheteurs : soyez les premiers alertés de nos biens exclusifs, visualisez-les en preview et gérez vos coups de cœur depuis un tableau de bord sim
                 </div>
                 <div class="benefit-item">
                   <span class="benefit-icon">🤝</span>
-                  Accompagnement par nos experts certifiés
-                </div>
-                <div class="benefit-item">
-                  <span class="benefit-icon">📈</span>
-                  Outils d'analyse et de suivi en temps réel
+                  Ambassadeurs : devenez l’allié local ! Partagez, accompagnez ou recommandez — vous touchez jusqu’à 10 % du forfait à chaque vente signée grâce à vous.
                 </div>
               </div>
 
@@ -317,7 +313,7 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
                 <div class="referral-code">${referralCode}</div>
                 
                 <p class="referral-description">
-                  Partagez ce code avec vos proches et bénéficiez d'avantages exclusifs ! 
+                  Partagez ce code avec vos proches et bénéficiez d'un % sur les prochaines ventes qu'ils feront !
                   Chaque personne que vous parrainez vous rapproche de récompenses exceptionnelles.
                 </p>
                 
