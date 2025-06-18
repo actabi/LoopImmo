@@ -9,12 +9,17 @@ import dotenv from 'dotenv';
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 export const subscribeNewsletter = async (req: Request, res: Response) => {
-  const { email } = req.body as { email?: string };
+  const { email, referredBy } = req.body as {
+    email?: string;
+    referredBy?: string;
+  };
   if (!email) {
     return res.status(400).json({ error: 'Email is required' });
   }
 
   const referralCode = Math.random().toString(36).slice(2, 8).toUpperCase();
+  const baseUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+  const referralLink = `${baseUrl}?ref=${referralCode}`;
 
   try {
     const smtpReady =
@@ -43,7 +48,8 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
         from: process.env.EMAIL_FROM,
         to: email,
         subject: "Confirmation d'inscription",
-        text: `Merci pour votre inscription à LoopImmo!\nVoici votre code de parrainage : ${referralCode}\nPartagez-le avec vos contacts pour cumuler des primes.`,
+        text: `Merci pour votre inscription à LoopImmo!\nVoici votre code de parrainage : ${referralCode}\nPartagez-le avec vos contacts : ${referralLink}`,
+        html: `<p>Merci pour votre inscription à LoopImmo!</p><p>Voici votre code de parrainage : <strong>${referralCode}</strong></p><p><a href="${referralLink}">Cliquez ici pour visiter le site</a></p>`,
       });
 
       if (process.env.EMAIL_TO) {
@@ -51,7 +57,7 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
           from: process.env.EMAIL_FROM,
           to: process.env.EMAIL_TO,
           subject: 'Nouvelle inscription',
-          text: `Nouvelle inscription : ${email} - Code ${referralCode}`,
+          text: `Nouvelle inscription : ${email} - Code ${referralCode}${referredBy ? ` - Parrain ${referredBy}` : ''}`,
         });
       }
     }

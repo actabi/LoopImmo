@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import {
   Calendar,
   Users,
@@ -23,6 +24,9 @@ import {
 } from "../utils/calculations";
 
 export const LaunchPage: React.FC = () => {
+  const [searchParams] = useSearchParams();
+  const referral = searchParams.get('ref') || '';
+  const referrerName = searchParams.get('name') || '';
   const [email, setEmail] = useState("");
   const [role, setRole] = useState<"seller" | "buyer" | "ambassador">("seller");
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -55,7 +59,7 @@ export const LaunchPage: React.FC = () => {
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, role }),
+        body: JSON.stringify({ email, role, referredBy: referral }),
       });
       if (!res.ok) {
         throw new Error("Request failed");
@@ -128,6 +132,11 @@ export const LaunchPage: React.FC = () => {
 
                   <div className="flex flex-col sm:flex-row gap-4">
                     <div className="flex-1">
+                      {(referrerName || referral) && (
+                        <p className="text-sm font-medium text-gray-700 mb-2">
+                          Parrain : {referrerName || referral}
+                        </p>
+                      )}
                       <input
                         type="email"
                         value={email}
