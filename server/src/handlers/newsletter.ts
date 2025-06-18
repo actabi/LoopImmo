@@ -1,8 +1,10 @@
 import { Request, Response } from 'express';
 import nodemailer from 'nodemailer';
+import path from 'path';
 import dotenv from 'dotenv';
 
-dotenv.config({ path: '.env.local' });
+// Load server-specific environment variables for email credentials
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 export const subscribeNewsletter = async (req: Request, res: Response) => {
   const { email } = req.body as { email?: string };
