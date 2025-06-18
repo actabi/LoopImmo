@@ -1,4 +1,4 @@
-@echo off
+j'aimerais refaire un btach mais seulement pour avoir les mise a jour et pas tout remarter . voici celui que j'ai : @echo off
 REM =========================================
 REM Synchronisation FORCÉE du repo avec origin/main
 REM Tous les changements locaux seront PERDUS.

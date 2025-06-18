@@ -2,6 +2,8 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User, UserRole } from '../types';
 import { getUsers } from '../services/dataService';
 
+const useMocks = import.meta.env.VITE_USE_MOCKS !== 'false';
+
 export interface RegisterData {
   email: string;
   password?: string;
@@ -70,7 +72,30 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
-  const register = async (data: RegisterData) => {
+   const register = async (data: RegisterData) => {
+    if (!useMocks) {
+      const res = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: data.email,
+          first_name: data.firstName,
+          last_name: data.lastName,
+          roles: data.roles,
+          referredBy: data.referredBy
+        })
+      });
+      if (!res.ok) {
+        throw new Error('Registration failed');
+      }
+      const newUser: User = await res.json();
+      setUser(newUser);
+      setActiveRole(newUser.roles[0]);
+      localStorage.setItem('user', JSON.stringify(newUser));
+      localStorage.setItem('activeRole', newUser.roles[0]);
+      return;
+    }
+
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
 

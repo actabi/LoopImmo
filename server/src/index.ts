@@ -1,6 +1,6 @@
 import express from 'express';
 import { query, connectDb } from './db';
-import { subscribeNewsletter } from './handlers';
+import { subscribeNewsletter, register } from './handlers';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -28,6 +28,7 @@ app.get('/api/properties', async (_req, res) => {
 });
 
 app.post('/api/subscribe', subscribeNewsletter);
+app.post('/api/register', register);
 
 connectDb()
   .then(() => {
