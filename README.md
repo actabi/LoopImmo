@@ -26,6 +26,10 @@ npm run server
 Run this command from the project root so that the `cross-env` dependency can be
 resolved correctly.
 
+The launch page uses Google reCAPTCHA. Provide your site key in the
+`VITE_RECAPTCHA_SITE_KEY` variable and the server secret in
+`RECAPTCHA_SECRET_KEY` within the `.env` file.
+
 Vite is configured to proxy `/api` requests to this server during development.
 The proxy target is read from the `VITE_API_URL` variable.
 

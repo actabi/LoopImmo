@@ -12,12 +12,32 @@ import { query } from '../db';
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 export const subscribeNewsletter = async (req: Request, res: Response) => {
-  const { email, referredBy } = req.body as {
+  const { email, referredBy, captchaToken } = req.body as {
     email?: string;
     referredBy?: string;
+    captchaToken?: string;
   };
   if (!email) {
     return res.status(400).json({ error: 'Email is required' });
+  }
+
+  if (!captchaToken) {
+    return res.status(400).json({ error: 'Captcha token missing' });
+  }
+
+  try {
+    const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captchaToken}`,
+    });
+    const verifyData = (await verifyRes.json()) as { success: boolean };
+    if (!verifyData.success) {
+      return res.status(400).json({ error: 'Captcha verification failed' });
+    }
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Captcha verification error' });
   }
 
   try {
