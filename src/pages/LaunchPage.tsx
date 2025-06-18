@@ -68,7 +68,7 @@ export const LaunchPage: React.FC = () => {
                   </div>
                   
                   <p className="text-gray-600 mb-6">
-                    Rejoignez les 100 premiers ambassadeurs et bénéficiez d'avantages exclusifs
+                    Inscrivez-vous pour recevoir votre code de parrainage et profitez de primes pour chaque vente de vos filleuls
                   </p>
                   
                   <div className="flex flex-col sm:flex-row gap-4">
@@ -124,8 +124,9 @@ export const LaunchPage: React.FC = () => {
               Une disruption totale du marché
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              LoopImmo réinvente la vente immobilière en supprimant les intermédiaires coûteux 
-              et en créant une communauté d'entraide
+              LoopImmo réinvente la vente immobilière en supprimant les intermédiaires coûteux
+              et en créant une communauté d'entraide. Notre plateforme sécurise chaque étape
+              et vous accompagne jusqu'à la signature
             </p>
           </div>
 
@@ -148,7 +149,7 @@ export const LaunchPage: React.FC = () => {
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Communauté active</h3>
               <p className="text-gray-700 mb-4">
-                Des ambassadeurs locaux motivés font vivre votre annonce et trouvent les acheteurs dans leur réseau.
+                Des ambassadeurs locaux motivés, rémunérés pour chaque vente, font vivre votre annonce et trouvent les acheteurs dans leur réseau.
               </p>
               <div className="text-3xl font-bold text-primary-600">1000+</div>
               <p className="text-sm text-gray-600">ambassadeurs attendus dès le lancement</p>
@@ -160,7 +161,7 @@ export const LaunchPage: React.FC = () => {
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Vente accélérée</h3>
               <p className="text-gray-700 mb-4">
-                La force du réseau permet de vendre plus rapidement qu'avec une agence traditionnelle.
+                La force du réseau associée à l'accompagnement d'un conseiller qualifié garantit une vente rapide et sécurisée.
               </p>
               <div className="text-3xl font-bold text-accent-600">3 sem.</div>
               <p className="text-sm text-gray-600">délai moyen de vente estimé</p>
@@ -184,39 +185,39 @@ export const LaunchPage: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                Les avantages exclusifs des 100 premiers
+                Boostez vos revenus grâce au parrainage
               </h3>
               
               <div className="space-y-4">
                 <div className="flex items-start">
                   <Star className="w-6 h-6 text-secondary-500 mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Commission majorée</h4>
-                    <p className="text-gray-600">1 500€ par vente réussie (au lieu de 1 000€)</p>
+                    <h4 className="font-semibold text-gray-900 mb-1">Commission par vente</h4>
+                    <p className="text-gray-600">1 000€ versés pour chaque transaction aboutie</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <Star className="w-6 h-6 text-secondary-500 mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Formation exclusive</h4>
-                    <p className="text-gray-600">Accès à notre programme de formation premium</p>
+                    <h4 className="font-semibold text-gray-900 mb-1">Prime de parrainage</h4>
+                    <p className="text-gray-600">Touchez une prime pour chaque filleul qui signe</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <Star className="w-6 h-6 text-secondary-500 mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Badge "Fondateur"</h4>
-                    <p className="text-gray-600">Reconnaissance permanente sur la plateforme</p>
+                    <h4 className="font-semibold text-gray-900 mb-1">Formation dédiée</h4>
+                    <p className="text-gray-600">Accès à notre programme pour maîtriser nos outils</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <Star className="w-6 h-6 text-secondary-500 mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Territoire prioritaire</h4>
-                    <p className="text-gray-600">Choisissez votre zone d'action en premier</p>
+                    <h4 className="font-semibold text-gray-900 mb-1">Badge "Ambassadeur"</h4>
+                    <p className="text-gray-600">Mettez en avant votre statut sur la plateforme</p>
                   </div>
                 </div>
               </div>
@@ -293,7 +294,7 @@ export const LaunchPage: React.FC = () => {
             Ne manquez pas le lancement !
           </h2>
           <p className="text-xl text-gray-700 mb-8">
-            Les 100 premières places d'ambassadeurs partiront vite. Inscrivez-vous maintenant pour être prioritaire.
+            Inscrivez-vous maintenant et recevez votre lien de parrainage pour inviter votre réseau.
           </p>
           
           {!isSubmitted && (
@@ -313,7 +314,7 @@ export const LaunchPage: React.FC = () => {
             </div>
             <div className="flex items-center">
               <Users className="w-5 h-5 mr-2" />
-              <span>Places limitées : 100 ambassadeurs</span>
+              <span>Programme de parrainage ouvert à tous</span>
             </div>
           </div>
         </div>
