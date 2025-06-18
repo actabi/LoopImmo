@@ -20,6 +20,16 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
     return res.status(400).json({ error: 'Email is required' });
   }
 
+  try {
+    const { rows } = await query('SELECT id FROM users WHERE email = $1', [email]);
+    if (rows.length > 0) {
+      return res.status(409).json({ error: 'Email already exists' });
+    }
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Unable to check email' });
+  }
+
   const referralCode = Math.random().toString(36).slice(2, 8).toUpperCase();
   const baseUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
   const referralLink = `${baseUrl}?ref=${referralCode}`;

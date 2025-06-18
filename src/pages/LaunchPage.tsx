@@ -60,6 +60,10 @@ export const LaunchPage: React.FC = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, role, referredBy }),
       });
+      if (res.status === 409) {
+        setEmailError("Cet email est déjà enregistré");
+        return;
+      }
       if (!res.ok) {
         throw new Error("Request failed");
       }
