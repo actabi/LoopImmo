@@ -16,6 +16,17 @@ Start the development server with hot reload:
 npm run dev
 ```
 
+The frontend expects the API to be available on the URL specified by
+`VITE_API_URL` (default `http://localhost:3000`). When working locally, start the
+Express backend in another terminal:
+
+```bash
+npm run server
+```
+
+Vite is configured to proxy `/api` requests to this server during development.
+The proxy target is read from the `VITE_API_URL` variable.
+
 Build for production:
 
 ```bash
