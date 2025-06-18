@@ -1,5 +1,5 @@
 import express from 'express';
-import { query } from './db';
+import { query, connectDb } from './db';
 import { subscribeNewsletter } from './handlers';
 
 const app = express();
@@ -29,6 +29,13 @@ app.get('/api/properties', async (_req, res) => {
 
 app.post('/api/subscribe', subscribeNewsletter);
 
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
-});
+connectDb()
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`Server listening on port ${port}`);
+    });
+  })
+  .catch((err) => {
+    console.error('Failed to start server due to database error', err);
+    process.exit(1);
+  });
