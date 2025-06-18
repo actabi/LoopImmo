@@ -22,3 +22,12 @@ const pool = new Pool({
 });
 
 export const query = (text: string, params?: any[]) => pool.query(text, params);
+
+export const connectDb = async () => {
+  try {
+    await pool.connect();
+    console.log('Database connected');
+  } catch (err) {
+    console.error('Database connection failed:', err);
+  }
+};
