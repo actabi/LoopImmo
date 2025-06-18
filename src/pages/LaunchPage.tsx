@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import {
   Calendar,
   Users,
@@ -24,9 +23,6 @@ import {
 } from "../utils/calculations";
 
 export const LaunchPage: React.FC = () => {
-  const [searchParams] = useSearchParams();
-  const referral = searchParams.get('ref') || '';
-  const referrerName = searchParams.get('name') || '';
   const [email, setEmail] = useState("");
   const [role, setRole] = useState<"seller" | "buyer" | "ambassador">("seller");
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -59,7 +55,7 @@ export const LaunchPage: React.FC = () => {
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, role, referredBy: referral }),
+        body: JSON.stringify({ email, role }),
       });
       if (!res.ok) {
         throw new Error("Request failed");
@@ -132,11 +128,6 @@ export const LaunchPage: React.FC = () => {
 
                   <div className="flex flex-col sm:flex-row gap-4">
                     <div className="flex-1">
-                      {(referrerName || referral) && (
-                        <p className="text-sm font-medium text-gray-700 mb-2">
-                          Parrain : {referrerName || referral}
-                        </p>
-                      )}
                       <input
                         type="email"
                         value={email}
@@ -246,11 +237,6 @@ export const LaunchPage: React.FC = () => {
             </p>
             <div className="text-3xl font-bold text-accent-600">600€ - 1 500€</div>
             <p className="text-sm text-gray-600">de primes selon le palier</p>
-            <p className="text-xs text-gray-500 mt-2">
-              Prime signature : 10% du forfait
-              <br />
-              Prime visite : 5% du forfait
-            </p>
           </div>
 
           {/* 3. Ancien bloc jaune -> maintenant vert (secondary) */}
@@ -292,9 +278,6 @@ export const LaunchPage: React.FC = () => {
                     Forfait unique à paliers
                   </h4>
                   <p className="text-gray-600">
-                    De 2 500€ à 10 000€ selon la valeur du bien
-                  </p>
-                  <p className="text-sm text-primary-600 mt-1">
                     Économisez jusqu'à 72% vs agence traditionnelle
                   </p>
                 </div>
@@ -412,11 +395,14 @@ export const LaunchPage: React.FC = () => {
                 <Star className="w-6 h-6 text-accent-500 mr-3 flex-shrink-0 mt-1" />
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1">
-                    Commission par vente
+                    Faites vous un complement de revenu
                   </h4>
                   <p className="text-gray-600">
-                    De 600€ à 1 500€ selon le palier de prix
+										Comission par vente
                   </p>
+									<p className="text-sm text-accent-600 mt-1">
+                    De 600€ à 1 500€ selon le palier de prix
+									</p>
                 </div>
               </div>
 
