@@ -25,7 +25,7 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
   const referralLink = `${baseUrl}?ref=${referralCode}`;
 
   try {
-    const qrCodeDataUrl = await QRCode.toDataURL(referralLink);
+    const qrCodeBuffer = await QRCode.toBuffer(referralLink);
 
     const id = randomUUID();
     await query(
