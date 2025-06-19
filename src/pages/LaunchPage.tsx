@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import { useSearchParams } from "react-router-dom";
 import {
   Calendar,
@@ -31,6 +32,8 @@ export const LaunchPage: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [emailError, setEmailError] = useState("");
+  const [captcha, setCaptcha] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -53,12 +56,16 @@ export const LaunchPage: React.FC = () => {
       setEmailError("Veuillez entrer un email valide");
       return;
     }
+    if (!captcha) {
+      alert("Veuillez valider le Captcha");
+      return;
+    }
     setIsLoading(true);
     try {
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, role, referredBy }),
+        body: JSON.stringify({ email, role, referredBy, captchaToken: captcha }),
       });
       if (res.status === 409) {
         setEmailError("Cet email est déjà enregistré");
@@ -68,6 +75,8 @@ export const LaunchPage: React.FC = () => {
         throw new Error("Request failed");
       }
       setIsSubmitted(true);
+      recaptchaRef.current?.reset();
+      setCaptcha(null);
     } catch (err) {
       console.error(err);
       alert("Erreur lors de l'inscription");
@@ -147,12 +156,19 @@ export const LaunchPage: React.FC = () => {
                         }`}
                         required
                       />
-                      {emailError && (
+                    {emailError && (
                         <p className="text-red-500 text-sm mt-1 flex items-center">
                           <AlertCircle className="w-4 h-4 mr-1" />
                           {emailError}
                         </p>
                       )}
+                    </div>
+                    <div className="mt-4">
+                      <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+                        onChange={(value) => setCaptcha(value)}
+                      />
                     </div>
                     <button
                       type="submit"
