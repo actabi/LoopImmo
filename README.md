@@ -8,6 +8,10 @@ LoopImmo is a React and TypeScript application that reimagines the property sell
 npm install
 ```
 
+After installing dependencies, copy `.env.example` to `.env` and
+`server/.env.example` to `server/.env`. Fill in these files with your own
+credentials before running the application.
+
 ## Development
 
 Start the development server with hot reload:
