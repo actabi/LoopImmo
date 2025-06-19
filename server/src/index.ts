@@ -5,7 +5,7 @@ import { subscribeNewsletter, register } from './handlers';
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.json());
+app.use(express.json()); 
 
 app.get('/api/users', async (_req, res) => {
   try {
