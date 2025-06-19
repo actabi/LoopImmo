@@ -288,7 +288,7 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
                 Votre inscription nous fait énormément plaisir et nous sommes impatients de vous accompagner dans vos projets.
               </p>
 
-              <div class="benefits">
+              <div class="referral-section">
                 <h3 class="benefits-title">✨ Ce qui vous attend</h3>
                 <div class="benefit-item">
                   <span class="benefit-icon">🚀</span>
@@ -309,10 +309,10 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
               </div>
 
               <div class="referral-section">
-                <h2 class="referral-title">
+                <h3 class="benefits-title">
                   <span class="gift-icon">🎁</span>
                   Votre Code de Parrainage Exclusif
-                </h2>
+                </h3>
                 
                 <div class="referral-code">${referralCode}</div>
                 
