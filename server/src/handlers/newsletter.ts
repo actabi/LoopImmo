@@ -276,7 +276,7 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">LoopImmo</div>
+              <div class="logo">🏠 LoopImmo</div>
               <div class="subtitle">Votre partenaire immobilier de confiance</div>
             </div>
             
@@ -289,31 +289,35 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
               </p>
 
               <div class="benefits">
-                <h3 class="benefits-title">Votre expérience LoopImmo, selon votre rôle</h3>
+                <h3 class="benefits-title">✨ Ce qui vous attend</h3>
                 <div class="benefit-item">
                   <span class="benefit-icon">🚀</span>
-                  Vendeurs : estimation IA en 30 s, accompagnement personnalisé par notre expert interne et vos ambassadeurs locaux, le tout dans une offre jusqu’à 72 % moins chère qu’une agence.
+                  soyez parmi les premiers à tester la plateforme, co-créez ses fonctionnalités et profitez d’avantages exclusifs dès son lancement.
                 </div>
                 <div class="benefit-item">
                   <span class="benefit-icon">💎</span>
-                  Acheteurs : soyez les premiers alertés de nos biens exclusifs, visualisez-les en preview et gérez vos coups de cœur depuis un tableau de bord sim
+                  nos algorithmes et votre réseau local travaillent de concert pour toucher les bons acheteurs.
                 </div>
                 <div class="benefit-item">
                   <span class="benefit-icon">🤝</span>
-                  Ambassadeurs : devenez l’allié local ! Partagez, accompagnez ou recommandez — vous touchez jusqu’à 10 % du forfait à chaque vente signée grâce à vous.
+                  vos ambassadeurs pour un suivi humain, digital et personnalisé.
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">📈</span>
+                  éduisez vos frais jusqu’à 72 % et laissez vos filleuls vous rapporter un complément de revenu à chaque vente signée.
                 </div>
               </div>
 
               <div class="referral-section">
-                <h3 class="referral-title">
+                <h2 class="referral-title">
+                  <span class="gift-icon">🎁</span>
                   Votre Code de Parrainage Exclusif
-                </h3>
+                </h2>
                 
                 <div class="referral-code">${referralCode}</div>
                 
                 <p class="referral-description">
-                  Partagez ce code avec vos proches et bénéficiez d'un % sur les prochaines ventes qu'ils feront !
-                  Chaque personne que vous parrainez vous rapproche de récompenses exceptionnelles.
+                   Partagez votre code et laissez vos filleuls vous rapporter un vrai complément de revenu : à chaque signature de bien qu’ils généreront, vous toucherez une prime dédiée !
                 </p>
                 
                 <a href="${referralLink}" class="cta-button">
