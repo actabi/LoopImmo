@@ -8,7 +8,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "cross-env TS_NODE_PROJECT=server/tsconfig.json ts-node server/src/index.ts"
+    "server": "cross-env TS_NODE_PROJECT=server/tsconfig.json ts-node server/src/index.ts",
+    "prestart": "npm --prefix server run build",
+    "start": "node server/dist/index.js"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
