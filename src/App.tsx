@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { LaunchPage } from './pages/LaunchPage';
 import { LandingPage } from './pages/LandingPage';
-import { LandingPageV2 } from './pages/LandingPageV2';
+import { LaunchPageV2 } from './pages/LaunchPageV2';
 import { LoginPage } from './pages/auth/LoginPage';
 import { RegisterPage } from './pages/auth/RegisterPage';
 import { AcheterPage } from './pages/AcheterPage';
@@ -31,7 +31,7 @@ function App() {
           {/* Page d'accueil - bascule selon le mode */}
           <Route path="/" element={
             isLaunchMode ? <LaunchPage /> : 
-            isV2Mode ? <LandingPageV2 /> : 
+            isV2Mode ? <LaunchPageV2 /> : 
             <LandingPage />
           } />
           
