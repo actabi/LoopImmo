@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { LaunchPage } from './pages/LaunchPage';
 import { LandingPage } from './pages/LandingPage';
+import { LandingPageV2 } from './pages/LandingPageV2';
 import { LoginPage } from './pages/auth/LoginPage';
 import { RegisterPage } from './pages/auth/RegisterPage';
 import { AcheterPage } from './pages/AcheterPage';
@@ -22,12 +23,20 @@ import { ProtectedRoute } from './components/auth/ProtectedRoute';
 function App() {
   // Lire la variable d'environnement pour déterminer quelle page afficher
   const isLaunchMode = import.meta.env.VITE_LAUNCH_MODE === 'true';
+  const isV2Mode = import.meta.env.VITE_V2_MODE === 'true';
 
   return (
     <AuthProvider>
       <Routes>
           {/* Page d'accueil - bascule selon le mode */}
-          <Route path="/" element={isLaunchMode ? <LaunchPage /> : <LandingPage />} />
+          <Route path="/" element={
+            isLaunchMode ? <LaunchPage /> : 
+            isV2Mode ? <LandingPageV2 /> : 
+            <LandingPage />
+          } />
+          
+          {/* Route dédiée pour tester la V2 */}
+          <Route path="/v2" element={<LandingPageV2 />} />
           
           {/* Autres pages publiques */}
           <Route path="/login" element={<LoginPage />} />
