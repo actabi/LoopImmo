@@ -36,7 +36,7 @@ function App() {
           } />
           
           {/* Route dédiée pour tester la V2 */}
-          <Route path="/v2" element={<LandingPageV2 />} />
+          <Route path="/v2" element={<LaunchPageV2 />} />
           
           {/* Autres pages publiques */}
           <Route path="/login" element={<LoginPage />} />
