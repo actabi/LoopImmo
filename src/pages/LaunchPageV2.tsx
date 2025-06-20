@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, Users, TrendingDown, Shield, Home, Search, Euro, Clock, CheckCircle, Star, Heart, Zap, Award, UserCheck, FileCheck, Handshake, ArrowDown } from 'lucide-react';
 
-export const LandingPageV2: React.FC = () => {
+export const LaunchPageV2: React.FC = () => {
   const [email, setEmail] = useState('');
 
   const handleEmailSubmit = (e: React.FormEvent) => {
