@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
-import { ArrowRight, Users, TrendingDown, Shield, Home, Search, Euro, Clock, CheckCircle, Star, Heart, Zap, Award, UserCheck, FileCheck, Handshake, ArrowDown } from 'lucide-react';
+import { ArrowRight, Users, TrendingDown, Shield, Home, Search, Euro, Clock, CheckCircle, Star, Heart, Zap, Award, UserCheck, FileCheck, Handshake, ArrowDown, Gift, Percent, UserPlus, Copy, Check, Info, X, Share2 } from 'lucide-react';
 
 export const LaunchPageV2: React.FC = () => {
   const [email, setEmail] = useState('');
+  const [referralCode, setReferralCode] = useState('');
+  const [showReferralSuccess, setShowReferralSuccess] = useState(false);
+  const [showReferralPopup, setShowReferralPopup] = useState(false);
 
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: Intégrer avec le système d'inscription
-    console.log('Email soumis:', email);
-    alert('Merci ! Nous vous contacterons dès l\'ouverture de la bêta.');
-    setEmail('');
+    console.log('Email soumis:', email, 'Code parrain:', referralCode);
+    setShowReferralSuccess(true);
+    setTimeout(() => {
+      alert('Merci ! Nous vous contacterons dès l\'ouverture de la bêta. Votre code de parrainage vous sera envoyé par email.');
+      setEmail('');
+      setReferralCode('');
+      setShowReferralSuccess(false);
+    }, 2000);
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -19,8 +27,114 @@ export const LaunchPageV2: React.FC = () => {
     }
   };
 
+  // Popup Component
+  const ReferralPopup = () => (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-3xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="text-2xl font-bold text-gray-900">Comment fonctionne le parrainage ?</h3>
+          <button
+            onClick={() => setShowReferralPopup(false)}
+            className="p-2 hover:bg-gray-100 rounded-full"
+          >
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-8 mb-8">
+          <div>
+            <h4 className="text-xl font-bold text-gray-900 mb-6">Les étapes</h4>
+            <div className="space-y-6">
+              <div className="flex items-start">
+                <div className="bg-purple-100 rounded-full p-3 mr-4 flex-shrink-0">
+                  <UserPlus className="w-6 h-6 text-purple-600" />
+                </div>
+                <div>
+                  <h5 className="text-lg font-semibold text-gray-900 mb-2">1. Parrainez un proche</h5>
+                  <p className="text-gray-600">Invitez famille, amis ou collègues. Votre code de parrainage vous sera envoyé par email après inscription.</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start">
+                <div className="bg-purple-100 rounded-full p-3 mr-4 flex-shrink-0">
+                  <Handshake className="w-6 h-6 text-purple-600" />
+                </div>
+                <div>
+                  <h5 className="text-lg font-semibold text-gray-900 mb-2">2. Votre filleul rejoint LoopImmo</h5>
+                  <p className="text-gray-600">Il s'inscrit avec votre code et devient vendeur, acheteur ou Looper</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start">
+                <div className="bg-purple-100 rounded-full p-3 mr-4 flex-shrink-0">
+                  <Percent className="w-6 h-6 text-purple-600" />
+                </div>
+                <div>
+                  <h5 className="text-lg font-semibold text-gray-900 mb-2">3. Vous touchez un pourcentage</h5>
+                  <p className="text-gray-600">Sur le prix de vente de chaque bien de votre filleul, <strong>à vie</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-xl font-bold text-gray-900 mb-6">Vos gains de parrainage</h4>
+            <div className="space-y-4">
+              <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4">
+                <div className="flex justify-between items-center">
+                  <span className="font-medium text-gray-900">Filleul vendeur</span>
+                  <span className="text-2xl font-bold text-purple-600">0.5%</span>
+                </div>
+                <p className="text-sm text-gray-600 mt-1">du prix de vente du bien</p>
+              </div>
+              
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4">
+                <div className="flex justify-between items-center">
+                  <span className="font-medium text-gray-900">Filleul Looper</span>
+                  <span className="text-2xl font-bold text-green-600">10%</span>
+                </div>
+                <p className="text-sm text-gray-600 mt-1">de ses revenus générés</p>
+              </div>
+              
+              <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-4">
+                <div className="flex justify-between items-center">
+                  <span className="font-medium text-gray-900">Filleul acheteur</span>
+                  <span className="text-2xl font-bold text-blue-600">100€</span>
+                </div>
+                <p className="text-sm text-gray-600 mt-1">par achat réalisé</p>
+              </div>
+            </div>
+
+            <div className="mt-6 p-4 bg-yellow-50 rounded-xl border border-yellow-200">
+              <div className="flex items-center mb-2">
+                <Star className="w-5 h-5 text-yellow-600 mr-2" />
+                <span className="font-semibold text-yellow-800">Exemple concret</span>
+              </div>
+              <p className="text-sm text-yellow-700">
+                Votre filleul vend sa maison à 400 000€ → 
+                <strong> Vous gagnez 2 000€</strong> (0.5% de 400 000€)
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-blue-50 rounded-2xl p-6 text-center">
+          <Share2 className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+          <h4 className="text-xl font-bold text-gray-900 mb-2">Partagez le concept !</h4>
+          <p className="text-gray-600">
+            Plus vous partagez LoopImmo autour de vous, plus vous avez de chances de toucher des personnes 
+            qui pourraient devenir vos filleuls. <strong>Croyez au concept et faites-le connaître !</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Popup */}
+      {showReferralPopup && <ReferralPopup />}
+
       {/* HÉRO Section */}
       <section className="relative bg-gradient-to-b from-blue-50 to-white pt-20 pb-32 overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
@@ -33,7 +147,7 @@ export const LaunchPageV2: React.FC = () => {
             <img 
               src="/logo.svg" 
               alt="LoopImmo" 
-              className="h-16 md:h-20 mx-auto"
+              className="h-24 md:h-32 lg:h-40 mx-auto"
             />
           </div>
 
@@ -65,7 +179,7 @@ export const LaunchPageV2: React.FC = () => {
               className="px-8 py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-all transform hover:scale-105 flex items-center justify-center"
             >
               <Award className="w-5 h-5 mr-2" />
-              Je veux gagner de l'argent
+              J'arrondis mes fins de mois
             </button>
             <button
               onClick={() => scrollToSection('acheteur-section')}
@@ -87,18 +201,85 @@ export const LaunchPageV2: React.FC = () => {
             </button>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+					
+          <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-              <div className="text-4xl font-bold text-blue-600 mb-2">-72%</div>
-              <p className="text-gray-700 font-medium">de frais en moins</p>
+              <h3 className="text-4xl font-bold text-blue-600 mb-2">-72%</h3>
+              <p className="text-gray-700 font-medium">de frais par rapport aux agences traditionnelles</p>
             </div>
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
               <div className="text-4xl font-bold text-green-600 mb-2">1500€</div>
-              <p className="text-gray-700 font-medium">revenus Looper max</p>
+              <p className="text-gray-700 font-medium">complement de revenu max versée au Lopper</p>
             </div>
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-              <div className="text-4xl font-bold text-yellow-600 mb-2">3 sem.</div>
-              <p className="text-gray-700 font-medium">délai moyen</p>
+              <div className="text-4xl font-bold text-yellow-600 mb-2">IA 24/7</div>
+              <p className="text-gray-700 font-medium">Assistance personnalisée à chaque étape</p>
+            </div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+              <div className="text-4xl font-bold text-red-600 mb-2">3 en 1</div>
+              <p className="text-gray-700 font-medium">Diagnostic, conformité & rénovation gérés par nos partenaires</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Parrainage */}
+      <section className="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center bg-purple-100 text-purple-800 px-6 py-3 rounded-full text-sm font-semibold mb-6">
+              <Gift className="w-4 h-4 mr-2" />
+              Programme de parrainage exclusif
+						</div>
+							<h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+								Stratégie gagnante
+							</h2>
+							<div className="text-xl text-gray-600 max-w-3xl mx-auto space-y-4">
+								<p>
+									Vous croyez au concept ? Ne perdez pas une minute :{' '}
+									<strong>inscrivez-vous dès maintenant</strong> et{' '}
+									<strong>partagez votre code de parrainage</strong> autour de vous.
+								</p>
+								<p>
+									En attendant l'ouverture officielle,{' '}
+									<strong>soyez parmi les premiers</strong> à mobiliser votre réseau et
+									maximisez vos gains !
+								</p>
+							</div>
+						</div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-3xl p-8 shadow-2xl text-center">
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <Gift className="w-12 h-12 text-purple-600" />
+                <h3 className="text-2xl font-bold text-gray-900">Votre code de parrainage</h3>
+                <button
+                  onClick={() => setShowReferralPopup(true)}
+                  className="p-2 bg-purple-100 text-purple-600 rounded-full hover:bg-purple-200 transition-colors"
+                  title="Comment ça marche ?"
+                >
+                  <Info className="w-5 h-5" />
+                </button>
+              </div>
+              
+              <div className="bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl p-6 mb-6">
+                <p className="text-lg text-gray-700 mb-4">
+                  <strong>Votre code personnel vous sera envoyé par email</strong> après votre inscription
+                </p>
+                <div className="flex items-center justify-center gap-2 text-purple-700">
+                  <Share2 className="w-5 h-5" />
+                  <span className="font-semibold">Partagez le concept dès maintenant !</span>
+                </div>
+              </div>
+
+              <div className="bg-yellow-50 rounded-xl p-6 border border-yellow-200">
+                <h4 className="font-bold text-gray-900 mb-3">🚀 Stratégie gagnante</h4>
+                <p className="text-gray-700 leading-relaxed">
+                  <strong>Plus vous partagez LoopImmo autour de vous, plus vous maximisez vos chances de gains !</strong><br/>
+                  Parlez-en à vos amis, famille, collègues... Si vous croyez au concept, 
+                  faites-le connaître avant l'ouverture officielle pour être les premiers bénéficiaires.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -106,46 +287,53 @@ export const LaunchPageV2: React.FC = () => {
 
       {/* Pourquoi LoopImmo */}
       <section id="pourquoi-section" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Pourquoi LoopImmo ?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Une nouvelle façon de vendre et d'acheter, pensée pour tous
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Logo */}
+          <div className="mb-8">
+            <img 
+              src="/logo.svg" 
+              alt="LoopImmo" 
+              className="h-12 md:h-16 mx-auto"
+            />
+          </div>
+
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Notre vision : révolutionner l'immobilier
+          </h2>
+          
+          <div className="max-w-3xl mx-auto mb-12">
+            <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+              <strong>LoopImmo</strong> transforme l'immobilier en créant une communauté où chacun trouve sa place : 
+              vendeurs qui économisent, acheteurs protégés, et <strong style={{ color: '#1974cc' }}>Loopers</strong> rémunérés 
+              pour leur contribution locale.
+            </p>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Ensemble, nous construisons un écosystème plus juste, plus transparent et plus humain, 
+              où la technologie sert l'humain et non l'inverse.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center group hover:scale-105 transition-transform">
-              <div className="bg-gradient-to-br from-blue-100 to-blue-200 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                <Euro className="w-10 h-10 text-blue-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">💸 Vendez malin</h3>
-              <p className="text-lg text-gray-600">
-                Jusqu'à <strong>-72% de frais</strong> par rapport aux agences traditionnelles
-              </p>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+              <div className="text-4xl font-bold text-blue-600 mb-2">🤝</div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Communauté</h3>
+              <p className="text-gray-600">Des liens humains au cœur de chaque transaction</p>
             </div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+              <div className="text-4xl font-bold text-green-600 mb-2">💡</div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Innovation</h3>
+              <p className="text-gray-600">La technologie au service de l'humain</p>
+            </div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+              <div className="text-4xl font-bold text-yellow-600 mb-2">⚖️</div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Équité</h3>
+              <p className="text-gray-600">Des bénéfices partagés pour tous</p>
+            </div>
+          </div>
 
-            <div className="text-center group hover:scale-105 transition-transform">
-              <div className="bg-gradient-to-br from-green-100 to-green-200 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                <Users className="w-10 h-10 text-green-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">🧩 Communauté active</h3>
-              <p className="text-lg text-gray-600">
-                <strong>Loopers rémunérés</strong> jusqu'à 1 500 € pour vous accompagner
-              </p>
-            </div>
-
-            <div className="text-center group hover:scale-105 transition-transform">
-              <div className="bg-gradient-to-br from-yellow-100 to-yellow-200 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                <Clock className="w-10 h-10 text-yellow-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">⏱️ Vente accélérée</h3>
-              <p className="text-lg text-gray-600">
-                <strong>3 semaines en moyenne</strong> grâce à notre réseau local
-              </p>
-            </div>
+          <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-sm font-semibold">
+            <Zap className="w-4 h-4 mr-2" />
+            Rejoignez le mouvement - Bêta ouverte prochainement
           </div>
         </div>
       </section>
@@ -169,7 +357,7 @@ export const LaunchPageV2: React.FC = () => {
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-blue-600 mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-lg text-gray-700"><strong>Sécurité légale garantie</strong> par nos Trust Managers</p>
+                  <p className="text-lg text-gray-700"><strong>Sécurité légale garantie</strong> par nos expert en interne</p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-blue-600 mt-1 mr-3 flex-shrink-0" />
@@ -182,7 +370,7 @@ export const LaunchPageV2: React.FC = () => {
                 <div className="flex flex-wrap gap-2">
                   <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">1. Estimation IA</span>
                   <ArrowRight className="w-4 h-4 text-gray-400 mt-1" />
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">2. Validation Trust Manager</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">2. Validation de l'annonce</span>
                   <ArrowRight className="w-4 h-4 text-gray-400 mt-1" />
                   <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">3. Diffusion</span>
                   <ArrowRight className="w-4 h-4 text-gray-400 mt-1" />
@@ -193,17 +381,50 @@ export const LaunchPageV2: React.FC = () => {
             
             <div className="bg-white rounded-3xl p-8 shadow-2xl">
               <div className="text-center">
-                <Home className="w-16 h-16 text-blue-600 mx-auto mb-4" />
+                <div className="flex items-center justify-center mb-4">
+                  <Home className="w-16 h-16 text-blue-600" />
+                </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Prêt à vendre ?</h3>
-                <form onSubmit={handleEmailSubmit}>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Votre email"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl mb-4 focus:border-blue-500 focus:outline-none"
-                    required
-                  />
+
+                <form onSubmit={handleEmailSubmit} className="space-y-4">
+                  <div>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Votre email"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none"
+                      required
+                    />
+                  </div>
+
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={referralCode}
+                      onChange={(e) => setReferralCode(e.target.value)}
+                      placeholder="Code de parrainage (optionnel)"
+                      className="flex-1 px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowReferralPopup(true)}
+                      title="Détails parrainage"
+                      className="p-3 bg-blue-100 text-blue-600 rounded-xl hover:bg-blue-200 transition-colors flex-shrink-0"
+                    >
+                      <Info className="w-5 h-5" />
+                    </button>
+                  </div>
+
+                  {referralCode && (
+                    <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
+                      <p className="text-sm text-purple-700">
+                        <Gift className="w-4 h-4 inline mr-1" />
+                        <strong>-20% sur vos frais</strong> grâce au parrainage !
+                      </p>
+                    </div>
+                  )}
+
                   <button
                     type="submit"
                     className="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors"
@@ -211,6 +432,15 @@ export const LaunchPageV2: React.FC = () => {
                     Je veux vendre
                   </button>
                 </form>
+
+                {showReferralSuccess && (
+                  <div className="mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
+                    <p className="text-sm text-green-700">
+                      <CheckCircle className="w-4 h-4 inline mr-1" />
+                      Code de parrainage validé !
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -223,17 +453,50 @@ export const LaunchPageV2: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="bg-white rounded-3xl p-8 shadow-2xl">
               <div className="text-center">
-                <Award className="w-16 h-16 text-green-600 mx-auto mb-4" />
+                <div className="flex items-center justify-center mb-4">
+                  <Award className="w-16 h-16 text-green-600" />
+                </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Devenir Looper</h3>
-                <form onSubmit={handleEmailSubmit}>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Votre email"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl mb-4 focus:border-green-500 focus:outline-none"
-                    required
-                  />
+                
+                <form onSubmit={handleEmailSubmit} className="space-y-4">
+                  <div>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Votre email"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={referralCode}
+                      onChange={(e) => setReferralCode(e.target.value)}
+                      placeholder="Code de parrainage (optionnel)"
+                      className="flex-1 px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowReferralPopup(true)}
+                      title="Détails parrainage"
+                      className="p-3 bg-green-100 text-green-600 rounded-xl hover:bg-green-200 transition-colors flex-shrink-0"
+                    >
+                      <Info className="w-5 h-5" />
+                    </button>
+                  </div>
+                  
+                  {referralCode && (
+                    <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
+                      <p className="text-sm text-purple-700">
+                        <Gift className="w-4 h-4 inline mr-1" />
+                        <strong>Formation gratuite</strong> + bonus de bienvenue !
+                      </p>
+                    </div>
+                  )}
+                  
                   <button
                     type="submit"
                     className="w-full px-6 py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-colors"
@@ -241,6 +504,15 @@ export const LaunchPageV2: React.FC = () => {
                     Je veux gagner de l'argent
                   </button>
                 </form>
+                
+                {showReferralSuccess && (
+                  <div className="mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
+                    <p className="text-sm text-green-700">
+                      <CheckCircle className="w-4 h-4 inline mr-1" />
+                      Code de parrainage validé !
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -300,7 +572,7 @@ export const LaunchPageV2: React.FC = () => {
               <div className="space-y-4 mb-8">
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-yellow-600 mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-lg text-gray-700"><strong>Biens vérifiés</strong> par nos Trust Managers experts</p>
+                  <p className="text-lg text-gray-700"><strong>Biens vérifiés</strong> par nos experts en interne</p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-yellow-600 mt-1 mr-3 flex-shrink-0" />
@@ -341,17 +613,50 @@ export const LaunchPageV2: React.FC = () => {
             
             <div className="bg-white rounded-3xl p-8 shadow-2xl">
               <div className="text-center">
-                <Search className="w-16 h-16 text-yellow-600 mx-auto mb-4" />
+                <div className="flex items-center justify-center mb-4">
+                  <Search className="w-16 h-16 text-yellow-600" />
+                </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Prêt à acheter ?</h3>
-                <form onSubmit={handleEmailSubmit}>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Votre email"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl mb-4 focus:border-yellow-500 focus:outline-none"
-                    required
-                  />
+                
+                <form onSubmit={handleEmailSubmit} className="space-y-4">
+                  <div>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Votre email"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:outline-none"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={referralCode}
+                      onChange={(e) => setReferralCode(e.target.value)}
+                      placeholder="Code de parrainage (optionnel)"
+                      className="flex-1 px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowReferralPopup(true)}
+                      title="Détails parrainage"
+                      className="p-3 bg-yellow-100 text-yellow-600 rounded-xl hover:bg-yellow-200 transition-colors flex-shrink-0"
+                    >
+                      <Info className="w-5 h-5" />
+                    </button>
+                  </div>
+                  
+                  {referralCode && (
+                    <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
+                      <p className="text-sm text-purple-700">
+                        <Gift className="w-4 h-4 inline mr-1" />
+                        <strong>Accompagnement prioritaire</strong> + conseils personnalisés !
+                      </p>
+                    </div>
+                  )}
+                  
                   <button
                     type="submit"
                     className="w-full px-6 py-3 bg-yellow-600 text-white font-semibold rounded-xl hover:bg-yellow-700 transition-colors"
@@ -359,49 +664,26 @@ export const LaunchPageV2: React.FC = () => {
                     Je veux acheter
                   </button>
                 </form>
+                
+                {showReferralSuccess && (
+                  <div className="mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
+                    <p className="text-sm text-green-700">
+                      <CheckCircle className="w-4 h-4 inline mr-1" />
+                      Code de parrainage validé !
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section Vision/Valeurs */}
-      <section className="py-20 bg-blue-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-        
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-          <div className="mb-12">
-            <div className="text-6xl mb-6">💫</div>
-            <blockquote className="text-2xl md:text-3xl font-light text-white mb-8 leading-relaxed">
-              "LoopImmo remet de l'humain dans l'immobilier. Chaque vente devient une aventure collective et une source de revenus partagés."
-            </blockquote>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-              <Heart className="w-8 h-8 text-white mx-auto mb-3" />
-              <h3 className="text-xl font-semibold text-white mb-2">100% Humain</h3>
-              <p className="text-gray-300">Des vraies personnes, pas des algorithmes</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-              <Shield className="w-8 h-8 text-white mx-auto mb-3" />
-              <h3 className="text-xl font-semibold text-white mb-2">100% Sécurisé</h3>
-              <p className="text-gray-300">Trust Managers et garanties légales</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-              <FileCheck className="w-8 h-8 text-white mx-auto mb-3" />
-              <h3 className="text-xl font-semibold text-white mb-2">100% Transparent</h3>
-              <p className="text-gray-300">Tarifs clairs, pas de frais cachés</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Appel Final */}
-      <section className="relative bg-gradient-to-b from-blue-50 to-white py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-40"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-40"></div>
+      <section className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-600 rounded-full blur-3xl opacity-20"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-600 rounded-full blur-3xl opacity-20"></div>
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           {/* Logo */}
@@ -409,47 +691,43 @@ export const LaunchPageV2: React.FC = () => {
             <img 
               src="/logo.svg" 
               alt="LoopImmo" 
-              className="h-12 md:h-16 mx-auto"
+              className="h-12 md:h-16 mx-auto filter brightness-0 invert"
             />
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Notre vision : révolutionner l'immobilier
-          </h2>
-          
-          <div className="max-w-3xl mx-auto mb-12">
-            <p className="text-xl text-gray-700 mb-6 leading-relaxed">
-              <strong>LoopImmo</strong> transforme l'immobilier en créant une communauté où chacun trouve sa place : 
-              vendeurs qui économisent, acheteurs protégés, et <strong style={{ color: '#1974cc' }}>Loopers</strong> rémunérés 
-              pour leur contribution locale.
-            </p>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Ensemble, nous construisons un écosystème plus juste, plus transparent et plus humain, 
-              où la technologie sert l'humain et non l'inverse.
-            </p>
+          <div className="mb-12">
+            <blockquote className="text-2xl md:text-3xl font-light text-white mb-8 leading-relaxed">
+              "LoopImmo remet de l'humain dans l'immobilier. Chaque vente devient une aventure collective et une source de revenus partagés."
+            </blockquote>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-              <div className="text-4xl font-bold text-blue-600 mb-2">🤝</div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Communauté</h3>
-              <p className="text-gray-600">Des liens humains au cœur de chaque transaction</p>
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+              <Heart className="w-8 h-8 text-white mx-auto mb-3" />
+              <h3 className="text-xl font-semibold text-white mb-2">100% Humain</h3>
+              <p className="text-gray-300">Des vraies personnes, pas des algorithmes</p>
             </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-              <div className="text-4xl font-bold text-green-600 mb-2">💡</div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Innovation</h3>
-              <p className="text-gray-600">La technologie au service de l'humain</p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+              <Shield className="w-8 h-8 text-white mx-auto mb-3" />
+              <h3 className="text-xl font-semibold text-white mb-2">100% Sécurisé</h3>
+              <p className="text-gray-300">Experts internes et garanties légales</p>
             </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-              <div className="text-4xl font-bold text-yellow-600 mb-2">⚖️</div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Équité</h3>
-              <p className="text-gray-600">Des bénéfices partagés pour tous</p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+              <FileCheck className="w-8 h-8 text-white mx-auto mb-3" />
+              <h3 className="text-xl font-semibold text-white mb-2">100% Transparent</h3>
+              <p className="text-gray-300">Tarifs clairs, pas de frais cachés</p>
             </div>
           </div>
 
-          <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-sm font-semibold">
-            <Zap className="w-4 h-4 mr-2" />
-            Rejoignez le mouvement - Bêta ouverte prochainement
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-center">
+            <h3 className="text-2xl font-bold text-white mb-4">Rejoignez la révolution immobilière</h3>
+            <p className="text-blue-100 mb-6 text-lg">
+              Soyez parmi les premiers à découvrir une nouvelle façon de vendre, acheter et gagner de l'argent dans l'immobilier.
+            </p>
+            <div className="inline-flex items-center bg-yellow-400 text-gray-900 px-6 py-3 rounded-full text-sm font-semibold">
+              <Zap className="w-4 h-4 mr-2" />
+              Bêta ouverte prochainement
+            </div>
           </div>
         </div>
       </section>
