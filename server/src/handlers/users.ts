@@ -1,13 +1,14 @@
 import { Request, Response } from 'express';
 import { query } from '../db';
 import { notImplemented } from './utils';
+import { error } from '../utils/logger';
 
 export const listUsers = async (_req: Request, res: Response) => {
   try {
     const { rows } = await query('SELECT * FROM users');
     res.json(rows);
   } catch (err) {
-    console.error(err);
+    error(err);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -22,7 +23,7 @@ export const getUser = async (req: Request, res: Response) => {
       res.json(rows[0]);
     }
   } catch (err) {
-    console.error(err);
+    error(err);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -41,7 +42,7 @@ export const updateUser = async (req: Request, res: Response) => {
       res.json(rows[0]);
     }
   } catch (err) {
-    console.error(err);
+    error(err);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -56,7 +57,7 @@ export const deleteUser = async (req: Request, res: Response) => {
       res.status(204).end();
     }
   } catch (err) {
-    console.error(err);
+    error(err);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -67,7 +68,7 @@ export const getUserProperties = async (req: Request, res: Response) => {
     const { rows } = await query('SELECT * FROM properties WHERE seller_id = $1', [id]);
     res.json(rows);
   } catch (err) {
-    console.error(err);
+    error(err);
     res.status(500).json({ error: 'Internal server error' });
   }
 };

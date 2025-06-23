@@ -2,13 +2,14 @@ import { Request, Response } from 'express';
 import { randomUUID } from 'crypto';
 import { query } from '../db';
 import { notImplemented } from './utils';
+import { error } from '../utils/logger';
 
 export const listAmbassadors = async (_req: Request, res: Response) => {
   try {
     const { rows } = await query('SELECT * FROM ambassadors');
     res.json(rows);
   } catch (err) {
-    console.error(err);
+    error(err);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -23,7 +24,7 @@ export const getAmbassador = async (req: Request, res: Response) => {
       res.json(rows[0]);
     }
   } catch (err) {
-    console.error(err);
+    error(err);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -41,7 +42,7 @@ export const createAmbassador = async (req: Request, res: Response) => {
     );
     res.status(201).json(rows[0]);
   } catch (err) {
-    console.error(err);
+    error(err);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
