@@ -7,17 +7,48 @@ export const LaunchPageV2: React.FC = () => {
   const [showReferralSuccess, setShowReferralSuccess] = useState(false);
   const [showReferralPopup, setShowReferralPopup] = useState(false);
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
+  const validateEmail = (value: string) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(value);
+  };
+
+  const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Intégrer avec le système d'inscription
-    console.log('Email soumis:', email, 'Code parrain:', referralCode);
-    setShowReferralSuccess(true);
-    setTimeout(() => {
-      alert('Merci ! Nous vous contacterons dès l\'ouverture de la bêta. Votre code de parrainage vous sera envoyé par email.');
-      setEmail('');
-      setReferralCode('');
-      setShowReferralSuccess(false);
-    }, 2000);
+
+    if (!validateEmail(email)) {
+      alert('Veuillez entrer un email valide');
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, referredBy: referralCode }),
+      });
+
+      if (res.status === 409) {
+        alert('Cet email est déjà enregistré');
+        return;
+      }
+
+      if (!res.ok) {
+        throw new Error('Request failed');
+      }
+
+      setShowReferralSuccess(true);
+      setTimeout(() => {
+        alert(
+          "Merci ! Nous vous contacterons dès l'ouverture de la bêta. Votre code de parrainage vous sera envoyé par email."
+        );
+        setEmail('');
+        setReferralCode('');
+        setShowReferralSuccess(false);
+      }, 2000);
+    } catch (err) {
+      console.error(err);
+      alert("Erreur lors de l'inscription");
+    }
   };
 
   const scrollToSection = (sectionId: string) => {
