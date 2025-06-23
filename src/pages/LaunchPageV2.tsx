@@ -29,102 +29,105 @@ export const LaunchPageV2: React.FC = () => {
 
   // Popup Component
   const ReferralPopup = () => (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-3xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="flex justify-between items-center mb-6">
-          <h3 className="text-2xl font-bold text-gray-900">Comment fonctionne le parrainage ?</h3>
+<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-hidden shadow-xl">
+        {/* Header compact */}
+        <div className="flex justify-between items-center p-5 pb-3 border-b">
+          <h3 className="text-xl font-bold text-gray-900">Comment fonctionne le parrainage ?</h3>
           <button
             onClick={() => setShowReferralPopup(false)}
-            className="p-2 hover:bg-gray-100 rounded-full"
+            className="p-1.5 hover:bg-gray-100 rounded-full transition-colors"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 mb-8">
-          <div>
-            <h4 className="text-xl font-bold text-gray-900 mb-6">Les étapes</h4>
-            <div className="space-y-6">
-              <div className="flex items-start">
-                <div className="bg-purple-100 rounded-full p-3 mr-4 flex-shrink-0">
-                  <UserPlus className="w-6 h-6 text-purple-600" />
+        {/* Contenu scrollable */}
+        <div className="overflow-y-auto p-5">
+          {/* Les 3 étapes */}
+          <div className="mb-6">
+            <h4 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">Les étapes</h4>
+            <div className="space-y-3">
+              <div className="flex items-start gap-3">
+                <div className="bg-purple-100 rounded-full p-2 flex-shrink-0">
+                  <UserPlus className="w-4 h-4 text-purple-600" />
                 </div>
-                <div>
-                  <h5 className="text-lg font-semibold text-gray-900 mb-2">1. Parrainez un proche</h5>
-                  <p className="text-gray-600">Invitez famille, amis ou collègues. Votre code de parrainage vous sera envoyé par email après inscription.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="bg-purple-100 rounded-full p-3 mr-4 flex-shrink-0">
-                  <Handshake className="w-6 h-6 text-purple-600" />
-                </div>
-                <div>
-                  <h5 className="text-lg font-semibold text-gray-900 mb-2">2. Votre filleul rejoint LoopImmo</h5>
-                  <p className="text-gray-600">Il s'inscrit avec votre code et devient vendeur, acheteur ou Looper</p>
+                <div className="flex-1">
+                  <h5 className="font-semibold text-gray-900 text-sm">1. Parrainez un proche</h5>
+                  <p className="text-xs text-gray-600">Invitez avec votre code reçu par email</p>
                 </div>
               </div>
               
-              <div className="flex items-start">
-                <div className="bg-purple-100 rounded-full p-3 mr-4 flex-shrink-0">
-                  <Percent className="w-6 h-6 text-purple-600" />
+              <div className="flex items-start gap-3">
+                <div className="bg-purple-100 rounded-full p-2 flex-shrink-0">
+                  <Handshake className="w-4 h-4 text-purple-600" />
                 </div>
-                <div>
-                  <h5 className="text-lg font-semibold text-gray-900 mb-2">3. Vous touchez un pourcentage</h5>
-                  <p className="text-gray-600">Sur le prix de vente de chaque bien de votre filleul, <strong>à vie</strong></p>
+                <div className="flex-1">
+                  <h5 className="font-semibold text-gray-900 text-sm">2. Votre filleul s'inscrit</h5>
+                  <p className="text-xs text-gray-600">Il devient vendeur, acheteur ou Looper</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <div className="bg-purple-100 rounded-full p-2 flex-shrink-0">
+                  <Percent className="w-4 h-4 text-purple-600" />
+                </div>
+                <div className="flex-1">
+                  <h5 className="font-semibold text-gray-900 text-sm">3. Gagnez à vie</h5>
+                  <p className="text-xs text-gray-600">Un % sur chaque vente, versé au compromis</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div>
-            <h4 className="text-xl font-bold text-gray-900 mb-6">Vos gains de parrainage</h4>
-            <div className="space-y-4">
-              <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4">
-                <div className="flex justify-between items-center">
-                  <span className="font-medium text-gray-900">Filleul vendeur</span>
-                  <span className="text-2xl font-bold text-purple-600">0.5%</span>
-                </div>
-                <p className="text-sm text-gray-600 mt-1">du prix de vente du bien</p>
+          {/* Les gains */}
+          <div className="mb-6">
+            <h4 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">Vos gains</h4>
+            <div className="grid grid-cols-3 gap-2">
+              <div className="bg-purple-50 rounded-lg p-3 text-center border border-purple-100">
+                <p className="text-2xl font-bold text-purple-600">10%</p>
+                <p className="text-xs font-medium text-gray-700">Filleul vendeur</p>
+                <p className="text-xs text-gray-500 mt-1">du forfait</p>
               </div>
               
-              <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4">
-                <div className="flex justify-between items-center">
-                  <span className="font-medium text-gray-900">Filleul Looper</span>
-                  <span className="text-2xl font-bold text-green-600">10%</span>
-                </div>
-                <p className="text-sm text-gray-600 mt-1">de ses revenus générés</p>
+              <div className="bg-green-50 rounded-lg p-3 text-center border border-green-100">
+                <p className="text-2xl font-bold text-green-600">10%</p>
+                <p className="text-xs font-medium text-gray-700">Filleul Looper</p>
+                <p className="text-xs text-gray-500 mt-1">du forfait</p>
               </div>
               
-              <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-4">
-                <div className="flex justify-between items-center">
-                  <span className="font-medium text-gray-900">Filleul acheteur</span>
-                  <span className="text-2xl font-bold text-blue-600">100€</span>
-                </div>
-                <p className="text-sm text-gray-600 mt-1">par achat réalisé</p>
+              <div className="bg-blue-50 rounded-lg p-3 text-center border border-blue-100">
+                <p className="text-2xl font-bold text-blue-600">100€</p>
+                <p className="text-xs font-medium text-gray-700">Filleul acheteur</p>
+                <p className="text-xs text-gray-500 mt-1">prime d'achat</p>
               </div>
-            </div>
-
-            <div className="mt-6 p-4 bg-yellow-50 rounded-xl border border-yellow-200">
-              <div className="flex items-center mb-2">
-                <Star className="w-5 h-5 text-yellow-600 mr-2" />
-                <span className="font-semibold text-yellow-800">Exemple concret</span>
-              </div>
-              <p className="text-sm text-yellow-700">
-                Votre filleul vend sa maison à 400 000€ → 
-                <strong> Vous gagnez 2 000€</strong> (0.5% de 400 000€)
-              </p>
             </div>
           </div>
-        </div>
 
-        <div className="bg-blue-50 rounded-2xl p-6 text-center">
-          <Share2 className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-          <h4 className="text-xl font-bold text-gray-900 mb-2">Partagez le concept !</h4>
-          <p className="text-gray-600">
-            Plus vous partagez LoopImmo autour de vous, plus vous avez de chances de toucher des personnes 
-            qui pourraient devenir vos filleuls. <strong>Croyez au concept et faites-le connaître !</strong>
-          </p>
+          {/* Exemple */}
+          <div className="bg-yellow-50 rounded-lg p-4 mb-6 border border-yellow-100">
+            <div className="flex items-center gap-2 mb-2">
+              <Star className="w-4 h-4 text-yellow-600" />
+              <h4 className="text-sm font-semibold text-gray-900">Exemple : Bien vendu à 400 000€</h4>
+            </div>
+            <div className="grid grid-cols-2 gap-3 text-center">
+              <div>
+                <p className="text-xs text-gray-600">Vous touchez</p>
+                <p className="text-lg font-bold text-yellow-700">500€ HT</p>
+              </div>
+              <div>
+                <p className="text-xs text-gray-600">Votre filleul touche</p>
+                <p className="text-lg font-bold text-green-600">1 250€ HT</p>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg p-4 text-center text-white">
+            <Share2 className="w-6 h-6 mx-auto mb-2" />
+            <p className="text-sm font-semibold">Partagez et gagnez !</p>
+            <p className="text-xs text-blue-100 mt-1">Plus vous partagez, plus vous gagnez</p>
+          </div>
         </div>
       </div>
     </div>
@@ -208,8 +211,8 @@ export const LaunchPageV2: React.FC = () => {
               <p className="text-gray-700 font-medium">de frais par rapport aux agences traditionnelles</p>
             </div>
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-              <div className="text-4xl font-bold text-green-600 mb-2">1500€</div>
-              <p className="text-gray-700 font-medium">complement de revenu max versée au Lopper</p>
+              <div className="text-4xl font-bold text-green-600 mb-2">1 500€</div>
+              <p className="text-gray-700 font-medium">complement de revenu moy. versée au Looper par vente</p>
             </div>
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
               <div className="text-4xl font-bold text-yellow-600 mb-2">IA 24/7</div>
