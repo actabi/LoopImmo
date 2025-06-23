@@ -17,6 +17,7 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
     email?: string;
     referredBy?: string;
   };
+  console.log('subscribeNewsletter called', { email, referredBy });
   if (!email) {
     return res.status(400).json({ error: 'Email is required' });
   }
@@ -26,14 +27,16 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
     if (rows.length > 0) {
       return res.status(409).json({ error: 'Email already exists' });
     }
+    console.log('Email not found in DB, proceeding');
   } catch (err) {
-    console.error(err);
+    console.error('Error checking email', err);
     return res.status(500).json({ error: 'Unable to check email' });
   }
 
   const referralCode = Math.random().toString(36).slice(2, 8).toUpperCase();
   const baseUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
   const referralLink = `${baseUrl}?ref=${referralCode}`;
+  console.log('Generated referral link', referralLink);
 
   try {
     const qrCodeBuffer = await QRCode.toBuffer(referralLink);
@@ -53,6 +56,7 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
         referredBy || null,
       ]
     );
+    console.log('Inserted new user', id);
     const smtpReady =
       process.env.SMTP_HOST &&
       process.env.SMTP_USER &&
@@ -61,6 +65,7 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
 
     let transporter: nodemailer.Transporter | undefined;
     if (smtpReady) {
+      console.log('Creating SMTP transporter');
       transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
         port: Number(process.env.SMTP_PORT),
@@ -75,6 +80,7 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
     }
 
     if (transporter) {
+      console.log('Sending email to', email);
       const templatePath = path.resolve(
         __dirname,
         '../../templates/newsletter.html'
@@ -123,7 +129,7 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
     }
     res.status(200).json({ success: true, referralCode, emailSent: !!transporter });
   } catch (err) {
-    console.error(err);
+    console.error('Error during subscription', err);
     res.status(500).json({ error: 'Unable to send email' });
   }
 };
