@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { randomUUID } from 'crypto';
 import { query } from '../db';
 import { notImplemented } from './utils';
+import { error } from '../utils/logger';
 
 export const listOffers = async (req: Request, res: Response) => {
   const { property_id, buyer_id } = req.query;
@@ -19,7 +20,7 @@ export const listOffers = async (req: Request, res: Response) => {
     const { rows } = await query(sql, params);
     res.json(rows);
   } catch (err) {
-    console.error(err);
+    error(err);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -37,7 +38,7 @@ export const createOffer = async (req: Request, res: Response) => {
     );
     res.status(201).json(rows[0]);
   } catch (err) {
-    console.error(err);
+    error(err);
     res.status(500).json({ error: 'Internal server error' });
   }
 };

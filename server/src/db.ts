@@ -1,6 +1,7 @@
 import { Pool } from 'pg';
 import path from 'path';
 import dotenv from 'dotenv';
+import { log, error } from './utils/logger';
 
 // Load server-specific environment variables
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
@@ -26,8 +27,8 @@ export const query = (text: string, params?: any[]) => pool.query(text, params);
 export const connectDb = async () => {
   try {
     await pool.connect();
-    console.log('Database connected');
+    log('Database connected');
   } catch (err) {
-    console.error('Database connection failed:', err);
+    error('Database connection failed:', err);
   }
 };

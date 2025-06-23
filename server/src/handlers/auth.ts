@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { randomUUID } from 'crypto';
 import { query } from '../db';
 import { notImplemented } from './utils';
+import { error } from '../utils/logger';
 
 export const login = async (req: Request, res: Response) => {
   const { email } = req.body;
@@ -15,7 +16,7 @@ export const login = async (req: Request, res: Response) => {
     }
     res.json({ token: 'dummy-token', user: rows[0] });
   } catch (err) {
-    console.error(err);
+    error(err);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -44,7 +45,7 @@ export const register = async (req: Request, res: Response) => {
     );
     res.status(201).json(rows[0]);
   } catch (err) {
-    console.error(err);
+    error(err);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
