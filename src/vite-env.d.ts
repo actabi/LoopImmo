@@ -4,7 +4,6 @@ interface ImportMetaEnv {
   readonly VITE_LAUNCH_MODE: string
   readonly VITE_API_URL?: string
   readonly DATABASE_URL: string
-  readonly VITE_TURNSTILE_SITE_KEY?: string
   // Ajouter d'autres variables d'environnement ici si nécessaire
 }
 
