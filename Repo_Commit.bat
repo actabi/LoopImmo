@@ -42,7 +42,7 @@ if %errorlevel% equ 0 (
     if /i "%push_choice%"=="o" (
         echo.
         echo Push vers le repository distant...
-        git push origin main
+        git push origin HEAD
         
         if %errorlevel% equ 0 (
             echo ✓ Push termine avec succes !
