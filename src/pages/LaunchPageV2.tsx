@@ -8,6 +8,7 @@ export const LaunchPageV2: React.FC = () => {
   const [referralCode, setReferralCode] = useState('');
   const [showReferralSuccess, setShowReferralSuccess] = useState(false);
   const [showReferralPopup, setShowReferralPopup] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const ref = searchParams.get('ref');
@@ -30,6 +31,7 @@ export const LaunchPageV2: React.FC = () => {
       return;
     }
 
+    setIsLoading(true);
     try {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
@@ -58,6 +60,8 @@ export const LaunchPageV2: React.FC = () => {
     } catch (err) {
       console.error(err);
       alert("Erreur lors de l'inscription");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -471,9 +475,10 @@ export const LaunchPageV2: React.FC = () => {
 
                   <button
                     type="submit"
-                    className="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors"
+                    disabled={isLoading}
+                    className="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors flex items-center justify-center disabled:opacity-50"
                   >
-                    Je veux vendre
+                    {isLoading ? 'Envoi...' : 'Je veux vendre'}
                   </button>
                 </form>
 
@@ -543,9 +548,10 @@ export const LaunchPageV2: React.FC = () => {
                   
                   <button
                     type="submit"
-                    className="w-full px-6 py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-colors"
+                    disabled={isLoading}
+                    className="w-full px-6 py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-colors flex items-center justify-center disabled:opacity-50"
                   >
-                    Je veux gagner de l'argent
+                    {isLoading ? "Envoi..." : "Je veux gagner de l'argent"}
                   </button>
                 </form>
                 
@@ -703,9 +709,10 @@ export const LaunchPageV2: React.FC = () => {
                   
                   <button
                     type="submit"
-                    className="w-full px-6 py-3 bg-yellow-600 text-white font-semibold rounded-xl hover:bg-yellow-700 transition-colors"
+                    disabled={isLoading}
+                    className="w-full px-6 py-3 bg-yellow-600 text-white font-semibold rounded-xl hover:bg-yellow-700 transition-colors flex items-center justify-center disabled:opacity-50"
                   >
-                    Je veux acheter
+                    {isLoading ? 'Envoi...' : 'Je veux acheter'}
                   </button>
                 </form>
                 
