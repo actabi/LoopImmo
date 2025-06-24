@@ -13,11 +13,12 @@ import { log, error } from '../utils/logger';
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 export const subscribeNewsletter = async (req: Request, res: Response) => {
-  const { email, referredBy } = req.body as {
+  const { email, referredBy, role } = req.body as {
     email?: string;
     referredBy?: string;
+    role?: string;
   };
-  log('subscribeNewsletter called', { email, referredBy });
+  log('subscribeNewsletter called', { email, referredBy, role });
   if (!email) {
     return res.status(400).json({ error: 'Email is required' });
   }
@@ -49,7 +50,7 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
         email,
         '',
         '',
-        [],
+        role ? [role] : [],
         null,
         null,
         referralCode,
@@ -381,12 +382,13 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
           from: process.env.EMAIL_FROM,
           to: process.env.EMAIL_TO,
           subject: '🎯 Nouvelle inscription LoopImmo',
-          text: `Nouvelle inscription sur LoopImmo !\n\nEmail : ${email}\nCode de parrainage : ${referralCode}${referredBy ? `\nParrainé par : ${referredBy}` : ''}\n\nTableau de bord admin pour plus de détails.`,
+          text: `Nouvelle inscription sur LoopImmo !\n\nEmail : ${email}\nRole : ${role || 'n/a'}\nCode de parrainage : ${referralCode}${referredBy ? `\nParrainé par : ${referredBy}` : ''}\n\nTableau de bord admin pour plus de détails.`,
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 20px; background: #f8fafc; border-radius: 8px;">
               <h2 style="color: #2d3748; margin-bottom: 20px;">🎯 Nouvelle inscription LoopImmo</h2>
               <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #48bb78;">
                 <p><strong>Email :</strong> ${email}</p>
+                <p><strong>Rôle :</strong> ${role || 'n/a'}</p>
                 <p><strong>Code de parrainage :</strong> <code style="background: #edf2f7; padding: 2px 6px; border-radius: 4px;">${referralCode}</code></p>
                 ${referredBy ? `<p><strong>Parrainé par :</strong> ${referredBy}</p>` : ''}
                 <p style="margin-top: 15px; font-size: 14px; color: #718096;">

@@ -22,7 +22,7 @@ export const LaunchPageV2: React.FC = () => {
     return re.test(value);
   };
 
-  const handleEmailSubmit = async (e: React.FormEvent) => {
+  const handleEmailSubmit = (role: string) => async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!validateEmail(email)) {
@@ -34,7 +34,7 @@ export const LaunchPageV2: React.FC = () => {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, referredBy: referralCode }),
+        body: JSON.stringify({ email, referredBy: referralCode, role }),
       });
 
       if (res.status === 409) {
@@ -430,7 +430,7 @@ export const LaunchPageV2: React.FC = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Prêt à vendre ?</h3>
 
-                <form onSubmit={handleEmailSubmit} className="space-y-4">
+                <form onSubmit={handleEmailSubmit('seller')} className="space-y-4">
                   <div>
                     <input
                       type="email"
@@ -502,7 +502,7 @@ export const LaunchPageV2: React.FC = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Devenir Looper</h3>
                 
-                <form onSubmit={handleEmailSubmit} className="space-y-4">
+                <form onSubmit={handleEmailSubmit('looper')} className="space-y-4">
                   <div>
                     <input
                       type="email"
@@ -662,7 +662,7 @@ export const LaunchPageV2: React.FC = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Prêt à acheter ?</h3>
                 
-                <form onSubmit={handleEmailSubmit} className="space-y-4">
+                <form onSubmit={handleEmailSubmit('buyer')} className="space-y-4">
                   <div>
                     <input
                       type="email"
