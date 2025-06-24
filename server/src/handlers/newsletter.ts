@@ -377,28 +377,6 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
         ],
       });
 
-      if (process.env.EMAIL_TO) {
-        await transporter.sendMail({
-          from: process.env.EMAIL_FROM,
-          to: process.env.EMAIL_TO,
-          subject: '🎯 Nouvelle inscription LoopImmo',
-          text: `Nouvelle inscription sur LoopImmo !\n\nEmail : ${email}\nRole : ${role || 'n/a'}\nCode de parrainage : ${referralCode}${referredBy ? `\nParrainé par : ${referredBy}` : ''}\n\nTableau de bord admin pour plus de détails.`,
-          html: `
-            <div style="font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 20px; background: #f8fafc; border-radius: 8px;">
-              <h2 style="color: #2d3748; margin-bottom: 20px;">🎯 Nouvelle inscription LoopImmo</h2>
-              <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #48bb78;">
-                <p><strong>Email :</strong> ${email}</p>
-                <p><strong>Rôle :</strong> ${role || 'n/a'}</p>
-                <p><strong>Code de parrainage :</strong> <code style="background: #edf2f7; padding: 2px 6px; border-radius: 4px;">${referralCode}</code></p>
-                ${referredBy ? `<p><strong>Parrainé par :</strong> ${referredBy}</p>` : ''}
-                <p style="margin-top: 15px; font-size: 14px; color: #718096;">
-                  Consultez le tableau de bord admin pour plus de détails.
-                </p>
-              </div>
-            </div>
-          `
-        });
-      }
     }
     res.status(200).json({ success: true, referralCode, emailSent: !!transporter });
   } catch (err) {
