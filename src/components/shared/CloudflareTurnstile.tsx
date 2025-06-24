@@ -30,7 +30,7 @@ const CloudflareTurnstile = forwardRef<{ value: string | null }, TurnstileProps>
       script.onload = () => {
         if (widgetRef.current && window.turnstile) {
           const id = window.turnstile.render(widgetRef.current, {
-            sitekey: '0x4AAAAABiERNubU16D6CAE', // Votre clé du site
+            sitekey: import.meta.env.VITE_TURNSTILE_SITE_KEY,
             callback: (token: string) => {
               setValue(token)
               onSuccess?.(token)
