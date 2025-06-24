@@ -41,7 +41,6 @@ if %errorlevel% equ 0 (
     echo.
     
     set /p push_choice="Voulez-vous pousser vers le repository distant ? (y/n): "
-    echo Vous avez entre : '[!push_choice!]'
     
     rem On ne garde que la première lettre
     set "choice=!push_choice:~0,1!"
