@@ -460,11 +460,11 @@ export const LaunchPageV2: React.FC = () => {
                     </button>
                   </div>
 
-                  {referralCode && (
+                  {referralCode && email && (
                     <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
                       <p className="text-sm text-purple-700">
                         <Gift className="w-4 h-4 inline mr-1" />
-                        <strong>-20% sur vos frais</strong> grâce au parrainage !
+                        <strong>10 %</strong> des gains de vos filleuls pour chacune des ventes réalisées !
                       </p>
                     </div>
                   )}
@@ -532,11 +532,11 @@ export const LaunchPageV2: React.FC = () => {
                     </button>
                   </div>
                   
-                  {referralCode && (
+                  {referralCode && email && (
                     <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
                       <p className="text-sm text-purple-700">
                         <Gift className="w-4 h-4 inline mr-1" />
-                        <strong>Formation gratuite</strong> + bonus de bienvenue !
+                        <strong>10 %</strong> des gains de vos filleuls pour chacune des ventes réalisées !
                       </p>
                     </div>
                   )}
@@ -692,11 +692,11 @@ export const LaunchPageV2: React.FC = () => {
                     </button>
                   </div>
                   
-                  {referralCode && (
+                  {referralCode && email && (
                     <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
                       <p className="text-sm text-purple-700">
                         <Gift className="w-4 h-4 inline mr-1" />
-                        <strong>Accompagnement prioritaire</strong> + conseils personnalisés !
+                        <strong>10 %</strong> des gains de vos filleuls pour chacune des ventes réalisées !
                       </p>
                     </div>
                   )}
