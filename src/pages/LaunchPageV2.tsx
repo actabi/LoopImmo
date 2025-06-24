@@ -7,6 +7,7 @@ export const LaunchPageV2: React.FC = () => {
   const [showReferralSuccess, setShowReferralSuccess] = useState(false);
   const [showReferralPopup, setShowReferralPopup] = useState(false);
 
+
   const validateEmail = (value: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(value);
