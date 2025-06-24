@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ArrowRight, Users, TrendingDown, Shield, Home, Search, Euro, Clock, CheckCircle, Star, Heart, Zap, Award, UserCheck, FileCheck, Handshake, ArrowDown, Gift, Percent, UserPlus, Copy, Check, Info, X, Share2 } from 'lucide-react';
+import Altcha from '../components/shared/Altcha';
 
 export const LaunchPageV2: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -177,6 +178,13 @@ export const LaunchPageV2: React.FC = () => {
       </div>
     </div>
   );
+
+  const altchaRef = useRef<HTMLInputElement>(null)
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    console.log('Altcha payload:', altchaRef.current?.value)
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -463,7 +471,11 @@ export const LaunchPageV2: React.FC = () => {
                       <Info className="w-5 h-5" />
                     </button>
                   </div>
-
+                  <fieldset>
+                    <Altcha
+                      ref={altchaRef}
+                    />
+                  </fieldset>
                   {referralCode && email && (
                     <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
                       <p className="text-sm text-purple-700">
@@ -536,7 +548,11 @@ export const LaunchPageV2: React.FC = () => {
                       <Info className="w-5 h-5" />
                     </button>
                   </div>
-                  
+                                    <fieldset>
+                    <Altcha
+                      ref={altchaRef}
+                    />
+                  </fieldset>
                   {referralCode && email && (
                     <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
                       <p className="text-sm text-purple-700">
@@ -697,7 +713,11 @@ export const LaunchPageV2: React.FC = () => {
                       <Info className="w-5 h-5" />
                     </button>
                   </div>
-                  
+                                    <fieldset>
+                    <Altcha
+                      ref={altchaRef}
+                    />
+                  </fieldset>
                   {referralCode && email && (
                     <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
                       <p className="text-sm text-purple-700">
