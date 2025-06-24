@@ -3,17 +3,6 @@ import { useSearchParams } from 'react-router-dom';
 import { ArrowRight, Users, TrendingDown, Shield, Home, Search, Euro, Clock, CheckCircle, Star, Heart, Zap, Award, UserCheck, FileCheck, Handshake, ArrowDown, Gift, Percent, UserPlus, Copy, Check, Info, X, Share2 } from 'lucide-react';
 import CloudflareTurnstile from '../components/shared/CloudflareTurnstile';
 
-// Déclaration TypeScript pour Turnstile
-declare global {
-  interface Window {
-    turnstile: {
-      render: (element: HTMLElement, options: any) => string;
-      remove: (widgetId: string) => void;
-      reset: (widgetId: string) => void;
-    };
-  }
-}
-
 export const LaunchPageV2: React.FC = () => {
   const [searchParams] = useSearchParams();
   const [email, setEmail] = useState('');
