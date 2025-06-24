@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { LaunchPage } from './pages/LaunchPage';
 import { LandingPage } from './pages/LandingPage';
@@ -24,6 +24,19 @@ function App() {
   // Lire la variable d'environnement pour déterminer quelle page afficher
   const isLaunchMode = import.meta.env.VITE_LAUNCH_MODE === 'true';
   const isV2Mode = import.meta.env.VITE_V2_MODE === 'true';
+
+  useEffect(() => {
+    if (import.meta.env.DEV) {
+      const apiUrl = (import.meta.env.VITE_API_URL || 'http://localhost:3000') + '/';
+      fetch(apiUrl)
+        .then((res) => {
+          console.debug('Backend connection success', res.status);
+        })
+        .catch((err) => {
+          console.error('Backend connection failed', err);
+        });
+    }
+  }, []);
 
   return (
     <AuthProvider>
