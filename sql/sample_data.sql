@@ -66,7 +66,7 @@ INSERT INTO service_proposals (id, property_id, provider_id, status, proposed_da
 
 -- Subscriptions and features
 INSERT INTO subscription_features (id, name, description, category) VALUES
-  ('f1', 'Alertes personnalisées illimitées', 'Créez autant d\'alertes que vous souhaitez', 'search'),
+  ('f1', 'Alertes personnalisées illimitées', 'Créez autant d''alertes que vous souhaitez', 'search'),
   ('f4', 'Support prioritaire 7j/7', 'Assistance dédiée par téléphone et chat', 'support');
 
 INSERT INTO subscription_feature_plans (feature_id, plan) VALUES

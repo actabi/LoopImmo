@@ -4,6 +4,10 @@ CREATE SCHEMA public;
 GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO public;
 
+-- Accorder tous les droits sur le schéma à adminBolt
+GRANT ALL PRIVILEGES ON SCHEMA public TO "adminBolt";
+GRANT CREATE ON SCHEMA public TO "adminBolt";
+
 -- PostgreSQL database schema for LoopImmo
 -- Creates core tables for the application
 
@@ -209,7 +213,21 @@ CREATE TABLE subscriptions (
   billing_cycle VARCHAR
 );
 
-ALTER DEFAULT PRIVILEGES IN SCHEMA public
-  GRANT INSERT, SELECT, UPDATE, DELETE ON TABLES TO "adminBolt";
-ALTER DEFAULT PRIVILEGES IN SCHEMA public
-  GRANT USAGE, SELECT ON SEQUENCES TO "adminBolt";
+-- ACCORDER TOUTES LES PERMISSIONS À adminBolt SUR TOUTES LES TABLES EXISTANTES
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO "adminBolt";
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO "adminBolt";
+GRANT USAGE ON ALL SEQUENCES IN SCHEMA public TO "adminBolt";
+
+-- ACCORDER LES PERMISSIONS SUR LES FUTURES TABLES ET SÉQUENCES
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL PRIVILEGES ON TABLES TO "adminBolt";
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL PRIVILEGES ON SEQUENCES TO "adminBolt";
+
+-- PERMISSIONS SUPPLÉMENTAIRES POUR LA GESTION DES FONCTIONS ET TYPES
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT EXECUTE ON FUNCTIONS TO "adminBolt";
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT USAGE ON TYPES TO "adminBolt";
+
+-- S'assurer que adminBolt peut se connecter à la base de données
+GRANT CONNECT ON DATABASE "LoopImmo" TO "adminBolt";
+
+-- Optionnel : Donner le rôle de création de base de données (si nécessaire)
+-- ALTER USER "adminBolt" CREATEDB;
