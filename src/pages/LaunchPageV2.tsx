@@ -1,18 +1,7 @@
-import React, { useState, useEffect,useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ArrowRight, Users, TrendingDown, Shield, Home, Search, Euro, Clock, CheckCircle, Star, Heart, Zap, Award, UserCheck, FileCheck, Handshake, ArrowDown, Gift, Percent, UserPlus, Copy, Check, Info, X, Share2 } from 'lucide-react';
-import CloudflareTurnstile from '../components/shared/CloudflareTurnstile';
-
-// Déclaration TypeScript pour Turnstile
-declare global {
-  interface Window {
-    turnstile: {
-      render: (element: HTMLElement, options: any) => string;
-      remove: (widgetId: string) => void;
-      reset: (widgetId: string) => void;
-    };
-  }
-}
+import Altcha from '../components/shared/Altcha';
 
 export const LaunchPageV2: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -21,7 +10,6 @@ export const LaunchPageV2: React.FC = () => {
   const [showReferralSuccess, setShowReferralSuccess] = useState(false);
   const [showReferralPopup, setShowReferralPopup] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
 
   useEffect(() => {
     const ref = searchParams.get('ref');
@@ -36,15 +24,6 @@ export const LaunchPageV2: React.FC = () => {
     return re.test(value);
   };
 
-    const handleTurnstileSuccess = (token: string) => {
-    setTurnstileToken(token);
-  };
-
-  const handleTurnstileError = () => {
-    setTurnstileToken(null);
-    alert('Erreur de vérification. Veuillez réessayer.');
-  };
-
   const handleEmailSubmit = (role: string) => async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -53,17 +32,12 @@ export const LaunchPageV2: React.FC = () => {
       return;
     }
 
-        if (!turnstileToken) {
-      alert('Veuillez compléter la vérification de sécurité');
-      return;
-    }
-
     setIsLoading(true);
     try {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, referredBy: referralCode, role, turnstileToken  }),
+        body: JSON.stringify({ email, referredBy: referralCode, role }),
       });
 
       if (res.status === 409) {
@@ -82,7 +56,6 @@ export const LaunchPageV2: React.FC = () => {
         );
         setEmail('');
         setReferralCode('');
-        setTurnstileToken(null);
         setShowReferralSuccess(false);
       }, 2000);
     } catch (err) {
@@ -205,6 +178,13 @@ export const LaunchPageV2: React.FC = () => {
       </div>
     </div>
   );
+
+  const altchaRef = useRef<HTMLInputElement>(null)
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    console.log('Altcha payload:', altchaRef.current?.value)
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -491,12 +471,11 @@ export const LaunchPageV2: React.FC = () => {
                       <Info className="w-5 h-5" />
                     </button>
                   </div>
-                  <div className="mb-4">
-  <CloudflareTurnstile
-    onSuccess={handleTurnstileSuccess}
-    onError={handleTurnstileError}
-  />
-</div>
+                  <fieldset>
+                    <Altcha
+                      ref={altchaRef}
+                    />
+                  </fieldset>
                   {referralCode && email && (
                     <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
                       <p className="text-sm text-purple-700">
@@ -569,12 +548,7 @@ export const LaunchPageV2: React.FC = () => {
                       <Info className="w-5 h-5" />
                     </button>
                   </div>
-<div className="mb-4">
-  <CloudflareTurnstile
-    onSuccess={handleTurnstileSuccess}
-    onError={handleTurnstileError}
-  />
-</div>
+                  
                   {referralCode && email && (
                     <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
                       <p className="text-sm text-purple-700">
@@ -735,12 +709,7 @@ export const LaunchPageV2: React.FC = () => {
                       <Info className="w-5 h-5" />
                     </button>
                   </div>
-<div className="mb-4">
-  <CloudflareTurnstile
-    onSuccess={handleTurnstileSuccess}
-    onError={handleTurnstileError}
-  />
-</div>
+                  
                   {referralCode && email && (
                     <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
                       <p className="text-sm text-purple-700">
