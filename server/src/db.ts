@@ -3,8 +3,14 @@ import path from 'path';
 import dotenv from 'dotenv';
 import { log, error } from './utils/logger';
 
-// Load server-specific environment variables
-dotenv.config({ path: path.resolve(__dirname, '../.env') });
+// Load server-specific environment variables and log the result
+const envPath = path.resolve(__dirname, '../.env');
+const envResult = dotenv.config({ path: envPath });
+if (envResult.error) {
+  log(`No .env file found at ${envPath}`);
+} else {
+  log(`Loaded environment variables from ${envPath}`);
+}
 
 const connectionString = process.env.DATABASE_URL;
 const sslRequired = connectionString?.includes('sslmode=require');
