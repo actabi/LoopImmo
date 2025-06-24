@@ -1,8 +1,11 @@
 import express, { Request, Response } from 'express';
+import cors from 'cors';
 import * as Sentry from '@sentry/node';
 import { query, connectDb } from './db';
 import { subscribeNewsletter, register } from './handlers';
 import { log, error } from './utils/logger';
+
+const allowedOrigin = process.env.FRONTEND_URL || '*';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -15,6 +18,7 @@ Sentry.init({
 // RequestHandler must be the first middleware
 app.use(Sentry.Handlers.requestHandler());
 
+app.use(cors({ origin: allowedOrigin }));
 app.use(express.json());
 
 app.get('/api/users', async (_req: Request, res: Response) => {

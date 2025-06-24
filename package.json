@@ -29,7 +29,8 @@
     "pg": "^8.11.3",
     "dotenv": "^16.3.1",
     "nodemailer": "^6.9.11",
-    "qrcode": "^1.5.3"
+    "qrcode": "^1.5.3",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
