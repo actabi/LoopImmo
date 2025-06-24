@@ -37,9 +37,9 @@ if %errorlevel% equ 0 (
     echo.
     echo ✓ Commit cree avec succes !
     echo.
-    set /p push_choice="Voulez-vous pousser vers le repository distant ? (o/n): "
+    set /p push_choice="Voulez-vous pousser vers le repository distant ? (y/n): "
     
-    if /i "%push_choice%"=="o" (
+    if /i "%push_choice%"=="y" (
         echo.
         echo Push vers le repository distant...
         git push origin HEAD
