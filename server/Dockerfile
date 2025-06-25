@@ -1,21 +1,17 @@
 FROM node:18-alpine
 
+# Installer TypeScript globalement
+RUN npm install -g typescript
+
 WORKDIR /app
 
-# Copier les fichiers de dépendances
 COPY package*.json ./
-
-# Installer les dépendances
 RUN npm ci
 
-# Copier le code source
 COPY . .
 
-# Build avec npx au lieu du script npm
-RUN npx tsc
+# Maintenant tsc est disponible globalement
+RUN npm run build
 
-# Exposer le port
 EXPOSE 3000
-
-# Démarrer le serveur
 CMD ["npm", "start"]
