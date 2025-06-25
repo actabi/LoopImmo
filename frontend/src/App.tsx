@@ -26,7 +26,7 @@ function App() {
   const isV2Mode = import.meta.env.VITE_V2_MODE === 'true';
 
   useEffect(() => {
-    if (import.meta.env.DEV) {
+    
       const apiUrl = (import.meta.env.VITE_API_URL || 'http://localhost:3000') + '/';
       fetch(apiUrl)
         .then((res) => {
@@ -35,7 +35,7 @@ function App() {
         .catch((err) => {
           console.error('Backend connection failed', err);
         });
-    }
+    
   }, []);
 
   return (
