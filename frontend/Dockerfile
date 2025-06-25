@@ -6,4 +6,4 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-CMD ["sh", "-c", "npx serve -s dist -p ${PORT:-3000}"]
+CMD ["sh", "-c", "npx serve -s dist -p ${PORT:-3000}"] 
