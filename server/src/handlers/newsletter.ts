@@ -7,9 +7,8 @@ import { randomUUID } from 'crypto';
 import { query } from '../db';
 import { log, error } from '../utils/logger';
 
-// Load server-specific environment variables for email credentials
-// The handler lives in `server/src/handlers`, so the root `.env`
-// resides two directories up from this file.
+// Load environment variables from the server root .env file.
+// The handler lives in `server/src/handlers`, so the .env file is two directories up.
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 export const subscribeNewsletter = async (req: Request, res: Response) => {
