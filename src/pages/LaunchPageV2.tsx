@@ -3,12 +3,10 @@ import { useSearchParams } from "react-router-dom";
 import {
   ArrowRight,
   Users,
-  TrendingDown,
   Shield,
   Home,
   Search,
   Euro,
-  Clock,
   CheckCircle,
   Star,
   Heart,
@@ -21,8 +19,6 @@ import {
   Gift,
   Percent,
   UserPlus,
-  Copy,
-  Check,
   Info,
   X,
   Share2,
@@ -265,7 +261,7 @@ export const LaunchPageV2: React.FC = () => {
             Bêta ouverte prochainement
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
             La révolution de l'immobilier
             <span className="block" style={{ color: "#1974cc" }}>
               {" "}
@@ -273,36 +269,39 @@ export const LaunchPageV2: React.FC = () => {
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl lg:text-2xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed px-4">
             Avec LoopImmo, votre voisin, vos amis et vous-même devenez des{" "}
-            <strong>Loopers</strong> : gagnez des primes en diffusant l’annonce
+            <strong>Loopers</strong> : gagnez des primes en diffusant l'annonce
             et en accompagnant les visites.
           </p>
 
-          {/* Boutons de découverte par rôle */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 max-w-4xl mx-auto">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center mb-16 max-w-4xl mx-auto px-2 sm:px-4">
             <button
               onClick={() => scrollToSection("vendeur-section")}
-              className="px-8 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all transform hover:scale-105 flex items-center justify-center"
+              className="px-3 sm:px-6 py-3 sm:py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all transform hover:scale-105 flex items-center justify-center text-xs sm:text-sm md:text-base flex-1 sm:flex-none"
             >
-              <Home className="w-5 h-5 mr-2" />
-              Je vends, ça m’intéresse
+              <Home className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+              <span className="text-center leading-tight">
+                Je vends, ça m'intéresse
+              </span>
             </button>
             <button
               onClick={() => scrollToSection("looper-section")}
-              className="px-8 py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-all transform hover:scale-105 flex items-center justify-center"
+              className="px-3 sm:px-6 py-3 sm:py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-all transform hover:scale-105 flex items-center justify-center text-xs sm:text-sm md:text-base flex-1 sm:flex-none"
             >
-              <Award className="w-5 h-5 mr-2" />
-              Deviennez Looper,
-              <br />
-              arrondissez vos fins de mois
+              <Award className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+              <span className="text-center leading-tight">
+                Devenir Looper, avoir un complément de revenus
+              </span>
             </button>
             <button
               onClick={() => scrollToSection("acheteur-section")}
-              className="px-8 py-4 bg-yellow-600 text-white font-semibold rounded-xl hover:bg-yellow-700 transition-all transform hover:scale-105 flex items-center justify-center"
+              className="px-3 sm:px-6 py-3 sm:py-4 bg-yellow-600 text-white font-semibold rounded-xl hover:bg-yellow-700 transition-all transform hover:scale-105 flex items-center justify-center text-xs sm:text-sm md:text-base flex-1 sm:flex-none"
             >
-              <Search className="w-5 h-5 mr-2" />
-              Je cherche un bien
+              <Search className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+              <span className="text-center leading-tight">
+                Je cherche un bien
+              </span>
             </button>
           </div>
 
@@ -317,33 +316,37 @@ export const LaunchPageV2: React.FC = () => {
             </button>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-              <h3 className="text-4xl font-bold text-blue-600 mb-2">-72%</h3>
-              <p className="text-gray-700 font-medium">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto px-4">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 md:p-6 shadow-lg">
+              <h3 className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">
+                -72%
+              </h3>
+              <p className="text-sm md:text-base text-gray-700 font-medium">
                 Par rapport à une agence classique, vos économies sont
                 immédiates
               </p>
             </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-              <div className="text-4xl font-bold text-green-600 mb-2">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 md:p-6 shadow-lg">
+              <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">
                 1 500€
               </div>
-              <p className="text-gray-700 font-medium">
+              <p className="text-sm md:text-base text-gray-700 font-medium">
                 complement de revenu moy. versée au Looper par vente
               </p>
             </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-              <div className="text-4xl font-bold text-yellow-600 mb-2">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 md:p-6 shadow-lg">
+              <div className="text-3xl md:text-4xl font-bold text-yellow-600 mb-2">
                 IA 24/7
               </div>
-              <p className="text-gray-700 font-medium">
+              <p className="text-sm md:text-base text-gray-700 font-medium">
                 Assistance personnalisée à chaque étape
               </p>
             </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-              <div className="text-4xl font-bold text-red-600 mb-2">3 en 1</div>
-              <p className="text-gray-700 font-medium">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 md:p-6 shadow-lg">
+              <div className="text-3xl md:text-4xl font-bold text-red-600 mb-2">
+                3 en 1
+              </div>
+              <p className="text-sm md:text-base text-gray-700 font-medium">
                 Diagnostic, conformité & rénovation gérés par nos partenaires
               </p>
             </div>
@@ -584,24 +587,24 @@ export const LaunchPageV2: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl p-6 shadow-lg">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900">
+              <div className="bg-white rounded-2xl p-4 md:p-6 shadow-lg">
+                <h3 className="text-lg md:text-xl font-semibold mb-4 text-gray-900">
                   Étapes simplifiées :
                 </h3>
-                <div className="flex flex-wrap gap-2">
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 items-start sm:items-center">
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
                     1. Estimation IA
                   </span>
-                  <ArrowRight className="w-4 h-4 text-gray-400 mt-1" />
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                  <ArrowRight className="w-4 h-4 text-gray-400 hidden sm:block" />
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
                     2. Validation de l'annonce
                   </span>
-                  <ArrowRight className="w-4 h-4 text-gray-400 mt-1" />
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                  <ArrowRight className="w-4 h-4 text-gray-400 hidden sm:block" />
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
                     3. Diffusion
                   </span>
-                  <ArrowRight className="w-4 h-4 text-gray-400 mt-1" />
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                  <ArrowRight className="w-4 h-4 text-gray-400 hidden sm:block" />
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
                     4. Signature
                   </span>
                 </div>
@@ -649,7 +652,7 @@ export const LaunchPageV2: React.FC = () => {
                       <Info className="w-5 h-5" />
                     </button>
                   </div>
-                  {referralCode && email && (
+                  {email && (
                     <div>
                       {" "}
                       <fieldset>
@@ -730,7 +733,7 @@ export const LaunchPageV2: React.FC = () => {
                     </button>
                   </div>
 
-                  {referralCode && email && (
+                  {email && (
                     <div>
                       {" "}
                       <fieldset>
@@ -798,26 +801,30 @@ export const LaunchPageV2: React.FC = () => {
                 <h3 className="text-xl font-semibold mb-4 text-gray-900">
                   Rémunération Looper :
                 </h3>
-                <div className="grid grid-cols-3 gap-4 text-center">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                   <div>
-                    <div className="text-2xl font-bold text-green-600">
+                    <div className="text-xl md:text-2xl font-bold text-green-600">
                       300€
                     </div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-xs md:text-sm text-gray-600">
                       Mise en relation
                     </div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-green-600">
+                    <div className="text-xl md:text-2xl font-bold text-green-600">
                       800€
                     </div>
-                    <div className="text-sm text-gray-600">Accompagnement</div>
+                    <div className="text-xs md:text-sm text-gray-600">
+                      Accompagnement
+                    </div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-green-600">
+                    <div className="text-xl md:text-2xl font-bold text-green-600">
                       1500€
                     </div>
-                    <div className="text-sm text-gray-600">Vente complète</div>
+                    <div className="text-xs md:text-sm text-gray-600">
+                      Vente complète
+                    </div>
                   </div>
                 </div>
               </div>
@@ -871,22 +878,30 @@ export const LaunchPageV2: React.FC = () => {
                 <h3 className="text-xl font-semibold mb-4 text-gray-900">
                   Avantages acheteur :
                 </h3>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-2 md:gap-4">
                   <div className="flex items-center">
-                    <Shield className="w-5 h-5 text-yellow-600 mr-2" />
-                    <span className="text-sm font-medium">Sécurisé</span>
+                    <Shield className="w-4 h-4 md:w-5 md:h-5 text-yellow-600 mr-2" />
+                    <span className="text-xs md:text-sm font-medium">
+                      Sécurisé
+                    </span>
                   </div>
                   <div className="flex items-center">
-                    <Euro className="w-5 h-5 text-yellow-600 mr-2" />
-                    <span className="text-sm font-medium">Sans frais</span>
+                    <Euro className="w-4 h-4 md:w-5 md:h-5 text-yellow-600 mr-2" />
+                    <span className="text-xs md:text-sm font-medium">
+                      Sans frais
+                    </span>
                   </div>
                   <div className="flex items-center">
-                    <UserCheck className="w-5 h-5 text-yellow-600 mr-2" />
-                    <span className="text-sm font-medium">Accompagné</span>
+                    <UserCheck className="w-4 h-4 md:w-5 md:h-5 text-yellow-600 mr-2" />
+                    <span className="text-xs md:text-sm font-medium">
+                      Accompagné
+                    </span>
                   </div>
                   <div className="flex items-center">
-                    <Heart className="w-5 h-5 text-yellow-600 mr-2" />
-                    <span className="text-sm font-medium">Humain</span>
+                    <Heart className="w-4 h-4 md:w-5 md:h-5 text-yellow-600 mr-2" />
+                    <span className="text-xs md:text-sm font-medium">
+                      Humain
+                    </span>
                   </div>
                 </div>
               </div>
@@ -934,7 +949,7 @@ export const LaunchPageV2: React.FC = () => {
                     </button>
                   </div>
 
-                  {referralCode && email && (
+                  {email && (
                     <div>
                       {" "}
                       <fieldset>
@@ -979,7 +994,7 @@ export const LaunchPageV2: React.FC = () => {
           </div>
 
           {/* 3 colonnes compactes */}
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {/* Vendeurs */}
             <div className="bg-white rounded-xl p-6 shadow-lg">
               <div className="flex items-center mb-4">
