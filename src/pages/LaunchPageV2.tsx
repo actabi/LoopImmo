@@ -1,23 +1,48 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { ArrowRight, Users, TrendingDown, Shield, Home, Search, Euro, Clock, CheckCircle, Star, Heart, Zap, Award, UserCheck, FileCheck, Handshake, ArrowDown, Gift, Percent, UserPlus, Copy, Check, Info, X, Share2 } from 'lucide-react';
-import Altcha from '../components/shared/Altcha';
+import React, { useState, useEffect, useRef } from "react";
+import { useSearchParams } from "react-router-dom";
+import {
+  ArrowRight,
+  Users,
+  TrendingDown,
+  Shield,
+  Home,
+  Search,
+  Euro,
+  Clock,
+  CheckCircle,
+  Star,
+  Heart,
+  Zap,
+  Award,
+  UserCheck,
+  FileCheck,
+  Handshake,
+  ArrowDown,
+  Gift,
+  Percent,
+  UserPlus,
+  Copy,
+  Check,
+  Info,
+  X,
+  Share2,
+} from "lucide-react";
+import Altcha from "../components/shared/Altcha";
 
 export const LaunchPageV2: React.FC = () => {
   const [searchParams] = useSearchParams();
-  const [email, setEmail] = useState('');
-  const [referralCode, setReferralCode] = useState('');
+  const [email, setEmail] = useState("");
+  const [referralCode, setReferralCode] = useState("");
   const [showReferralSuccess, setShowReferralSuccess] = useState(false);
   const [showReferralPopup, setShowReferralPopup] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const ref = searchParams.get('ref');
+    const ref = searchParams.get("ref");
     if (ref) {
       setReferralCode(ref);
     }
   }, [searchParams]);
-
 
   const validateEmail = (value: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -28,25 +53,25 @@ export const LaunchPageV2: React.FC = () => {
     e.preventDefault();
 
     if (!validateEmail(email)) {
-      alert('Veuillez entrer un email valide');
+      alert("Veuillez entrer un email valide");
       return;
     }
 
     setIsLoading(true);
     try {
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, referredBy: referralCode, role }),
       });
 
       if (res.status === 409) {
-        alert('Cet email est déjà enregistré');
+        alert("Cet email est déjà enregistré");
         return;
       }
 
       if (!res.ok) {
-        throw new Error('Request failed');
+        throw new Error("Request failed");
       }
 
       setShowReferralSuccess(true);
@@ -54,8 +79,8 @@ export const LaunchPageV2: React.FC = () => {
         alert(
           "Merci ! Nous vous contacterons dès l'ouverture de la bêta. Votre code de parrainage vous sera envoyé par email."
         );
-        setEmail('');
-        setReferralCode('');
+        setEmail("");
+        setReferralCode("");
         setShowReferralSuccess(false);
       }, 2000);
     } catch (err) {
@@ -69,17 +94,19 @@ export const LaunchPageV2: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   // Popup Component
   const ReferralPopup = () => (
-<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-hidden shadow-xl">
         {/* Header compact */}
         <div className="flex justify-between items-center p-5 pb-3 border-b">
-          <h3 className="text-xl font-bold text-gray-900">Comment fonctionne le parrainage ?</h3>
+          <h3 className="text-xl font-bold text-gray-900">
+            Comment fonctionne le parrainage ?
+          </h3>
           <button
             onClick={() => setShowReferralPopup(false)}
             className="p-1.5 hover:bg-gray-100 rounded-full transition-colors"
@@ -92,35 +119,49 @@ export const LaunchPageV2: React.FC = () => {
         <div className="overflow-y-auto p-5">
           {/* Les 3 étapes */}
           <div className="mb-6">
-            <h4 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">Les étapes</h4>
+            <h4 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">
+              Les étapes
+            </h4>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <div className="bg-purple-100 rounded-full p-2 flex-shrink-0">
                   <UserPlus className="w-4 h-4 text-purple-600" />
                 </div>
                 <div className="flex-1">
-                  <h5 className="font-semibold text-gray-900 text-sm">1. Parrainez un proche</h5>
-                  <p className="text-xs text-gray-600">Invitez avec votre code reçu par email</p>
+                  <h5 className="font-semibold text-gray-900 text-sm">
+                    1. Parrainez un proche
+                  </h5>
+                  <p className="text-xs text-gray-600">
+                    Invitez avec votre code reçu par email
+                  </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-3">
                 <div className="bg-purple-100 rounded-full p-2 flex-shrink-0">
                   <Handshake className="w-4 h-4 text-purple-600" />
                 </div>
                 <div className="flex-1">
-                  <h5 className="font-semibold text-gray-900 text-sm">2. Votre filleul s'inscrit</h5>
-                  <p className="text-xs text-gray-600">Il devient vendeur, acheteur ou Looper</p>
+                  <h5 className="font-semibold text-gray-900 text-sm">
+                    2. Votre filleul s'inscrit
+                  </h5>
+                  <p className="text-xs text-gray-600">
+                    Il devient vendeur, acheteur ou Looper
+                  </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-3">
                 <div className="bg-purple-100 rounded-full p-2 flex-shrink-0">
                   <Percent className="w-4 h-4 text-purple-600" />
                 </div>
                 <div className="flex-1">
-                  <h5 className="font-semibold text-gray-900 text-sm">3. Gagnez à vie</h5>
-                  <p className="text-xs text-gray-600">Un % sur chaque vente, versé au compromis</p>
+                  <h5 className="font-semibold text-gray-900 text-sm">
+                    3. Gagnez à vie
+                  </h5>
+                  <p className="text-xs text-gray-600">
+                    Un % sur chaque vente, versé au compromis
+                  </p>
                 </div>
               </div>
             </div>
@@ -128,23 +169,31 @@ export const LaunchPageV2: React.FC = () => {
 
           {/* Les gains */}
           <div className="mb-6">
-            <h4 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">Vos gains</h4>
+            <h4 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">
+              Vos gains
+            </h4>
             <div className="grid grid-cols-3 gap-2">
               <div className="bg-purple-50 rounded-lg p-3 text-center border border-purple-100">
                 <p className="text-2xl font-bold text-purple-600">10%</p>
-                <p className="text-xs font-medium text-gray-700">Filleul vendeur</p>
+                <p className="text-xs font-medium text-gray-700">
+                  Filleul vendeur
+                </p>
                 <p className="text-xs text-gray-500 mt-1">du forfait</p>
               </div>
-              
+
               <div className="bg-green-50 rounded-lg p-3 text-center border border-green-100">
                 <p className="text-2xl font-bold text-green-600">10%</p>
-                <p className="text-xs font-medium text-gray-700">Filleul Looper</p>
+                <p className="text-xs font-medium text-gray-700">
+                  Filleul Looper
+                </p>
                 <p className="text-xs text-gray-500 mt-1">du forfait</p>
               </div>
-              
+
               <div className="bg-blue-50 rounded-lg p-3 text-center border border-blue-100">
                 <p className="text-2xl font-bold text-blue-600">100€</p>
-                <p className="text-xs font-medium text-gray-700">Filleul acheteur</p>
+                <p className="text-xs font-medium text-gray-700">
+                  Filleul acheteur
+                </p>
                 <p className="text-xs text-gray-500 mt-1">prime d'achat</p>
               </div>
             </div>
@@ -154,7 +203,9 @@ export const LaunchPageV2: React.FC = () => {
           <div className="bg-yellow-50 rounded-lg p-4 mb-6 border border-yellow-100">
             <div className="flex items-center gap-2 mb-2">
               <Star className="w-4 h-4 text-yellow-600" />
-              <h4 className="text-sm font-semibold text-gray-900">Exemple : Bien vendu à 400 000€</h4>
+              <h4 className="text-sm font-semibold text-gray-900">
+                Exemple : Bien vendu à 400 000€
+              </h4>
             </div>
             <div className="grid grid-cols-2 gap-3 text-center">
               <div>
@@ -172,19 +223,21 @@ export const LaunchPageV2: React.FC = () => {
           <div className="bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg p-4 text-center text-white">
             <Share2 className="w-6 h-6 mx-auto mb-2" />
             <p className="text-sm font-semibold">Partagez et gagnez !</p>
-            <p className="text-xs text-blue-100 mt-1">Plus vous partagez, plus vous gagnez</p>
+            <p className="text-xs text-blue-100 mt-1">
+              Plus vous partagez, plus vous gagnez
+            </p>
           </div>
         </div>
       </div>
     </div>
   );
 
-  const altchaRef = useRef<HTMLInputElement>(null)
-  
+  const altchaRef = useRef<HTMLInputElement>(null);
+
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log('Altcha payload:', altchaRef.current?.value)
-  }
+    e.preventDefault();
+    console.log("Altcha payload:", altchaRef.current?.value);
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -200,9 +253,9 @@ export const LaunchPageV2: React.FC = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           {/* Logo */}
           <div className="mb-8">
-            <img 
-              src="/logo.svg" 
-              alt="LoopImmo" 
+            <img
+              src="/logo.svg"
+              alt="LoopImmo"
               className="h-24 md:h-32 lg:h-40 mx-auto"
             />
           </div>
@@ -211,45 +264,52 @@ export const LaunchPageV2: React.FC = () => {
             <Zap className="w-4 h-4 mr-2" />
             Bêta ouverte prochainement
           </div>
-          
+
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
             La révolution de l'immobilier
-            <span className="block" style={{ color: '#1974cc' }}> participatif</span>
+            <span className="block" style={{ color: "#1974cc" }}>
+              {" "}
+              participatif
+            </span>
           </h1>
-          
+
           <p className="text-xl md:text-2xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed">
-            Grâce aux <strong>Loopers</strong>, vendre ou acheter devient plus rapide, plus juste et plus humain.
+            Avec LoopImmo, votre voisin, vos amis et vous-même devenez des{" "}
+            <strong>Loopers</strong> : gagnez des primes en diffusant l’annonce
+            et en accompagnant les visites.
           </p>
 
           {/* Boutons de découverte par rôle */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 max-w-4xl mx-auto">
             <button
-              onClick={() => scrollToSection('vendeur-section')}
+              onClick={() => scrollToSection("vendeur-section")}
               className="px-8 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all transform hover:scale-105 flex items-center justify-center"
             >
               <Home className="w-5 h-5 mr-2" />
-              Je veux vendre
+              Je vends, ça m’intéresse
             </button>
             <button
-              onClick={() => scrollToSection('looper-section')}
+              onClick={() => scrollToSection("looper-section")}
               className="px-8 py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-all transform hover:scale-105 flex items-center justify-center"
             >
               <Award className="w-5 h-5 mr-2" />
-              J'arrondis mes fins de mois
+              Deviennez Looper,
+              <br />
+              arrondissez vos fins de mois
             </button>
             <button
-              onClick={() => scrollToSection('acheteur-section')}
+              onClick={() => scrollToSection("acheteur-section")}
               className="px-8 py-4 bg-yellow-600 text-white font-semibold rounded-xl hover:bg-yellow-700 transition-all transform hover:scale-105 flex items-center justify-center"
             >
               <Search className="w-5 h-5 mr-2" />
-              Je veux acheter
+              Je cherche un bien
             </button>
           </div>
 
           {/* Bouton découvrir en plus */}
           <div className="mb-16">
             <button
-              onClick={() => scrollToSection('pourquoi-section')}
+              onClick={() => scrollToSection("pourquoi-section")}
               className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors group"
             >
               <span className="mr-2">Découvrir le concept</span>
@@ -257,23 +317,35 @@ export const LaunchPageV2: React.FC = () => {
             </button>
           </div>
 
-					
           <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
               <h3 className="text-4xl font-bold text-blue-600 mb-2">-72%</h3>
-              <p className="text-gray-700 font-medium">de frais par rapport aux agences traditionnelles</p>
+              <p className="text-gray-700 font-medium">
+                Par rapport à une agence classique, vos économies sont
+                immédiates
+              </p>
             </div>
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-              <div className="text-4xl font-bold text-green-600 mb-2">1 500€</div>
-              <p className="text-gray-700 font-medium">complement de revenu moy. versée au Looper par vente</p>
+              <div className="text-4xl font-bold text-green-600 mb-2">
+                1 500€
+              </div>
+              <p className="text-gray-700 font-medium">
+                complement de revenu moy. versée au Looper par vente
+              </p>
             </div>
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-              <div className="text-4xl font-bold text-yellow-600 mb-2">IA 24/7</div>
-              <p className="text-gray-700 font-medium">Assistance personnalisée à chaque étape</p>
+              <div className="text-4xl font-bold text-yellow-600 mb-2">
+                IA 24/7
+              </div>
+              <p className="text-gray-700 font-medium">
+                Assistance personnalisée à chaque étape
+              </p>
             </div>
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
               <div className="text-4xl font-bold text-red-600 mb-2">3 en 1</div>
-              <p className="text-gray-700 font-medium">Diagnostic, conformité & rénovation gérés par nos partenaires</p>
+              <p className="text-gray-700 font-medium">
+                Diagnostic, conformité & rénovation gérés par nos partenaires
+              </p>
             </div>
           </div>
         </div>
@@ -286,29 +358,32 @@ export const LaunchPageV2: React.FC = () => {
             <div className="inline-flex items-center bg-purple-100 text-purple-800 px-6 py-3 rounded-full text-sm font-semibold mb-6">
               <Gift className="w-4 h-4 mr-2" />
               Programme de parrainage exclusif
-						</div>
-							<h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-								Stratégie gagnante
-							</h2>
-							<div className="text-xl text-gray-600 max-w-3xl mx-auto space-y-4">
-								<p>
-									Vous croyez au concept ? Ne perdez pas une minute :{' '}
-									<strong>inscrivez-vous dès maintenant</strong> et{' '}
-									<strong>partagez votre code de parrainage</strong> autour de vous.
-								</p>
-								<p>
-									En attendant l'ouverture officielle,{' '}
-									<strong>soyez parmi les premiers</strong> à mobiliser votre réseau et
-									maximisez vos gains !
-								</p>
-							</div>
-						</div>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Stratégie gagnante
+            </h2>
+            <div className="text-xl text-gray-600 max-w-3xl mx-auto space-y-4">
+              <p>
+                Vous croyez au concept ? Ne perdez pas une minute :{" "}
+                <strong>inscrivez-vous dès maintenant</strong> et{" "}
+                <strong>partagez votre code de parrainage</strong> autour de
+                vous.
+              </p>
+              <p>
+                En attendant l'ouverture officielle,{" "}
+                <strong>soyez parmi les premiers</strong> à mobiliser votre
+                réseau et maximisez vos gains !
+              </p>
+            </div>
+          </div>
 
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-3xl p-8 shadow-2xl text-center">
               <div className="flex items-center justify-center gap-4 mb-6">
                 <Gift className="w-12 h-12 text-purple-600" />
-                <h3 className="text-2xl font-bold text-gray-900">Votre code de parrainage</h3>
+                <h3 className="text-2xl font-bold text-gray-900">
+                  Votre code de parrainage
+                </h3>
                 <button
                   onClick={() => setShowReferralPopup(true)}
                   className="p-2 bg-purple-100 text-purple-600 rounded-full hover:bg-purple-200 transition-colors"
@@ -317,23 +392,35 @@ export const LaunchPageV2: React.FC = () => {
                   <Info className="w-5 h-5" />
                 </button>
               </div>
-              
+
               <div className="bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl p-6 mb-6">
                 <p className="text-lg text-gray-700 mb-4">
-                  <strong>Votre code personnel vous sera envoyé par email</strong> après votre inscription
+                  <strong>
+                    Votre code personnel vous sera envoyé par email
+                  </strong>{" "}
+                  après votre inscription
                 </p>
                 <div className="flex items-center justify-center gap-2 text-purple-700">
                   <Share2 className="w-5 h-5" />
-                  <span className="font-semibold">Partagez le concept dès maintenant !</span>
+                  <span className="font-semibold">
+                    Partagez le concept dès maintenant !
+                  </span>
                 </div>
               </div>
 
               <div className="bg-yellow-50 rounded-xl p-6 border border-yellow-200">
-                <h4 className="font-bold text-gray-900 mb-3">🚀 Stratégie gagnante</h4>
+                <h4 className="font-bold text-gray-900 mb-3">
+                  🚀 Stratégie gagnante
+                </h4>
                 <p className="text-gray-700 leading-relaxed">
-                  <strong>Plus vous partagez LoopImmo autour de vous, plus vous maximisez vos chances de gains !</strong><br/>
-                  Parlez-en à vos amis, famille, collègues... Si vous croyez au concept, 
-                  faites-le connaître avant l'ouverture officielle pour être les premiers bénéficiaires.
+                  <strong>
+                    Plus vous partagez LoopImmo autour de vous, plus vous
+                    maximisez vos chances de gains !
+                  </strong>
+                  <br />
+                  Parlez-en à vos amis, famille, collègues... Si vous croyez au
+                  concept, faites-le connaître avant l'ouverture officielle pour
+                  être les premiers bénéficiaires.
                 </p>
               </div>
             </div>
@@ -342,60 +429,122 @@ export const LaunchPageV2: React.FC = () => {
       </section>
 
       {/* Pourquoi LoopImmo */}
-      <section id="pourquoi-section" className="py-20 bg-white">
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* Logo */}
-          <div className="mb-8">
-            <img 
-              src="/logo.svg" 
-              alt="LoopImmo" 
-              className="h-12 md:h-16 mx-auto"
-            />
-          </div>
+<section id="pourquoi-section" className="py-20 bg-white">
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    {/* Logo */}
+    <div className="mb-8">
+      <img
+        src="/logo.svg"
+        alt="LoopImmo"
+        className="h-16 md:h-20 lg:h-24 mx-auto"
+      />
+    </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Notre vision : révolutionner l'immobilier
-          </h2>
-          
-          <div className="max-w-3xl mx-auto mb-12">
-            <p className="text-xl text-gray-700 mb-6 leading-relaxed">
-              <strong>LoopImmo</strong> transforme l'immobilier en créant une communauté où chacun trouve sa place : 
-              vendeurs qui économisent, acheteurs protégés, et <strong style={{ color: '#1974cc' }}>Loopers</strong> rémunérés 
-              pour leur contribution locale.
+    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+      L'immobilier réinventé par la communauté
+    </h2>
+
+    <div className="max-w-4xl mx-auto mb-12">
+      <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+        <strong>LoopImmo</strong> transforme la vente immobilière en
+        mobilisant votre
+        <strong style={{ color: "#1974cc" }}> communauté locale</strong> :
+        voisins, anciens occupants, connaissances deviennent des{" "}
+        <strong>Loopers rémunérés</strong>.
+      </p>
+
+      <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-xl p-6 mb-8">
+        <h3 className="text-lg font-bold text-gray-900 mb-3">
+          Comment ça fonctionne ?
+        </h3>
+        <div className="text-left space-y-3 text-gray-700">
+          <div className="flex items-center gap-3">
+            <div className="bg-emerald-100 rounded-full p-2 flex-shrink-0">
+              <CheckCircle className="w-4 h-4 text-emerald-600" />
+            </div>
+            <p>
+              <strong>Le vendeur choisit un Looper de confiance</strong>{" "}
+              pour piloter sa vente
             </p>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Ensemble, nous construisons un écosystème plus juste, plus transparent et plus humain, 
-              où la technologie sert l'humain et non l'inverse.
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="bg-emerald-100 rounded-full p-2 flex-shrink-0">
+              <CheckCircle className="w-4 h-4 text-emerald-600" />
+            </div>
+            <p>
+              <strong>Chaque Looper contribue selon ses compétences</strong>{" "}
+              : rédaction, photos, visites, recommandations
             </p>
           </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-              <div className="text-4xl font-bold text-blue-600 mb-2">🤝</div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Communauté</h3>
-              <p className="text-gray-600">Des liens humains au cœur de chaque transaction</p>
+          <div className="flex items-center gap-3">
+            <div className="bg-emerald-100 rounded-full p-2 flex-shrink-0">
+              <CheckCircle className="w-4 h-4 text-emerald-600" />
             </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-              <div className="text-4xl font-bold text-green-600 mb-2">💡</div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Innovation</h3>
-              <p className="text-gray-600">La technologie au service de l'humain</p>
-            </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-              <div className="text-4xl font-bold text-yellow-600 mb-2">⚖️</div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Équité</h3>
-              <p className="text-gray-600">Des bénéfices partagés pour tous</p>
-            </div>
+            <p>
+              <strong>L'IA accompagne chaque étape</strong> pour garantir
+              la qualité
+            </p>
           </div>
-
-          <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-sm font-semibold">
-            <Zap className="w-4 h-4 mr-2" />
-            Rejoignez le mouvement - Bêta ouverte prochainement
+          <div className="flex items-center gap-3">
+            <div className="bg-emerald-100 rounded-full p-2 flex-shrink-0">
+              <CheckCircle className="w-4 h-4 text-emerald-600" />
+            </div>
+            <p>
+              <strong>
+                Tous sont rémunérés uniquement si la vente se conclut
+              </strong>
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+
+      <p className="text-lg text-gray-600 leading-relaxed">
+        Résultat : des <strong>forfaits fixes transparents</strong>{" "}
+        jusqu'à 70% moins chers que les agences, et une communauté qui
+        partage les bénéfices.
+      </p>
+    </div>
+
+    {/* Exemple concret simplifié */}
+    <div className="bg-white border-2 border-blue-100 rounded-2xl p-6 mb-8 max-w-2xl mx-auto">
+      <div className="flex items-center justify-center gap-2 mb-3">
+        <div className="rounded-full p-1.5">
+          <Star className="w-4 h-4 text-yellow-600" />
+        </div>
+        <h3 className="text-lg font-bold text-gray-900">
+          Exemple : Appartement 300 000€
+        </h3>
+      </div>
+      <div className="grid grid-cols-2 gap-4 text-sm">
+        <div className="text-left">
+          <p className="text-gray-600">Agence traditionnelle (5%)</p>
+          <p className="text-2xl font-bold text-red-500">15 000€</p>
+        </div>
+        <div className="text-left">
+          <p className="text-gray-600">LoopImmo (forfait palier)</p>
+          <p className="text-2xl font-bold text-green-600">4 000€</p>
+        </div>
+      </div>
+      <div className="mt-4 p-3 bg-green-50 rounded-lg">
+        <p className="text-sm text-green-800">
+          <strong>11 000€ d'économie</strong> pour le vendeur +
+          <strong> 1 400€ partagés</strong> entre les Loopers
+        </p>
+      </div>
+    </div>
+
+    <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-sm font-semibold">
+      <Zap className="w-4 h-4 mr-2" />
+      Rejoignez le mouvement - Bêta ouverte prochainement
+    </div>
+  </div>
+</section>
 
       {/* Section Vendeur */}
-      <section id="vendeur-section" className="py-20 bg-gradient-to-br from-blue-50 to-blue-100">
+      <section
+        id="vendeur-section"
+        className="py-20 bg-gradient-to-br from-blue-50 to-blue-100"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -405,44 +554,71 @@ export const LaunchPageV2: React.FC = () => {
               <div className="space-y-4 mb-8">
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-blue-600 mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-lg text-gray-700"><strong>Forfait unique à paliers</strong> - Transparence totale</p>
+                  <p className="text-lg text-gray-700">
+                    <strong>Forfait unique à paliers</strong> - Transparence
+                    totale
+                  </p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-blue-600 mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-lg text-gray-700"><strong>Loopers locaux</strong> pour vous aider dans vos démarches</p>
+                  <p className="text-lg text-gray-700">
+                    <strong>Loopers locaux</strong> pour vous aider dans vos
+                    démarches
+                  </p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-blue-600 mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-lg text-gray-700"><strong>Sécurité légale garantie</strong> par nos expert en interne</p>
+                  <p className="text-lg text-gray-700">
+                    <strong>Sécurité légale garantie</strong> par nos expert en
+                    interne
+                  </p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-blue-600 mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-lg text-gray-700"><strong>Zéro commission surprise</strong> - Ce que vous voyez, c'est ce que vous payez</p>
+                  <p className="text-lg text-gray-700">
+                    <strong>Zéro commission surprise</strong> - Ce que vous
+                    voyez, c'est ce que vous payez
+                  </p>
                 </div>
               </div>
-              
+
               <div className="bg-white rounded-2xl p-6 shadow-lg">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900">Étapes simplifiées :</h3>
+                <h3 className="text-xl font-semibold mb-4 text-gray-900">
+                  Étapes simplifiées :
+                </h3>
                 <div className="flex flex-wrap gap-2">
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">1. Estimation IA</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                    1. Estimation IA
+                  </span>
                   <ArrowRight className="w-4 h-4 text-gray-400 mt-1" />
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">2. Validation de l'annonce</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                    2. Validation de l'annonce
+                  </span>
                   <ArrowRight className="w-4 h-4 text-gray-400 mt-1" />
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">3. Diffusion</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                    3. Diffusion
+                  </span>
                   <ArrowRight className="w-4 h-4 text-gray-400 mt-1" />
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">4. Signature</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                    4. Signature
+                  </span>
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-white rounded-3xl p-8 shadow-2xl">
               <div className="text-center">
                 <div className="flex items-center justify-center mb-4">
                   <Home className="w-16 h-16 text-blue-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Prêt à vendre ?</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Prêt à vendre ?
+                </h3>
 
-                <form onSubmit={handleEmailSubmit('seller')} className="space-y-4">
+                <form
+                  onSubmit={handleEmailSubmit("seller")}
+                  className="space-y-4"
+                >
                   <div>
                     <input
                       type="email"
@@ -471,17 +647,12 @@ export const LaunchPageV2: React.FC = () => {
                       <Info className="w-5 h-5" />
                     </button>
                   </div>
-                  <fieldset>
-                    <Altcha
-                      ref={altchaRef}
-                    />
-                  </fieldset>
                   {referralCode && email && (
-                    <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
-                      <p className="text-sm text-purple-700">
-                        <Gift className="w-4 h-4 inline mr-1" />
-                        <strong>10 %</strong> des gains de vos filleuls pour chacune des ventes réalisées !
-                      </p>
+                    <div>
+                      {" "}
+                      <fieldset>
+                        <Altcha ref={altchaRef} />
+                      </fieldset>
                     </div>
                   )}
 
@@ -490,7 +661,7 @@ export const LaunchPageV2: React.FC = () => {
                     disabled={isLoading}
                     className="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors flex items-center justify-center disabled:opacity-50"
                   >
-                    {isLoading ? 'Envoi...' : 'Je veux vendre'}
+                    {isLoading ? "Envoi..." : "Je veux vendre"}
                   </button>
                 </form>
 
@@ -509,7 +680,10 @@ export const LaunchPageV2: React.FC = () => {
       </section>
 
       {/* Section Looper */}
-      <section id="looper-section" className="py-20 bg-gradient-to-br from-green-50 to-green-100">
+      <section
+        id="looper-section"
+        className="py-20 bg-gradient-to-br from-green-50 to-green-100"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="bg-white rounded-3xl p-8 shadow-2xl">
@@ -517,9 +691,14 @@ export const LaunchPageV2: React.FC = () => {
                 <div className="flex items-center justify-center mb-4">
                   <Award className="w-16 h-16 text-green-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Devenir Looper</h3>
-                
-                <form onSubmit={handleEmailSubmit('looper')} className="space-y-4">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Devenir Looper
+                </h3>
+
+                <form
+                  onSubmit={handleEmailSubmit("looper")}
+                  className="space-y-4"
+                >
                   <div>
                     <input
                       type="email"
@@ -530,7 +709,7 @@ export const LaunchPageV2: React.FC = () => {
                       required
                     />
                   </div>
-                  
+
                   <div className="flex gap-2">
                     <input
                       type="text"
@@ -548,16 +727,16 @@ export const LaunchPageV2: React.FC = () => {
                       <Info className="w-5 h-5" />
                     </button>
                   </div>
-                  
+
                   {referralCode && email && (
-                    <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
-                      <p className="text-sm text-purple-700">
-                        <Gift className="w-4 h-4 inline mr-1" />
-                        <strong>10 %</strong> des gains de vos filleuls pour chacune des ventes réalisées !
-                      </p>
+                    <div>
+                      {" "}
+                      <fieldset>
+                        <Altcha ref={altchaRef} />
+                      </fieldset>
                     </div>
                   )}
-                  
+
                   <button
                     type="submit"
                     disabled={isLoading}
@@ -566,7 +745,7 @@ export const LaunchPageV2: React.FC = () => {
                     {isLoading ? "Envoi..." : "Je veux gagner de l'argent"}
                   </button>
                 </form>
-                
+
                 {showReferralSuccess && (
                   <div className="mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
                     <p className="text-sm text-green-700">
@@ -585,35 +764,57 @@ export const LaunchPageV2: React.FC = () => {
               <div className="space-y-4 mb-8">
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-green-600 mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-lg text-gray-700"><strong>Identifiez des vendeurs ou acheteurs</strong> dans votre quartier</p>
+                  <p className="text-lg text-gray-700">
+                    <strong>Identifiez des vendeurs ou acheteurs</strong> dans
+                    votre quartier
+                  </p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-green-600 mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-lg text-gray-700"><strong>Organisez ou relayez des visites</strong> en tant que local</p>
+                  <p className="text-lg text-gray-700">
+                    <strong>Organisez ou relayez des visites</strong> en tant
+                    que local
+                  </p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-green-600 mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-lg text-gray-700"><strong>Gagnez des primes à la signature</strong> selon votre contribution</p>
+                  <p className="text-lg text-gray-700">
+                    <strong>Gagnez des primes à la signature</strong> selon
+                    votre contribution
+                  </p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-green-600 mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-lg text-gray-700"><strong>Formation gratuite + bonus parrainage</strong> inclus</p>
+                  <p className="text-lg text-gray-700">
+                    <strong>Formation gratuite + bonus parrainage</strong>{" "}
+                    inclus
+                  </p>
                 </div>
               </div>
-              
+
               <div className="bg-white rounded-2xl p-6 shadow-lg">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900">Rémunération Looper :</h3>
+                <h3 className="text-xl font-semibold mb-4 text-gray-900">
+                  Rémunération Looper :
+                </h3>
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <div className="text-2xl font-bold text-green-600">300€</div>
-                    <div className="text-sm text-gray-600">Mise en relation</div>
+                    <div className="text-2xl font-bold text-green-600">
+                      300€
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      Mise en relation
+                    </div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-green-600">800€</div>
+                    <div className="text-2xl font-bold text-green-600">
+                      800€
+                    </div>
                     <div className="text-sm text-gray-600">Accompagnement</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-green-600">1500€</div>
+                    <div className="text-2xl font-bold text-green-600">
+                      1500€
+                    </div>
                     <div className="text-sm text-gray-600">Vente complète</div>
                   </div>
                 </div>
@@ -624,7 +825,10 @@ export const LaunchPageV2: React.FC = () => {
       </section>
 
       {/* Section Acheteur */}
-      <section id="acheteur-section" className="py-20 bg-gradient-to-br from-yellow-50 to-yellow-100">
+      <section
+        id="acheteur-section"
+        className="py-20 bg-gradient-to-br from-yellow-50 to-yellow-100"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -634,24 +838,37 @@ export const LaunchPageV2: React.FC = () => {
               <div className="space-y-4 mb-8">
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-yellow-600 mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-lg text-gray-700"><strong>Biens vérifiés</strong> par nos experts en interne</p>
+                  <p className="text-lg text-gray-700">
+                    <strong>Biens vérifiés</strong> par nos experts en interne
+                  </p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-yellow-600 mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-lg text-gray-700"><strong>Visites avec des Loopers proches</strong> qui connaissent le quartier</p>
+                  <p className="text-lg text-gray-700">
+                    <strong>Visites avec des Loopers proches</strong> qui
+                    connaissent le quartier
+                  </p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-yellow-600 mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-lg text-gray-700"><strong>Zéro frais d'agence</strong> - Économisez des milliers d'euros</p>
+                  <p className="text-lg text-gray-700">
+                    <strong>Zéro frais d'agence</strong> - Économisez des
+                    milliers d'euros
+                  </p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-yellow-600 mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-lg text-gray-700"><strong>Accompagnement jusqu'au notaire</strong> pour une transaction sereine</p>
+                  <p className="text-lg text-gray-700">
+                    <strong>Accompagnement jusqu'au notaire</strong> pour une
+                    transaction sereine
+                  </p>
                 </div>
               </div>
-              
+
               <div className="bg-white rounded-2xl p-6 shadow-lg">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900">Avantages acheteur :</h3>
+                <h3 className="text-xl font-semibold mb-4 text-gray-900">
+                  Avantages acheteur :
+                </h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex items-center">
                     <Shield className="w-5 h-5 text-yellow-600 mr-2" />
@@ -672,15 +889,20 @@ export const LaunchPageV2: React.FC = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-white rounded-3xl p-8 shadow-2xl">
               <div className="text-center">
                 <div className="flex items-center justify-center mb-4">
                   <Search className="w-16 h-16 text-yellow-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Prêt à acheter ?</h3>
-                
-                <form onSubmit={handleEmailSubmit('buyer')} className="space-y-4">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Prêt à acheter ?
+                </h3>
+
+                <form
+                  onSubmit={handleEmailSubmit("buyer")}
+                  className="space-y-4"
+                >
                   <div>
                     <input
                       type="email"
@@ -691,7 +913,7 @@ export const LaunchPageV2: React.FC = () => {
                       required
                     />
                   </div>
-                  
+
                   <div className="flex gap-2">
                     <input
                       type="text"
@@ -709,25 +931,25 @@ export const LaunchPageV2: React.FC = () => {
                       <Info className="w-5 h-5" />
                     </button>
                   </div>
-                  
+
                   {referralCode && email && (
-                    <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
-                      <p className="text-sm text-purple-700">
-                        <Gift className="w-4 h-4 inline mr-1" />
-                        <strong>10 %</strong> des gains de vos filleuls pour chacune des ventes réalisées !
-                      </p>
+                    <div>
+                      {" "}
+                      <fieldset>
+                        <Altcha ref={altchaRef} />
+                      </fieldset>
                     </div>
                   )}
-                  
+
                   <button
                     type="submit"
                     disabled={isLoading}
                     className="w-full px-6 py-3 bg-yellow-600 text-white font-semibold rounded-xl hover:bg-yellow-700 transition-colors flex items-center justify-center disabled:opacity-50"
                   >
-                    {isLoading ? 'Envoi...' : 'Je veux acheter'}
+                    {isLoading ? "Envoi..." : "Je veux acheter"}
                   </button>
                 </form>
-                
+
                 {showReferralSuccess && (
                   <div className="mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
                     <p className="text-sm text-green-700">
@@ -736,6 +958,163 @@ export const LaunchPageV2: React.FC = () => {
                     </p>
                   </div>
                 )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Verbatims */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Ils témoignent : pourquoi changer ?
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Les vraies frustrations du marché immobilier actuel
+            </p>
+          </div>
+
+          {/* 3 colonnes compactes */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Vendeurs */}
+            <div className="bg-white rounded-xl p-6 shadow-lg">
+              <div className="flex items-center mb-4">
+                <div className="bg-red-100 rounded-full p-2 mr-3">
+                  <Home className="w-5 h-5 text-red-600" />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900">Vendeurs</h3>
+              </div>
+
+              <div className="space-y-4">
+                <div className="border-l-3 border-red-300 pl-3">
+                  <p className="text-sm text-gray-700 italic mb-1">
+                    "L'agent a mis 3 semaines à publier l'annonce, et les photos
+                    étaient moches..."
+                  </p>
+                  <span className="text-xs text-gray-500">
+                    — Sophie, Marseille
+                  </span>
+                </div>
+
+                <div className="border-l-3 border-red-300 pl-3">
+                  <p className="text-sm text-gray-700 italic mb-1">
+                    "11 000€ de frais pour qu'au final, ce soit moi qui fasse
+                    les visites."
+                  </p>
+                  <span className="text-xs text-gray-500">— Didier, Lyon</span>
+                </div>
+
+                <div className="border-l-3 border-red-300 pl-3">
+                  <p className="text-sm text-gray-700 italic mb-1">
+                    "On a l’impression que l’agence travaille pour elle, pas
+                    pour nous. Leur priorité, c’est de faire vite, pas de faire
+                    bien."
+                  </p>
+                  <span className="text-xs text-gray-500">
+                    — Karine, Toulouse
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Acheteurs */}
+            <div className="bg-white rounded-xl p-6 shadow-lg">
+              <div className="flex items-center mb-4">
+                <div className="bg-blue-100 rounded-full p-2 mr-3">
+                  <Search className="w-5 h-5 text-blue-600" />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900">Acheteurs</h3>
+              </div>
+
+              <div className="space-y-4">
+                <div className="border-l-3 border-blue-300 pl-3">
+                  <p className="text-sm text-gray-700 italic mb-1">
+                    "Les meilleurs biens, tu les vois jamais. Ils partent avant
+                    d’être publiés, réservés à des "clients de l’agence". Si
+                    t’as pas le bon contact, t’as rien"
+                  </p>
+                  <span className="text-xs text-gray-500">— Céline, Paris</span>
+                </div>
+
+                <div className="border-l-3 border-blue-300 pl-3">
+                  <p className="text-sm text-gray-700 italic mb-1">
+                    " J’ai visité un bien avec une agente qui lisait la fiche en
+                    même temps que moi. J’en savais plus qu’elle."
+                  </p>
+                  <span className="text-xs text-gray-500">
+                    — Thomas, Nanterre
+                  </span>
+                </div>
+
+                <div className="border-l-3 border-blue-300 pl-3">
+                  <p className="text-sm text-gray-700 italic mb-1">
+                    "Photos retouchées vs réalité : on dirait Tinder version
+                    immobilier."
+                  </p>
+                  <span className="text-xs text-gray-500">— Ludovic, Nice</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Agents */}
+            <div className="bg-white rounded-xl p-6 shadow-lg">
+              <div className="flex items-center mb-4">
+                <div className="bg-gray-100 rounded-full p-2 mr-3">
+                  <Users className="w-5 h-5 text-gray-600" />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900">
+                  Professionnels
+                </h3>
+              </div>
+
+              <div className="space-y-4">
+                <div className="border-l-3 border-gray-300 pl-3">
+                  <p className="text-sm text-gray-700 italic mb-1">
+                    "60 appels pour 2 RDV, et tu bosses des semaines sans être
+                    sûr de toucher 1€."
+                  </p>
+                  <span className="text-xs text-gray-500">
+                    — Léo, mandataire
+                  </span>
+                </div>
+
+                <div className="border-l-3 border-gray-300 pl-3">
+                  <p className="text-sm text-gray-700 italic mb-1">
+                    "12 agences se battent pour les mêmes vendeurs. On se bouffe
+                    entre nous."
+                  </p>
+                  <span className="text-xs text-gray-500">
+                    — Isabelle, directrice
+                  </span>
+                </div>
+
+                <div className="border-l-3 border-gray-300 pl-3">
+                  <p className="text-sm text-gray-700 italic mb-1">
+                    "Le problème, c’est la pression commerciale. Tu dois rentrer
+                    du mandat, peu importe comment."
+                  </p>
+                  <span className="text-xs text-gray-500">
+                    — Amélie, Bordeaux
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA compact */}
+          <div className="mt-12 text-center">
+            <div className="bg-gradient-to-r from-blue-600 to-green-600 rounded-xl p-6 text-white max-w-2xl mx-auto">
+              <h3 className="text-xl font-bold mb-2">
+                Ces témoignages vous parlent ?
+              </h3>
+              <p className="text-blue-100 mb-4">
+                LoopImmo apporte une solution concrète à ces frustrations.
+              </p>
+              <div className="inline-flex items-center bg-white text-gray-900 px-4 py-2 rounded-full text-sm font-semibold">
+                <Heart className="w-4 h-4 mr-2" />
+                Ensemble, changeons l'immobilier
               </div>
             </div>
           </div>
@@ -751,41 +1130,58 @@ export const LaunchPageV2: React.FC = () => {
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           {/* Logo */}
           <div className="mb-8">
-            <img 
-              src="/logo.svg" 
-              alt="LoopImmo" 
+            <img
+              src="/logo.svg"
+              alt="LoopImmo"
               className="h-12 md:h-16 mx-auto filter brightness-0 invert"
             />
           </div>
 
           <div className="mb-12">
             <blockquote className="text-2xl md:text-3xl font-light text-white mb-8 leading-relaxed">
-              "LoopImmo remet de l'humain dans l'immobilier. Chaque vente devient une aventure collective et une source de revenus partagés."
+              "LoopImmo remet de l'humain dans l'immobilier. Chaque vente
+              devient une aventure collective et une source de revenus
+              partagés."
             </blockquote>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               <Heart className="w-8 h-8 text-white mx-auto mb-3" />
-              <h3 className="text-xl font-semibold text-white mb-2">100% Humain</h3>
-              <p className="text-gray-300">Des vraies personnes, pas des algorithmes</p>
+              <h3 className="text-xl font-semibold text-white mb-2">
+                100% Humain
+              </h3>
+              <p className="text-gray-300">
+                Des vraies personnes, pas des algorithmes
+              </p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               <Shield className="w-8 h-8 text-white mx-auto mb-3" />
-              <h3 className="text-xl font-semibold text-white mb-2">100% Sécurisé</h3>
-              <p className="text-gray-300">Experts internes et garanties légales</p>
+              <h3 className="text-xl font-semibold text-white mb-2">
+                100% Sécurisé
+              </h3>
+              <p className="text-gray-300">
+                Experts internes et garanties légales
+              </p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               <FileCheck className="w-8 h-8 text-white mx-auto mb-3" />
-              <h3 className="text-xl font-semibold text-white mb-2">100% Transparent</h3>
-              <p className="text-gray-300">Tarifs clairs, pas de frais cachés</p>
+              <h3 className="text-xl font-semibold text-white mb-2">
+                100% Transparent
+              </h3>
+              <p className="text-gray-300">
+                Tarifs clairs, pas de frais cachés
+              </p>
             </div>
           </div>
 
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-center">
-            <h3 className="text-2xl font-bold text-white mb-4">Rejoignez la révolution immobilière</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Rejoignez la révolution immobilière
+            </h3>
             <p className="text-blue-100 mb-6 text-lg">
-              Soyez parmi les premiers à découvrir une nouvelle façon de vendre, acheter et gagner de l'argent dans l'immobilier.
+              Soyez parmi les premiers à découvrir une nouvelle façon de vendre,
+              acheter et gagner de l'argent dans l'immobilier.
             </p>
             <div className="inline-flex items-center bg-yellow-400 text-gray-900 px-6 py-3 rounded-full text-sm font-semibold">
               <Zap className="w-4 h-4 mr-2" />
