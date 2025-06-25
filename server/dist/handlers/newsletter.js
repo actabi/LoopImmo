@@ -11,9 +11,8 @@ const qrcode_1 = __importDefault(require("qrcode"));
 const crypto_1 = require("crypto");
 const db_1 = require("../db");
 const logger_1 = require("../utils/logger");
-// Load server-specific environment variables for email credentials
-// The handler lives in `server/src/handlers`, so the root `.env`
-// resides two directories up from this file.
+// Load environment variables from the server root .env file.
+// The handler lives in `server/src/handlers`, so the .env file is two directories up.
 dotenv_1.default.config({ path: path_1.default.resolve(__dirname, '../../.env') });
 const subscribeNewsletter = async (req, res) => {
     const { email, referredBy, role } = req.body;
