@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.payCommission = exports.validateCommission = exports.getCommission = exports.listCommissions = exports.updatePaymentStatus = exports.createPayment = exports.getPayment = exports.listPayments = void 0;
+const utils_1 = require("./utils");
+exports.listPayments = (0, utils_1.notImplemented)('list payments');
+exports.getPayment = (0, utils_1.notImplemented)('get payment');
+exports.createPayment = (0, utils_1.notImplemented)('create payment');
+exports.updatePaymentStatus = (0, utils_1.notImplemented)('update payment status');
+exports.listCommissions = (0, utils_1.notImplemented)('list commissions');
+exports.getCommission = (0, utils_1.notImplemented)('get commission');
+exports.validateCommission = (0, utils_1.notImplemented)('validate commission');
+exports.payCommission = (0, utils_1.notImplemented)('pay commission');

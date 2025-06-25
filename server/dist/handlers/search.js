@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.removeFavorite = exports.addFavorite = exports.listFavorites = exports.toggleSavedSearchAlert = exports.deleteSavedSearch = exports.updateSavedSearch = exports.createSavedSearch = exports.listSavedSearches = void 0;
+const utils_1 = require("./utils");
+exports.listSavedSearches = (0, utils_1.notImplemented)('list saved searches');
+exports.createSavedSearch = (0, utils_1.notImplemented)('create saved search');
+exports.updateSavedSearch = (0, utils_1.notImplemented)('update saved search');
+exports.deleteSavedSearch = (0, utils_1.notImplemented)('delete saved search');
+exports.toggleSavedSearchAlert = (0, utils_1.notImplemented)('toggle saved search alert');
+exports.listFavorites = (0, utils_1.notImplemented)('list favorites');
+exports.addFavorite = (0, utils_1.notImplemented)('add favorite');
+exports.removeFavorite = (0, utils_1.notImplemented)('remove favorite');

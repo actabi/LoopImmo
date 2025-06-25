@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getSubscriptionPlanFeatures = exports.listSubscriptionFeatures = exports.changeSubscriptionStatus = exports.deleteSubscription = exports.updateSubscription = exports.createSubscription = exports.getUserSubscription = exports.listSubscriptions = void 0;
+const utils_1 = require("./utils");
+exports.listSubscriptions = (0, utils_1.notImplemented)('list subscriptions');
+exports.getUserSubscription = (0, utils_1.notImplemented)('get user subscription');
+exports.createSubscription = (0, utils_1.notImplemented)('create subscription');
+exports.updateSubscription = (0, utils_1.notImplemented)('update subscription');
+exports.deleteSubscription = (0, utils_1.notImplemented)('delete subscription');
+exports.changeSubscriptionStatus = (0, utils_1.notImplemented)('change subscription status');
+exports.listSubscriptionFeatures = (0, utils_1.notImplemented)('list subscription features');
+exports.getSubscriptionPlanFeatures = (0, utils_1.notImplemented)('get subscription plan features');
