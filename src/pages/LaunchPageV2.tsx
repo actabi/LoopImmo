@@ -27,12 +27,7 @@ import Altcha from "../components/shared/Altcha";
 
 export const LaunchPageV2: React.FC = () => {
   const [searchParams] = useSearchParams();
-  type Role = "seller" | "looper" | "buyer";
-  const [emails, setEmails] = useState<Record<Role, string>>({
-    seller: "",
-    looper: "",
-    buyer: "",
-  });
+  const [email, setEmail] = useState("");
   const [referralCode, setReferralCode] = useState("");
   const [showReferralSuccess, setShowReferralSuccess] = useState(false);
   const [showReferralPopup, setShowReferralPopup] = useState(false);
@@ -50,10 +45,8 @@ export const LaunchPageV2: React.FC = () => {
     return re.test(value);
   };
 
-  const handleEmailSubmit = (role: Role) => async (e: React.FormEvent) => {
+  const handleEmailSubmit = (role: string) => async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const email = emails[role];
 
     if (!validateEmail(email)) {
       alert("Veuillez entrer un email valide");
@@ -82,7 +75,7 @@ export const LaunchPageV2: React.FC = () => {
         alert(
           "Merci ! Nous vous contacterons dès l'ouverture de la bêta. Votre code de parrainage vous sera envoyé par email."
         );
-        setEmails((prev) => ({ ...prev, [role]: "" }));
+        setEmail("");
         setReferralCode("");
         setShowReferralSuccess(false);
       }, 2000);
@@ -520,9 +513,6 @@ export const LaunchPageV2: React.FC = () => {
           {/* Exemple concret simplifié */}
           <div className="bg-white border-2 border-blue-100 rounded-2xl p-6 mb-8 max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-2 mb-3">
-              <div className="rounded-full p-1.5">
-                <Star className="w-4 h-4 text-yellow-600" />
-              </div>
               <h3 className="text-lg font-bold text-gray-900">
                 Exemple : Appartement 300 000€
               </h3>
@@ -634,10 +624,8 @@ export const LaunchPageV2: React.FC = () => {
                   <div>
                     <input
                       type="email"
-                      value={emails.seller}
-                      onChange={(e) =>
-                        setEmails((prev) => ({ ...prev, seller: e.target.value }))
-                      }
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder="Votre email"
                       className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none"
                       required
@@ -661,7 +649,7 @@ export const LaunchPageV2: React.FC = () => {
                       <Info className="w-5 h-5" />
                     </button>
                   </div>
-                  {emails.seller && (
+                  {email && (
                     <div>
                       {" "}
                       <fieldset>
@@ -716,10 +704,8 @@ export const LaunchPageV2: React.FC = () => {
                   <div>
                     <input
                       type="email"
-                      value={emails.looper}
-                      onChange={(e) =>
-                        setEmails((prev) => ({ ...prev, looper: e.target.value }))
-                      }
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder="Votre email"
                       className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none"
                       required
@@ -744,7 +730,7 @@ export const LaunchPageV2: React.FC = () => {
                     </button>
                   </div>
 
-                  {emails.looper && (
+                  {email && (
                     <div>
                       {" "}
                       <fieldset>
@@ -934,10 +920,8 @@ export const LaunchPageV2: React.FC = () => {
                   <div>
                     <input
                       type="email"
-                      value={emails.buyer}
-                      onChange={(e) =>
-                        setEmails((prev) => ({ ...prev, buyer: e.target.value }))
-                      }
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder="Votre email"
                       className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:outline-none"
                       required
@@ -962,11 +946,11 @@ export const LaunchPageV2: React.FC = () => {
                     </button>
                   </div>
 
-                  {emails.buyer && (
+                  {email && (
                     <div>
                       {" "}
                       <fieldset>
-                        <Altcha ref={altchaRef} />
+                        <Altcha ref={altchaRef}/>
                       </fieldset>
                     </div>
                   )}
