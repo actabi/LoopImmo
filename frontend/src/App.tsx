@@ -25,18 +25,72 @@ function App() {
   const isLaunchMode = import.meta.env.VITE_LAUNCH_MODE === 'true';
   const isV2Mode = import.meta.env.VITE_V2_MODE === 'true';
 
-  useEffect(() => {
-    
-      const apiUrl = (import.meta.env.VITE_API_URL || 'http://localhost:3000') + '/';
-      fetch(apiUrl)
-        .then((res) => {
-          console.debug('Backend connection success', res.status);
-        })
-        .catch((err) => {
-          console.error('Backend connection failed', err);
-        });
-    
-  }, []);
+useEffect(() => {
+  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+  
+  console.log('=== DEBUG CONNEXION BACKEND ===');
+  console.log('VITE_API_URL from env:', import.meta.env.VITE_API_URL);
+  console.log('Final API URL:', apiUrl);
+  console.log('NODE_ENV:', import.meta.env.NODE_ENV);
+  console.log('All env variables:', import.meta.env);
+  
+  // Test de base pour voir si l'URL est valide
+  try {
+    const url = new URL(apiUrl);
+    console.log('✅ URL is valid:', {
+      protocol: url.protocol,
+      hostname: url.hostname,
+      port: url.port,
+      pathname: url.pathname
+    });
+  } catch (error) {
+    console.error('❌ Invalid URL:', error);
+    return;
+  }
+
+  console.log('🚀 Starting fetch to:', apiUrl);
+  
+  fetch(apiUrl, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => {
+      console.log('✅ Response received:', {
+        status: response.status,
+        statusText: response.statusText,
+        ok: response.ok,
+        headers: Object.fromEntries(response.headers.entries()),
+        url: response.url
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+      
+      return response.text(); // Utilisez .text() au lieu de .json() pour voir le contenu brut
+    })
+    .then((data) => {
+      console.log('📦 Response data:', data);
+      console.log('✅ Backend connection successful!');
+    })
+    .catch((error) => {
+      console.error('❌ Backend connection failed:', {
+        name: error.name,
+        message: error.message,
+        stack: error.stack,
+        cause: error.cause
+      });
+      
+      // Tests supplémentaires pour diagnostiquer
+      console.log('🔍 Additional diagnostics:');
+      console.log('- Is online?', navigator.onLine);
+      console.log('- User agent:', navigator.userAgent);
+      console.log('- Current URL:', window.location.href);
+    });
+}, []);
 
   return (
     <AuthProvider>
