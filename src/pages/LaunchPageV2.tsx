@@ -27,7 +27,12 @@ import Altcha from "../components/shared/Altcha";
 
 export const LaunchPageV2: React.FC = () => {
   const [searchParams] = useSearchParams();
-  const [email, setEmail] = useState("");
+  type Role = "seller" | "looper" | "buyer";
+  const [emails, setEmails] = useState<Record<Role, string>>({
+    seller: "",
+    looper: "",
+    buyer: "",
+  });
   const [referralCode, setReferralCode] = useState("");
   const [showReferralSuccess, setShowReferralSuccess] = useState(false);
   const [showReferralPopup, setShowReferralPopup] = useState(false);
@@ -45,8 +50,10 @@ export const LaunchPageV2: React.FC = () => {
     return re.test(value);
   };
 
-  const handleEmailSubmit = (role: string) => async (e: React.FormEvent) => {
+  const handleEmailSubmit = (role: Role) => async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const email = emails[role];
 
     if (!validateEmail(email)) {
       alert("Veuillez entrer un email valide");
@@ -75,7 +82,7 @@ export const LaunchPageV2: React.FC = () => {
         alert(
           "Merci ! Nous vous contacterons dès l'ouverture de la bêta. Votre code de parrainage vous sera envoyé par email."
         );
-        setEmail("");
+        setEmails((prev) => ({ ...prev, [role]: "" }));
         setReferralCode("");
         setShowReferralSuccess(false);
       }, 2000);
@@ -627,8 +634,10 @@ export const LaunchPageV2: React.FC = () => {
                   <div>
                     <input
                       type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={emails.seller}
+                      onChange={(e) =>
+                        setEmails((prev) => ({ ...prev, seller: e.target.value }))
+                      }
                       placeholder="Votre email"
                       className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none"
                       required
@@ -652,7 +661,7 @@ export const LaunchPageV2: React.FC = () => {
                       <Info className="w-5 h-5" />
                     </button>
                   </div>
-                  {email && (
+                  {emails.seller && (
                     <div>
                       {" "}
                       <fieldset>
@@ -707,8 +716,10 @@ export const LaunchPageV2: React.FC = () => {
                   <div>
                     <input
                       type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={emails.looper}
+                      onChange={(e) =>
+                        setEmails((prev) => ({ ...prev, looper: e.target.value }))
+                      }
                       placeholder="Votre email"
                       className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none"
                       required
@@ -733,7 +744,7 @@ export const LaunchPageV2: React.FC = () => {
                     </button>
                   </div>
 
-                  {email && (
+                  {emails.looper && (
                     <div>
                       {" "}
                       <fieldset>
@@ -923,8 +934,10 @@ export const LaunchPageV2: React.FC = () => {
                   <div>
                     <input
                       type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={emails.buyer}
+                      onChange={(e) =>
+                        setEmails((prev) => ({ ...prev, buyer: e.target.value }))
+                      }
                       placeholder="Votre email"
                       className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:outline-none"
                       required
@@ -949,7 +962,7 @@ export const LaunchPageV2: React.FC = () => {
                     </button>
                   </div>
 
-                  {email && (
+                  {emails.buyer && (
                     <div>
                       {" "}
                       <fieldset>
