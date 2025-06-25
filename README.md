@@ -65,7 +65,7 @@ This project is licensed under the [MIT License](LICENSE).
 SQL scripts to create a PostgreSQL schema and populate it with sample data are provided in the `sql` folder.
 
 1. Create an empty PostgreSQL database (version 17 or above).
-2. Execute `schema.sql` to create the tables:
+2. Execute `schema.sql` to create the tables
 
 ```bash
 psql "$DATABASE_URL" -f sql/schema.sql
