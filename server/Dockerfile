@@ -8,14 +8,11 @@ COPY package*.json ./
 # Installer les dépendances
 RUN npm ci
 
-# Corriger les permissions des binaires node_modules
-RUN chmod +x node_modules/.bin/*
-
 # Copier le code source
 COPY . .
 
-# Build l'application TypeScript
-RUN npm run build
+# Build avec npx au lieu du script npm
+RUN npx tsc
 
 # Exposer le port
 EXPOSE 3000
