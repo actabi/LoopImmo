@@ -9,8 +9,8 @@ cmds = ['npm install']
 
 [phases.build]
 cmds = [
-  'npm install -g typescript',
-  '/usr/local/bin/tsc'
+  'npm install typescript',
+  'npx tsc'
 ]
 
 [start]
