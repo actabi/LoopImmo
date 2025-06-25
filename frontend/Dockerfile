@@ -6,4 +6,5 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-CMD ["sh", "-c", "npx serve -s dist -p ${PORT:-3000}"] 
+# Ajout de l'option --single pour gérer React Router
+CMD ["sh", "-c", "npx serve -s dist -p ${PORT:-3001} --single"]
