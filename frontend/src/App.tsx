@@ -25,6 +25,14 @@ function App() {
   const isLaunchMode = import.meta.env.VITE_LAUNCH_MODE === 'true';
   const isV2Mode = import.meta.env.VITE_V2_MODE === 'true';
 
+    // Logs pour débugger en production
+  console.log('Variables env:', {
+    VITE_LAUNCH_MODE: import.meta.env.VITE_LAUNCH_MODE,
+    VITE_V2_MODE: import.meta.env.VITE_V2_MODE,
+    isLaunchMode,
+    isV2Mode
+  });
+
   useEffect(() => {
     if (import.meta.env.DEV) {
       const apiUrl = (import.meta.env.VITE_API_URL || 'http://localhost:3000') + '/';
@@ -41,6 +49,10 @@ function App() {
   return (
     <AuthProvider>
       <Routes>
+              <div style={{position: 'fixed', top: 0, left: 0, background: 'red', color: 'white', padding: '5px', zIndex: 9999}}>
+        Debug: Launch={isLaunchMode ? 'true' : 'false'}, V2={isV2Mode ? 'true' : 'false'}
+      </div>
+      
           {/* Page d'accueil - bascule selon le mode */}
           <Route path="/" element={
             isLaunchMode ? <LaunchPage /> : 
