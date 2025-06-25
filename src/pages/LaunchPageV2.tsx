@@ -429,116 +429,118 @@ export const LaunchPageV2: React.FC = () => {
       </section>
 
       {/* Pourquoi LoopImmo */}
-<section id="pourquoi-section" className="py-20 bg-white">
-  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    {/* Logo */}
-    <div className="mb-8">
-      <img
-        src="/logo.svg"
-        alt="LoopImmo"
-        className="h-16 md:h-20 lg:h-24 mx-auto"
-      />
-    </div>
+      <section id="pourquoi-section" className="py-20 bg-white">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Logo */}
+          <div className="mb-8">
+            <img
+              src="/logo.svg"
+              alt="LoopImmo"
+              className="h-16 md:h-20 lg:h-24 mx-auto"
+            />
+          </div>
 
-    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-      L'immobilier réinventé par la communauté
-    </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            L'immobilier réinventé par la communauté
+          </h2>
 
-    <div className="max-w-4xl mx-auto mb-12">
-      <p className="text-xl text-gray-700 mb-6 leading-relaxed">
-        <strong>LoopImmo</strong> transforme la vente immobilière en
-        mobilisant votre
-        <strong style={{ color: "#1974cc" }}> communauté locale</strong> :
-        voisins, anciens occupants, connaissances deviennent des{" "}
-        <strong>Loopers rémunérés</strong>.
-      </p>
+          <div className="max-w-4xl mx-auto mb-12">
+            <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+              <strong>LoopImmo</strong> transforme la vente immobilière en
+              mobilisant votre
+              <strong style={{ color: "#1974cc" }}> communauté locale</strong> :
+              voisins, anciens occupants, connaissances deviennent des{" "}
+              <strong>Loopers rémunérés</strong>.
+            </p>
 
-      <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-xl p-6 mb-8">
-        <h3 className="text-lg font-bold text-gray-900 mb-3">
-          Comment ça fonctionne ?
-        </h3>
-        <div className="text-left space-y-3 text-gray-700">
-          <div className="flex items-center gap-3">
-            <div className="bg-emerald-100 rounded-full p-2 flex-shrink-0">
-              <CheckCircle className="w-4 h-4 text-emerald-600" />
+            <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-xl p-6 mb-8">
+              <h3 className="text-lg font-bold text-gray-900 mb-3">
+                Comment ça fonctionne ?
+              </h3>
+              <div className="text-left space-y-3 text-gray-700">
+                <div className="flex items-center gap-3">
+                  <div className="bg-emerald-100 rounded-full p-2 flex-shrink-0">
+                    <CheckCircle className="w-4 h-4 text-emerald-600" />
+                  </div>
+                  <p>
+                    <strong>Le vendeur choisit un Looper de confiance</strong>{" "}
+                    pour piloter sa vente
+                  </p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="bg-emerald-100 rounded-full p-2 flex-shrink-0">
+                    <CheckCircle className="w-4 h-4 text-emerald-600" />
+                  </div>
+                  <p>
+                    <strong>
+                      Chaque Looper contribue selon ses compétences
+                    </strong>{" "}
+                    : rédaction, photos, visites, recommandations
+                  </p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="bg-emerald-100 rounded-full p-2 flex-shrink-0">
+                    <CheckCircle className="w-4 h-4 text-emerald-600" />
+                  </div>
+                  <p>
+                    <strong>L'IA accompagne chaque étape</strong> pour garantir
+                    la qualité
+                  </p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="bg-emerald-100 rounded-full p-2 flex-shrink-0">
+                    <CheckCircle className="w-4 h-4 text-emerald-600" />
+                  </div>
+                  <p>
+                    <strong>
+                      Tous sont rémunérés uniquement si la vente se conclut
+                    </strong>
+                  </p>
+                </div>
+              </div>
             </div>
-            <p>
-              <strong>Le vendeur choisit un Looper de confiance</strong>{" "}
-              pour piloter sa vente
+
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Résultat : des <strong>forfaits fixes transparents</strong>{" "}
+              jusqu'à 70% moins chers que les agences, et une communauté qui
+              partage les bénéfices.
             </p>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="bg-emerald-100 rounded-full p-2 flex-shrink-0">
-              <CheckCircle className="w-4 h-4 text-emerald-600" />
-            </div>
-            <p>
-              <strong>Chaque Looper contribue selon ses compétences</strong>{" "}
-              : rédaction, photos, visites, recommandations
-            </p>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="bg-emerald-100 rounded-full p-2 flex-shrink-0">
-              <CheckCircle className="w-4 h-4 text-emerald-600" />
-            </div>
-            <p>
-              <strong>L'IA accompagne chaque étape</strong> pour garantir
-              la qualité
-            </p>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="bg-emerald-100 rounded-full p-2 flex-shrink-0">
-              <CheckCircle className="w-4 h-4 text-emerald-600" />
-            </div>
-            <p>
-              <strong>
-                Tous sont rémunérés uniquement si la vente se conclut
-              </strong>
-            </p>
-          </div>
-        </div>
-      </div>
 
-      <p className="text-lg text-gray-600 leading-relaxed">
-        Résultat : des <strong>forfaits fixes transparents</strong>{" "}
-        jusqu'à 70% moins chers que les agences, et une communauté qui
-        partage les bénéfices.
-      </p>
-    </div>
+          {/* Exemple concret simplifié */}
+          <div className="bg-white border-2 border-blue-100 rounded-2xl p-6 mb-8 max-w-2xl mx-auto">
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <div className="rounded-full p-1.5">
+                <Star className="w-4 h-4 text-yellow-600" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900">
+                Exemple : Appartement 300 000€
+              </h3>
+            </div>
+            <div className="grid grid-cols-2 gap-4 text-sm">
+              <div className="text-left">
+                <p className="text-gray-600">Agence traditionnelle (5%)</p>
+                <p className="text-2xl font-bold text-red-500">15 000€</p>
+              </div>
+              <div className="text-left">
+                <p className="text-gray-600">LoopImmo (forfait palier)</p>
+                <p className="text-2xl font-bold text-green-600">4 000€</p>
+              </div>
+            </div>
+            <div className="mt-4 p-3 bg-green-50 rounded-lg">
+              <p className="text-sm text-green-800">
+                <strong>11 000€ d'économie</strong> pour le vendeur +
+                <strong> 1 400€ partagés</strong> entre les Loopers
+              </p>
+            </div>
+          </div>
 
-    {/* Exemple concret simplifié */}
-    <div className="bg-white border-2 border-blue-100 rounded-2xl p-6 mb-8 max-w-2xl mx-auto">
-      <div className="flex items-center justify-center gap-2 mb-3">
-        <div className="rounded-full p-1.5">
-          <Star className="w-4 h-4 text-yellow-600" />
+          <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-sm font-semibold">
+            <Zap className="w-4 h-4 mr-2" />
+            Rejoignez le mouvement - Bêta ouverte prochainement
+          </div>
         </div>
-        <h3 className="text-lg font-bold text-gray-900">
-          Exemple : Appartement 300 000€
-        </h3>
-      </div>
-      <div className="grid grid-cols-2 gap-4 text-sm">
-        <div className="text-left">
-          <p className="text-gray-600">Agence traditionnelle (5%)</p>
-          <p className="text-2xl font-bold text-red-500">15 000€</p>
-        </div>
-        <div className="text-left">
-          <p className="text-gray-600">LoopImmo (forfait palier)</p>
-          <p className="text-2xl font-bold text-green-600">4 000€</p>
-        </div>
-      </div>
-      <div className="mt-4 p-3 bg-green-50 rounded-lg">
-        <p className="text-sm text-green-800">
-          <strong>11 000€ d'économie</strong> pour le vendeur +
-          <strong> 1 400€ partagés</strong> entre les Loopers
-        </p>
-      </div>
-    </div>
-
-    <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-sm font-semibold">
-      <Zap className="w-4 h-4 mr-2" />
-      Rejoignez le mouvement - Bêta ouverte prochainement
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Section Vendeur */}
       <section
