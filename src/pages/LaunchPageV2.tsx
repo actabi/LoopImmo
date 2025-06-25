@@ -168,7 +168,7 @@ export const LaunchPageV2: React.FC = () => {
             <h4 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">
               Vos gains
             </h4>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
               <div className="bg-purple-50 rounded-lg p-3 text-center border border-purple-100">
                 <p className="text-2xl font-bold text-purple-600">10%</p>
                 <p className="text-xs font-medium text-gray-700">
@@ -203,7 +203,7 @@ export const LaunchPageV2: React.FC = () => {
                 Exemple : Bien vendu à 400 000€
               </h4>
             </div>
-            <div className="grid grid-cols-2 gap-3 text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-center">
               <div>
                 <p className="text-xs text-gray-600">Vous touchez</p>
                 <p className="text-lg font-bold text-yellow-700">500€ HT</p>
@@ -261,7 +261,7 @@ export const LaunchPageV2: React.FC = () => {
             Bêta ouverte prochainement
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight break-words">
             La révolution de l'immobilier
             <span className="block" style={{ color: "#1974cc" }}>
               {" "}
@@ -517,7 +517,7 @@ export const LaunchPageV2: React.FC = () => {
                 Exemple : Appartement 300 000€
               </h3>
             </div>
-            <div className="grid grid-cols-2 gap-4 text-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
               <div className="text-left">
                 <p className="text-gray-600">Agence traditionnelle (5%)</p>
                 <p className="text-2xl font-bold text-red-500">15 000€</p>
@@ -875,7 +875,7 @@ export const LaunchPageV2: React.FC = () => {
                 <h3 className="text-xl font-semibold mb-4 text-gray-900">
                   Avantages acheteur :
                 </h3>
-                <div className="grid grid-cols-2 gap-2 md:gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">
                   <div className="flex items-center">
                     <Shield className="w-4 h-4 md:w-5 md:h-5 text-yellow-600 mr-2" />
                     <span className="text-xs md:text-sm font-medium">
