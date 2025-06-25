@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon --exec ts-node src/index.ts",
     "dev:tsx": "tsx watch src/index.ts",
-    "build": "tsc",
+    "build": "echo 'Build handled by nixpacks'",
     "start": "node dist/index.js",
     "typecheck": "tsc --noEmit"
   },
