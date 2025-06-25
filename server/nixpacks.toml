@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ['nodejs_18', 'npm-9_x']
+
+[phases.install]
+cmds = ['npm ci']
+
+[phases.build]
+cmds = ['chmod +x node_modules/.bin/tsc', 'npm run build']
+
+[start]
+cmd = 'npm start'
