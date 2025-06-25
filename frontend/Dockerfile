@@ -6,8 +6,9 @@ RUN npm ci
 COPY . .
 
 # Définir les variables d'environnement au moment du build
-ENV VITE_LAUNCH_MODE=false
-ENV VITE_V2_MODE=true
+ENV VITE_LAUNCH_MODE=${VITE_LAUNCH_MODE}
+ENV VITE_V2_MODE=${VITE_V2_MODE}
+ENV VITE_API_URL=${VITE_API_URL}
 
 # Installer les dépendances de production
 RUN npm run build
