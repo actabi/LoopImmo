@@ -32,7 +32,9 @@ export const LaunchPageV2: React.FC = () => {
   const [referralCode, setReferralCode] = useState("");
   const [showReferralSuccess, setShowReferralSuccess] = useState(false);
   const [feedbackMessage, setFeedbackMessage] = useState("");
-  const [feedbackType, setFeedbackType] = useState<"success" | "error">("success");
+  const [feedbackType, setFeedbackType] = useState<"success" | "error">(
+    "success"
+  );
   const [showReferralPopup, setShowReferralPopup] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const altchaRef = useRef<{ value: string | null }>(null);
@@ -518,28 +520,37 @@ export const LaunchPageV2: React.FC = () => {
             </p>
           </div>
 
-          {/* Exemple concret simplifié */}
-          <div className="bg-white border-2 border-blue-100 rounded-2xl p-6 mb-8 max-w-2xl mx-auto">
-            <div className="flex items-center justify-center gap-2 mb-3">
-              <h3 className="text-lg font-bold text-gray-900">
-                Exemple : Appartement 300 000€
+{/* Exemple concret épuré */}
+          <div className="bg-white rounded-2xl p-8 mb-8 max-w-4xl mx-auto shadow-lg">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                Exemple concret : Appartement 300 000€
               </h3>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-              <div className="text-left">
-                <p className="text-gray-600">Agence traditionnelle (5%)</p>
-                <p className="text-2xl font-bold text-red-500">15 000€</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              {/* Agence traditionnelle */}
+              <div className="text-center p-6">
+                <p className="text-gray-600 text-sm mb-2">Agence traditionnelle (5%)</p>
+                <p className="text-4xl font-bold text-red-500 mb-2">15 000€</p>
               </div>
-              <div className="text-left">
-                <p className="text-gray-600">LoopImmo (forfait palier)</p>
-                <p className="text-2xl font-bold text-green-600">4 000€</p>
+
+              {/* LoopImmo */}
+              <div className="text-center p-6">
+                <p className="text-gray-600 text-sm mb-2">LoopImmo (forfait palier)</p>
+                <p className="text-4xl font-bold text-green-600 mb-2">4 000€</p>
               </div>
             </div>
-            <div className="mt-4 p-3 bg-green-50 rounded-lg">
-              <p className="text-sm text-green-800">
-                <strong>11 000€ d'économie</strong> pour le vendeur +
-                <strong> 1 400€ partagés</strong> entre les Loopers
+
+            {/* Résultat simple */}
+            <div className="text-center pt-6 border-t border-gray-200">
+              <p className="text-lg text-gray-700 mb-4">
+                <strong className="text-green-600">11 000€ d'économie</strong> pour le vendeur + 
+                <strong className="text-blue-600"> 1 400€ partagés</strong> entre les Loopers
               </p>
+              <span className="bg-gray-100 text-gray-800 px-4 py-2 rounded-full text-sm font-semibold">
+                -73% par rapport à une agence
+              </span>
             </div>
           </div>
 
@@ -691,7 +702,9 @@ export const LaunchPageV2: React.FC = () => {
                   >
                     <p
                       className={`text-sm ${
-                        feedbackType === "success" ? "text-green-700" : "text-red-700"
+                        feedbackType === "success"
+                          ? "text-green-700"
+                          : "text-red-700"
                       }`}
                     >
                       {feedbackType === "success" ? (
@@ -786,7 +799,9 @@ export const LaunchPageV2: React.FC = () => {
                   >
                     <p
                       className={`text-sm ${
-                        feedbackType === "success" ? "text-green-700" : "text-red-700"
+                        feedbackType === "success"
+                          ? "text-green-700"
+                          : "text-red-700"
                       }`}
                     >
                       {feedbackType === "success" ? (
@@ -837,7 +852,8 @@ export const LaunchPageV2: React.FC = () => {
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-green-600 mt-1 mr-3 flex-shrink-0" />
                   <p className="text-lg text-gray-700">
-                    <strong>IA à disposition</strong> pour vous guider sur chaque mission
+                    <strong>IA à disposition</strong> pour vous guider sur
+                    chaque mission
                   </p>
                 </div>
               </div>
@@ -920,7 +936,8 @@ export const LaunchPageV2: React.FC = () => {
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-yellow-600 mt-1 mr-3 flex-shrink-0" />
                   <p className="text-lg text-gray-700">
-                    <strong>IA disponible</strong> pour vos questions et votre financement
+                    <strong>IA disponible</strong> pour vos questions et votre
+                    financement
                   </p>
                 </div>
               </div>
@@ -1028,7 +1045,9 @@ export const LaunchPageV2: React.FC = () => {
                   >
                     <p
                       className={`text-sm ${
-                        feedbackType === "success" ? "text-green-700" : "text-red-700"
+                        feedbackType === "success"
+                          ? "text-green-700"
+                          : "text-red-700"
                       }`}
                     >
                       {feedbackType === "success" ? (
