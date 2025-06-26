@@ -55,7 +55,6 @@ export const LaunchPageV2: React.FC = () => {
 
     setIsLoading(true);
     try {
-      // ✅ Utiliser l'URL du backend au lieu de l'URL relative
       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/subscribe`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
