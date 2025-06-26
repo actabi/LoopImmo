@@ -34,7 +34,7 @@ export const HomePageV2: React.FC = () => {
     { value: '15K+', label: 'Biens vendus' },
     { value: '98%', label: 'Clients satisfaits' },
     { value: '45j', label: 'Délai moyen' },
-    { value: '500+', label: 'Ambassadeurs' },
+    { value: '500+', label: 'Loopers' },
   ];
 
   return (
@@ -56,8 +56,8 @@ export const HomePageV2: React.FC = () => {
               <Link to="/vendre" className="text-gray-700 hover:text-blue-600 font-medium">
                 Vendre
               </Link>
-              <Link to="/ambassadeur" className="text-gray-700 hover:text-blue-600 font-medium">
-                Devenir ambassadeur
+              <Link to="/looper" className="text-gray-700 hover:text-blue-600 font-medium">
+                Devenir looper
               </Link>
               <Link
                 to="/login"
@@ -82,7 +82,7 @@ export const HomePageV2: React.FC = () => {
                 pour vous
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Vendez, achetez ou devenez ambassadeur. 
+                Vendez, achetez ou devenez looper. 
                 Une plateforme unique pour tous vos projets immobiliers.
               </p>
               
@@ -206,7 +206,7 @@ export const HomePageV2: React.FC = () => {
               <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
                 <Users className="h-8 w-8 text-purple-600" />
               </div>
-              <h3 className="text-2xl font-bold mb-4">Pour les ambassadeurs</h3>
+              <h3 className="text-2xl font-bold mb-4">Pour les loopers</h3>
               <p className="text-gray-600 mb-6">
                 Développez votre activité avec notre programme partenaire
               </p>
@@ -228,7 +228,7 @@ export const HomePageV2: React.FC = () => {
                 to="/login"
                 className="inline-flex items-center text-purple-600 font-semibold hover:text-purple-700"
               >
-                Devenir ambassadeur
+                Devenir looper
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </div>
@@ -321,7 +321,7 @@ export const HomePageV2: React.FC = () => {
                 <li><Link to="/acheter" className="hover:text-white">Acheter</Link></li>
                 <li><Link to="/vendre" className="hover:text-white">Vendre</Link></li>
                 <li><Link to="/estimation" className="hover:text-white">Estimation</Link></li>
-                <li><Link to="/ambassadeur" className="hover:text-white">Programme ambassadeur</Link></li>
+                <li><Link to="/looper" className="hover:text-white">Programme looper</Link></li>
               </ul>
             </div>
             <div>

@@ -190,7 +190,7 @@ export const UnifiedDashboard: React.FC = () => {
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-3">
                     <Users className="w-8 h-8" />
-                    <h2 className="text-xl font-semibold">Mode Ambassadeur</h2>
+                    <h2 className="text-xl font-semibold">Mode Looper</h2>
                   </div>
                   <Link to="/ambassador/dashboard">
                     <Button size="sm" variant="secondary">
@@ -273,7 +273,7 @@ export const UnifiedDashboard: React.FC = () => {
                     </div>
                     <div>
                       <p className="font-medium text-gray-900">
-                        Devenez ambassadeur dans le 7ème
+                        Devenez looper dans le 7ème
                       </p>
                       <p className="text-sm text-gray-600">
                         Vous visitez souvent ce quartier, gagnez des commissions

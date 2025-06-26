@@ -19,7 +19,7 @@ const SELLER_BENEFITS = [
   },
   {
     icon: Users,
-    title: 'Réseau d\'ambassadeurs',
+    title: 'Réseau d\'loopers',
     description: 'Des experts locaux pour valoriser votre bien'
   },
   {
@@ -56,7 +56,7 @@ const PROCESS_STEPS = [
   {
     number: '4',
     title: 'Visites organisées',
-    description: 'Gestion des visites par nos ambassadeurs locaux',
+    description: 'Gestion des visites par nos loopers locaux',
     icon: Calendar
   },
   {
@@ -80,7 +80,7 @@ const SUCCESS_STORIES = [
     property: 'Appartement T3',
     soldIn: '3 semaines',
     saved: '8 500€',
-    testimonial: 'J\'ai économisé plus de 8000€ par rapport à une agence classique. L\'ambassadeur était très professionnel.',
+    testimonial: 'J\'ai économisé plus de 8000€ par rapport à une agence classique. L\'looper était très professionnel.',
     rating: 5
   },
   {

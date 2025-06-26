@@ -303,7 +303,7 @@ export const ReferralManagement: React.FC = () => {
           <p className="text-gray-600">
             {activeTab === 'sent' 
               ? "Commencez à référer des acheteurs sur les biens de votre territoire"
-              : "Vous recevrez ici les références d'autres ambassadeurs"
+              : "Vous recevrez ici les références d'autres loopers"
             }
           </p>
         </Card>
@@ -317,7 +317,7 @@ export const ReferralManagement: React.FC = () => {
             <p className="font-medium mb-1">Système de référencement équitable</p>
             <p>
               Chaque référence acceptée et convertie génère une commission partagée 50/50 entre 
-              l'ambassadeur référent et le gestionnaire du bien. Un système gagnant-gagnant qui 
+              l'looper référent et le gestionnaire du bien. Un système gagnant-gagnant qui 
               favorise la collaboration au sein du réseau LoopImmo.
             </p>
           </div>

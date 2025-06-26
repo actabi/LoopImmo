@@ -317,7 +317,7 @@ const AmbassadorHome: React.FC = () => {
                 <div className="pt-3 border-t">
                   <div className="flex items-center gap-2 text-sm">
                     <Star className="w-4 h-4 text-yellow-500" />
-                    <span className="font-medium text-gray-900">Top 5 ambassadeurs</span>
+                    <span className="font-medium text-gray-900">Top 5 loopers</span>
                   </div>
                   <p className="text-xs text-gray-600 mt-1">
                     Continuez comme ça pour débloquer des bonus !

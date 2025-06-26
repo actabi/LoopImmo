@@ -7,7 +7,7 @@ import { LoginPage } from './pages/auth/LoginPage';
 import { RegisterPage } from './pages/auth/RegisterPage';
 import { AcheterPage } from './pages/AcheterPage';
 import { VendrePage } from './pages/VendrePage';
-import { AmbassadeurPage } from './pages/AmbassadeurPage';
+import { LooperPage } from './pages/LooperPage';
 import { PropertyDetailPage } from './pages/PropertyDetailPage';
 import { UnifiedDashboard } from './pages/dashboard/UnifiedDashboard';
 import { RolesManagement } from './pages/profile/RolesManagement';
@@ -52,7 +52,7 @@ useEffect(() => {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/acheter" element={<AcheterPage />} />
           <Route path="/vendre" element={<VendrePage />} />
-          <Route path="/ambassadeur" element={<AmbassadeurPage />} />
+          <Route path="/looper" element={<LooperPage />} />
           <Route path="/bien/:id" element={<PropertyDetailPage />} />
           
           {/* Pages protégées avec Layout */}

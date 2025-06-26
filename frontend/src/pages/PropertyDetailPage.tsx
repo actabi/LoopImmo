@@ -294,7 +294,7 @@ export const PropertyDetailPage: React.FC = () => {
                       {property.ambassadorId ? 'Pierre Bernard' : 'Équipe LoopImmo'}
                     </h3>
                     <p className="text-sm text-gray-600">
-                      {property.ambassadorId ? 'Ambassadeur du quartier' : 'Support dédié'}
+                      {property.ambassadorId ? 'Looper du quartier' : 'Support dédié'}
                     </p>
                     {property.ambassadorId && (
                       <div className="flex items-center gap-1 mt-1">

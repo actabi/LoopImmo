@@ -52,14 +52,14 @@ export const OnboardingPage: React.FC = () => {
     {
       id: 1,
       title: 'Bienvenue chez LoopImmo',
-      description: 'Découvrez comment devenir ambassadeur',
+      description: 'Découvrez comment devenir looper',
       icon: Users,
       content: <WelcomeStep />
     },
     {
       id: 2,
       title: 'Informations personnelles',
-      description: 'Complétez votre profil ambassadeur',
+      description: 'Complétez votre profil looper',
       icon: FileText,
       content: <PersonalInfoStep formData={formData} setFormData={setFormData} />
     },
@@ -111,7 +111,7 @@ export const OnboardingPage: React.FC = () => {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <h1 className="text-2xl font-bold text-gray-900">
-              Devenir Ambassadeur LoopImmo
+              Devenir Looper LoopImmo
             </h1>
             <Badge variant="secondary">
               Étape {currentStep + 1} sur {steps.length}
@@ -207,7 +207,7 @@ const WelcomeStep: React.FC = () => (
         Bienvenue dans l'aventure LoopImmo !
       </h3>
       <p className="text-gray-600 max-w-2xl mx-auto">
-        En devenant ambassadeur, vous rejoignez une communauté dynamique et bénéficiez 
+        En devenant looper, vous rejoignez une communauté dynamique et bénéficiez 
         d'opportunités de revenus attractives tout en aidant les gens à réaliser leurs projets immobiliers.
       </p>
     </div>
@@ -360,7 +360,7 @@ const PersonalInfoStep: React.FC<{
             className="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
           />
           <span className="ml-2 text-sm text-gray-700">
-            J'accepte de recevoir la newsletter ambassadeurs
+            J'accepte de recevoir la newsletter loopers
           </span>
         </label>
       </div>
@@ -564,7 +564,7 @@ const ExperienceStep: React.FC<{
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          Qu'est-ce qui vous motive à devenir ambassadeur ?
+          Qu'est-ce qui vous motive à devenir looper ?
         </label>
         <textarea
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
@@ -651,7 +651,7 @@ const ValidationStep: React.FC<{
           />
           <span className="ml-2 text-sm text-gray-700">
             J'accepte les <a href="#" className="text-primary-600 hover:underline">conditions générales</a> et 
-            le <a href="#" className="text-primary-600 hover:underline">code de conduite</a> des ambassadeurs LoopImmo
+            le <a href="#" className="text-primary-600 hover:underline">code de conduite</a> des loopers LoopImmo
           </span>
         </label>
         <label className="flex items-start">

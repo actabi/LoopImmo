@@ -24,7 +24,7 @@ export const Vision: React.FC = () => {
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">Écosystème Collaboratif</h3>
             <p className="text-gray-600">
-              Chaque acteur devient ambassadeur d'un bien, participant activement à sa commercialisation
+              Chaque acteur devient looper d'un bien, participant activement à sa commercialisation
             </p>
           </div>
 

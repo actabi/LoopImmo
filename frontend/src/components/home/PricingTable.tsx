@@ -56,7 +56,7 @@ export const PricingTable: React.FC = () => {
       gradient: "from-primary-500 to-primary-600",
       advantages: [
         "Forfait transparent et fixe",
-        "Communauté d'ambassadeurs actifs",
+        "Communauté d'loopers actifs",
         "Plateforme digitale complète",
         "Photos professionnelles incluses",
         "Diffusion multi-plateformes",
@@ -291,7 +291,7 @@ export const PricingTable: React.FC = () => {
             </h3>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto">
               Soit <span className="font-bold text-primary-600">{Math.round((fees.agency - fees.loopImmo) / fees.agency * 100)}%</span> de moins qu'une agence traditionnelle, 
-              tout en bénéficiant d'un service complet et d'une communauté d'ambassadeurs motivés.
+              tout en bénéficiant d'un service complet et d'une communauté d'loopers motivés.
             </p>
             
             {/* Tableau récapitulatif pour les montants clés */}

@@ -88,7 +88,7 @@ export const TerritoryAlerts: React.FC = () => {
                 Gagnez 50% de commission en référant des acheteurs
               </p>
               <p className="text-sm text-gray-600">
-                Partagez équitablement avec l'ambassadeur ou le vendeur en charge
+                Partagez équitablement avec l'looper ou le vendeur en charge
               </p>
             </div>
           </div>
@@ -161,7 +161,7 @@ export const TerritoryAlerts: React.FC = () => {
                   </p>
                   {property.ambassadorId && (
                     <Badge variant="secondary" size="sm" className="mt-1">
-                      Ambassadeur
+                      Looper
                     </Badge>
                   )}
                 </div>

@@ -60,12 +60,12 @@ const mockNotifications: Notification[] = [
     id: '5',
     role: 'buyer',
     title: 'Opportunité cross-rôle',
-    message: 'Devenez ambassadeur dans le 7ème arrondissement où vous cherchez',
+    message: 'Devenez looper dans le 7ème arrondissement où vous cherchez',
     time: new Date(Date.now() - 1000 * 60 * 60 * 48),
     read: false,
     type: 'cross-role',
     action: {
-      label: 'Devenir ambassadeur',
+      label: 'Devenir looper',
       onClick: () => console.log('Navigate to ambassador signup')
     }
   },

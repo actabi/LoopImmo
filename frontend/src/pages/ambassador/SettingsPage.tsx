@@ -59,7 +59,7 @@ export const SettingsPage: React.FC = () => {
     lastName: 'Dupont',
     email: 'jean.dupont@email.com',
     phone: '06 12 34 56 78',
-    bio: 'Ambassadeur immobilier passionné avec 5 ans d\'expérience dans le secteur. Spécialisé dans l\'accompagnement personnalisé des vendeurs et acheteurs.',
+    bio: 'Looper immobilier passionné avec 5 ans d\'expérience dans le secteur. Spécialisé dans l\'accompagnement personnalisé des vendeurs et acheteurs.',
     address: '15 rue de la République',
     city: 'Lyon',
     postalCode: '69002',
@@ -173,7 +173,7 @@ export const SettingsPage: React.FC = () => {
             
             <div className="text-white pb-2">
               <h2 className="text-2xl font-bold">{profile.firstName} {profile.lastName}</h2>
-              <p className="text-sm opacity-90">Ambassadeur LoopImmo</p>
+              <p className="text-sm opacity-90">Looper LoopImmo</p>
             </div>
           </div>
           

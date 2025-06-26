@@ -10,7 +10,7 @@ const steps = [
   },
   {
     icon: Users,
-    title: "Un ambassadeur vous accompagne",
+    title: "Un looper vous accompagne",
     description: "Un expert local de votre quartier organise les visites et vous conseille",
     color: "bg-secondary-100 text-secondary-600"
   },

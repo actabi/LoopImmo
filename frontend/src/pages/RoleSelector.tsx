@@ -36,7 +36,7 @@ export const RoleSelector: React.FC = () => {
     },
     {
       id: 'ambassador',
-      title: 'Ambassadeur',
+      title: 'Looper',
       description: 'Je souhaite devenir partenaire ImmoConnect',
       icon: Users,
       color: 'purple',

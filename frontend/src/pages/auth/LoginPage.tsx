@@ -28,7 +28,7 @@ export const LoginPage: React.FC = () => {
         navigate('/seller/dashboard');
       } else if (formData.email.includes('acheteur')) {
         navigate('/buyer/dashboard');
-      } else if (formData.email.includes('ambassadeur')) {
+      } else if (formData.email.includes('looper')) {
         navigate('/ambassador/dashboard');
       } else if (formData.email.includes('trust')) {
         navigate('/trust-manager/dashboard');
@@ -52,7 +52,7 @@ export const LoginPage: React.FC = () => {
     const credentials = {
       buyer: { email: 'acheteur@test.com', password: 'test123' },
       seller: { email: 'vendeur@test.com', password: 'test123' },
-      ambassador: { email: 'ambassadeur@test.com', password: 'test123' },
+      ambassador: { email: 'looper@test.com', password: 'test123' },
       trust: { email: 'trust@test.com', password: 'test123' }
     };
     
@@ -115,7 +115,7 @@ export const LoginPage: React.FC = () => {
                       onClick={() => fillTestCredentials('ambassador')}
                       className="block w-full text-left text-sm text-blue-700 hover:text-blue-800 hover:bg-blue-100 rounded px-2 py-1 transition-colors"
                     >
-                      <span className="font-medium">Ambassadeur :</span> ambassadeur@test.com / test123
+                      <span className="font-medium">Looper :</span> looper@test.com / test123
                     </button>
                     <button
                       type="button"

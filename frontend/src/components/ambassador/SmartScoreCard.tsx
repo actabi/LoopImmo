@@ -52,7 +52,7 @@ export const SmartScoreCard: React.FC<SmartScoreCardProps> = ({
       <div className="bg-gradient-to-r from-primary-500 to-primary-600 p-6 text-white">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h2 className="text-2xl font-bold mb-1">Mon Profil Ambassadeur</h2>
+            <h2 className="text-2xl font-bold mb-1">Mon Profil Looper</h2>
             <p className="text-primary-100">Score SMART: {score}/1000</p>
           </div>
           <div className="text-center">

@@ -21,7 +21,7 @@ export const AmbassadorRelation: React.FC<AmbassadorRelationProps> = ({ ambassad
     <Card>
       <div className="p-6 border-b">
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold text-gray-900">Votre ambassadeur</h3>
+          <h3 className="text-lg font-semibold text-gray-900">Votre looper</h3>
           <Button size="sm" variant="outline" onClick={() => setShowDetails(!showDetails)}>
             {showDetails ? 'Masquer' : 'Détails'}
           </Button>
@@ -121,7 +121,7 @@ export const AmbassadorRelation: React.FC<AmbassadorRelationProps> = ({ ambassad
           <div className="flex items-center gap-3">
             <TrendingUp className="w-5 h-5 text-primary-600" />
             <p className="text-sm text-primary-900">
-              <strong>Performance:</strong> Votre ambassadeur génère 40% plus de visites que la moyenne
+              <strong>Performance:</strong> Votre looper génère 40% plus de visites que la moyenne
             </p>
           </div>
         </div>

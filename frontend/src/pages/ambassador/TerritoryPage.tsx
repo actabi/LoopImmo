@@ -283,7 +283,7 @@ export const TerritoryPage: React.FC = () => {
               <Shield className="w-5 h-5 text-red-500" />
             </div>
             <p className="text-2xl font-bold text-gray-900">{territoryStats.totalAmbassadors}</p>
-            <p className="text-sm text-gray-600">Ambassadeurs</p>
+            <p className="text-sm text-gray-600">Loopers</p>
           </Card>
         </div>
 
@@ -432,7 +432,7 @@ export const TerritoryPage: React.FC = () => {
               </div>
             </Card>
 
-            {/* Comparaison avec autres ambassadeurs */}
+            {/* Comparaison avec autres loopers */}
             <Card className="p-6">
               <h3 className="font-semibold text-gray-900 mb-4">Votre position</h3>
               <div className="text-center mb-6">
@@ -440,7 +440,7 @@ export const TerritoryPage: React.FC = () => {
                   <Award className="w-12 h-12 text-yellow-600" />
                 </div>
                 <p className="text-3xl font-bold text-gray-900">#{territoryStats.ranking}</p>
-                <p className="text-gray-600">sur {territoryStats.totalAmbassadors} ambassadeurs</p>
+                <p className="text-gray-600">sur {territoryStats.totalAmbassadors} loopers</p>
               </div>
               
               <div className="space-y-3">

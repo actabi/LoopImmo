@@ -60,10 +60,10 @@ export const ConceptSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Ambassadeurs */}
+        {/* Loopers */}
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-            🚀 Ambassadeurs Actifs
+            🚀 Loopers Actifs
           </h3>
           
           <div className="bg-white rounded-3xl shadow-xl p-8 mb-8">
@@ -71,7 +71,7 @@ export const ConceptSection: React.FC = () => {
               <div>
                 <h4 className="text-xl font-semibold text-primary-600 mb-4">Vendeur-Sponsor</h4>
                 <p className="text-gray-600 mb-4">
-                  Le propriétaire devient ambassadeur en prenant des photos guidées, rédigeant sa description (assistée par IA) et accompagnant les visites.
+                  Le propriétaire devient looper en prenant des photos guidées, rédigeant sa description (assistée par IA) et accompagnant les visites.
                 </p>
               </div>
               <div>
@@ -114,7 +114,7 @@ export const ConceptSection: React.FC = () => {
 
           <div className="mt-8 bg-gradient-to-r from-primary-50 to-secondary-50 rounded-2xl p-6">
             <p className="text-center text-gray-700">
-              <span className="font-semibold">Espace dédié aux ambassadeurs :</span> Suivez vos actions et visualisez vos primes en temps réel
+              <span className="font-semibold">Espace dédié aux loopers :</span> Suivez vos actions et visualisez vos primes en temps réel
             </p>
           </div>
         </div>

@@ -75,7 +75,7 @@ export const AcheterPage: React.FC = () => {
               Trouvez votre <span className="text-primary-600">bien idéal</span>
             </h1>
             <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-              Parcourez des biens sélectionnés et visités par nos ambassadeurs locaux. 
+              Parcourez des biens sélectionnés et visités par nos loopers locaux. 
               Une transparence totale pour un achat en toute sérénité.
             </p>
             
@@ -143,7 +143,7 @@ export const AcheterPage: React.FC = () => {
               {
                 icon: Clock,
                 title: "Visites flexibles",
-                description: "7j/7 avec nos ambassadeurs",
+                description: "7j/7 avec nos loopers",
                 color: "primary"
               },
               {
@@ -174,7 +174,7 @@ export const AcheterPage: React.FC = () => {
                 Biens à la une
               </h2>
               <p className="text-xl text-gray-600">
-                Sélectionnés par nos ambassadeurs locaux
+                Sélectionnés par nos loopers locaux
               </p>
             </div>
             <Button 
@@ -229,7 +229,7 @@ export const AcheterPage: React.FC = () => {
                       </div>
                       <div>
                         <p className="text-sm font-medium text-gray-900">{property.ambassador}</p>
-                        <p className="text-xs text-gray-600">Ambassadeur</p>
+                        <p className="text-xs text-gray-600">Looper</p>
                       </div>
                     </div>
                     <Button size="sm" onClick={() => navigate(`/bien/${property.id}`)}>
@@ -266,7 +266,7 @@ export const AcheterPage: React.FC = () => {
               {
                 step: 2,
                 title: "Visitez",
-                description: "Organisez une visite avec l'ambassadeur du quartier",
+                description: "Organisez une visite avec l'looper du quartier",
                 icon: Eye
               },
               {
