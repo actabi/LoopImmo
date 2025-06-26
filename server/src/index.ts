@@ -49,9 +49,11 @@ app.get('/', (_req: Request, res: Response) => {
 });
 
 // Test route to verify Sentry configuration
-app.get('/debug-sentry', (_req: Request, _res: Response) => {
-  throw new Error('Test Sentry error');
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.get('/debug-sentry', (_req: Request, _res: Response) => {
+    throw new Error('Test Sentry error');
+  });
+}
 
 // Error handler must come after routes
 app.use(Sentry.Handlers.errorHandler());
