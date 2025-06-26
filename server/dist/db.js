@@ -18,11 +18,14 @@ else {
     (0, logger_1.log)(`Loaded environment variables from ${envPath}`);
 }
 // Configuration Pool optimisée pour OVH
+const isDev = process.env.NODE_ENV === 'development';
+const sslConfig = { rejectUnauthorized: true };
+if (isDev && process.env.PG_REJECT_UNAUTHORIZED === 'false') {
+    sslConfig.rejectUnauthorized = false;
+}
 const pool = new pg_1.Pool({
     connectionString: process.env.DATABASE_URL?.split('?')[0], // URL propre sans paramètres
-    ssl: {
-        rejectUnauthorized: false
-    },
+    ssl: sslConfig,
     // Paramètres valides pour PoolConfig
     max: 10, // Nombre max de connexions
     min: 2, // Nombre min de connexions maintenues
