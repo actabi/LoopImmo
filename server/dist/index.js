@@ -38,6 +38,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
+const helmet_1 = __importDefault(require("helmet"));
+const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
 const Sentry = __importStar(require("@sentry/node"));
 const db_1 = require("./db");
 const handlers_1 = require("./handlers");
@@ -56,7 +58,10 @@ Sentry.init({
 // RequestHandler must be the first middleware
 app.use(Sentry.Handlers.requestHandler());
 app.use((0, cors_1.default)({ origin: allowedOrigin }));
-app.use(express_1.default.json());
+app.use((0, helmet_1.default)());
+const limiter = (0, express_rate_limit_1.default)({ windowMs: 60 * 1000, max: 100 });
+app.use(limiter);
+app.use(express_1.default.json({ limit: '10kb' }));
 app.get('/api/users', async (_req, res) => {
     try {
         const { rows } = await (0, db_1.query)('SELECT * FROM users');
