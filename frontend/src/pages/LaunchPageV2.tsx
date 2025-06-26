@@ -20,6 +20,7 @@ import {
   Percent,
   UserPlus,
   Info,
+  AlertCircle,
   X,
   Share2,
 } from "lucide-react";
@@ -30,6 +31,8 @@ export const LaunchPageV2: React.FC = () => {
   const [email, setEmail] = useState("");
   const [referralCode, setReferralCode] = useState("");
   const [showReferralSuccess, setShowReferralSuccess] = useState(false);
+  const [feedbackMessage, setFeedbackMessage] = useState("");
+  const [feedbackType, setFeedbackType] = useState<"success" | "error">("success");
   const [showReferralPopup, setShowReferralPopup] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const altchaRef = useRef<{ value: string | null }>(null);
@@ -50,7 +53,10 @@ export const LaunchPageV2: React.FC = () => {
     e.preventDefault();
 
     if (!validateEmail(email)) {
-      alert("Veuillez entrer un email valide");
+      setFeedbackType("error");
+      setFeedbackMessage("Veuillez entrer un email valide");
+      setShowReferralSuccess(true);
+      setTimeout(() => setShowReferralSuccess(false), 5000);
       return;
     }
 
@@ -65,7 +71,10 @@ export const LaunchPageV2: React.FC = () => {
       });
 
       if (res.status === 409) {
-        alert("Cet email est déjà enregistré");
+        setFeedbackType("error");
+        setFeedbackMessage("Cet email est déjà enregistré");
+        setShowReferralSuccess(true);
+        setTimeout(() => setShowReferralSuccess(false), 5000);
         return;
       }
 
@@ -73,18 +82,20 @@ export const LaunchPageV2: React.FC = () => {
         throw new Error("Request failed");
       }
 
+      setFeedbackType("success");
+      setFeedbackMessage(
+        "Merci ! Nous vous contacterons dès l'ouverture de la bêta. Votre code de parrainage vous sera envoyé par email."
+      );
       setShowReferralSuccess(true);
-      setTimeout(() => {
-        alert(
-          "Merci ! Nous vous contacterons dès l'ouverture de la bêta. Votre code de parrainage vous sera envoyé par email."
-        );
-        setEmail("");
-        setReferralCode("");
-        setShowReferralSuccess(false);
-      }, 2000);
+      setEmail("");
+      setReferralCode("");
+      setTimeout(() => setShowReferralSuccess(false), 5000);
     } catch (err) {
       console.error(err);
-      alert("Erreur lors de l'inscription");
+      setFeedbackType("error");
+      setFeedbackMessage("Erreur lors de l'inscription");
+      setShowReferralSuccess(true);
+      setTimeout(() => setShowReferralSuccess(false), 5000);
     } finally {
       setIsLoading(false);
     }
@@ -664,10 +675,24 @@ export const LaunchPageV2: React.FC = () => {
                 </form>
 
                 {showReferralSuccess && (
-                  <div className="mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
-                    <p className="text-sm text-green-700">
-                      <CheckCircle className="w-4 h-4 inline mr-1" />
-                      Code de parrainage validé !
+                  <div
+                    className={`mt-4 p-3 rounded-lg border ${
+                      feedbackType === "success"
+                        ? "bg-green-50 border-green-200"
+                        : "bg-red-50 border-red-200"
+                    }`}
+                  >
+                    <p
+                      className={`text-sm ${
+                        feedbackType === "success" ? "text-green-700" : "text-red-700"
+                      }`}
+                    >
+                      {feedbackType === "success" ? (
+                        <CheckCircle className="w-4 h-4 inline mr-1" />
+                      ) : (
+                        <AlertCircle className="w-4 h-4 inline mr-1" />
+                      )}
+                      {feedbackMessage}
                     </p>
                   </div>
                 )}
@@ -745,10 +770,24 @@ export const LaunchPageV2: React.FC = () => {
                 </form>
 
                 {showReferralSuccess && (
-                  <div className="mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
-                    <p className="text-sm text-green-700">
-                      <CheckCircle className="w-4 h-4 inline mr-1" />
-                      Code de parrainage validé !
+                  <div
+                    className={`mt-4 p-3 rounded-lg border ${
+                      feedbackType === "success"
+                        ? "bg-green-50 border-green-200"
+                        : "bg-red-50 border-red-200"
+                    }`}
+                  >
+                    <p
+                      className={`text-sm ${
+                        feedbackType === "success" ? "text-green-700" : "text-red-700"
+                      }`}
+                    >
+                      {feedbackType === "success" ? (
+                        <CheckCircle className="w-4 h-4 inline mr-1" />
+                      ) : (
+                        <AlertCircle className="w-4 h-4 inline mr-1" />
+                      )}
+                      {feedbackMessage}
                     </p>
                   </div>
                 )}
@@ -961,10 +1000,24 @@ export const LaunchPageV2: React.FC = () => {
                 </form>
 
                 {showReferralSuccess && (
-                  <div className="mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
-                    <p className="text-sm text-green-700">
-                      <CheckCircle className="w-4 h-4 inline mr-1" />
-                      Code de parrainage validé !
+                  <div
+                    className={`mt-4 p-3 rounded-lg border ${
+                      feedbackType === "success"
+                        ? "bg-green-50 border-green-200"
+                        : "bg-red-50 border-red-200"
+                    }`}
+                  >
+                    <p
+                      className={`text-sm ${
+                        feedbackType === "success" ? "text-green-700" : "text-red-700"
+                      }`}
+                    >
+                      {feedbackType === "success" ? (
+                        <CheckCircle className="w-4 h-4 inline mr-1" />
+                      ) : (
+                        <AlertCircle className="w-4 h-4 inline mr-1" />
+                      )}
+                      {feedbackMessage}
                     </p>
                   </div>
                 )}
