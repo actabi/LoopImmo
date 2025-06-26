@@ -20,8 +20,8 @@ else {
 // Configuration Pool optimisée pour OVH
 const isDev = process.env.NODE_ENV === 'development';
 const sslConfig = { rejectUnauthorized: true };
-if (isDev && process.env.PG_REJECT_UNAUTHORIZED === 'false') {
-    sslConfig.rejectUnauthorized = false;
+if (process.env.PG_REJECT_UNAUTHORIZED !== undefined) {
+    sslConfig.rejectUnauthorized = process.env.PG_REJECT_UNAUTHORIZED !== 'false';
 }
 const pool = new pg_1.Pool({
     connectionString: process.env.DATABASE_URL?.split('?')[0], // URL propre sans paramètres
