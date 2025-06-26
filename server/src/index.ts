@@ -5,7 +5,12 @@ import { query, connectDb } from './db';
 import { subscribeNewsletter, register } from './handlers';
 import { log, error } from './utils/logger';
 
-const allowedOrigin = process.env.FRONTEND_URL || '*';
+const allowedOrigin = process.env.FRONTEND_URL;
+
+if (!allowedOrigin) {
+  error('FRONTEND_URL environment variable is not defined');
+  process.exit(1);
+}
 
 const app = express();
 const port = process.env.PORT || 3000;
