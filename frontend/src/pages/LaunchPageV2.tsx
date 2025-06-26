@@ -346,7 +346,7 @@ export const LaunchPageV2: React.FC = () => {
                 IA 24/7
               </div>
               <p className="text-sm md:text-base text-gray-700 font-medium">
-                Assistance personnalisée à chaque étape
+                Support juridique, annonces & dossiers 24/7
               </p>
             </div>
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 md:p-6 shadow-lg">
@@ -493,8 +493,9 @@ export const LaunchPageV2: React.FC = () => {
                     <CheckCircle className="w-4 h-4 text-emerald-600" />
                   </div>
                   <p>
-                    <strong>L'IA accompagne chaque étape</strong> pour garantir
-                    la qualité
+                    <strong>L'IA accompagne chaque étape</strong> : réponses
+                    juridiques, rédaction d'annonces, tri des photos et suivi de
+                    dossier
                   </p>
                 </div>
                 <div className="flex items-center gap-3">
@@ -587,6 +588,12 @@ export const LaunchPageV2: React.FC = () => {
                   <p className="text-lg text-gray-700">
                     <strong>Zéro commission surprise</strong> - Ce que vous
                     voyez, c'est ce que vous payez
+                  </p>
+                </div>
+                <div className="flex items-start">
+                  <CheckCircle className="w-6 h-6 text-blue-600 mt-1 mr-3 flex-shrink-0" />
+                  <p className="text-lg text-gray-700">
+                    <strong>IA experte</strong> : juridique, annonce et photos
                   </p>
                 </div>
               </div>
@@ -827,6 +834,12 @@ export const LaunchPageV2: React.FC = () => {
                     inclus
                   </p>
                 </div>
+                <div className="flex items-start">
+                  <CheckCircle className="w-6 h-6 text-green-600 mt-1 mr-3 flex-shrink-0" />
+                  <p className="text-lg text-gray-700">
+                    <strong>IA à disposition</strong> pour vous guider sur chaque mission
+                  </p>
+                </div>
               </div>
 
               <div className="bg-white rounded-2xl p-6 shadow-lg">
@@ -902,6 +915,12 @@ export const LaunchPageV2: React.FC = () => {
                   <p className="text-lg text-gray-700">
                     <strong>Accompagnement jusqu'au notaire</strong> pour une
                     transaction sereine
+                  </p>
+                </div>
+                <div className="flex items-start">
+                  <CheckCircle className="w-6 h-6 text-yellow-600 mt-1 mr-3 flex-shrink-0" />
+                  <p className="text-lg text-gray-700">
+                    <strong>IA disponible</strong> pour vos questions et votre financement
                   </p>
                 </div>
               </div>
