@@ -1,5 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
 import * as Sentry from '@sentry/node';
 import { query, connectDb } from './db';
 import { subscribeNewsletter, register } from './handlers';
@@ -24,7 +26,10 @@ Sentry.init({
 app.use(Sentry.Handlers.requestHandler());
 
 app.use(cors({ origin: allowedOrigin }));
-app.use(express.json());
+app.use(helmet());
+const limiter = rateLimit({ windowMs: 60 * 1000, max: 100 });
+app.use(limiter);
+app.use(express.json({ limit: '10kb' }));
 
 app.get('/api/users', async (_req: Request, res: Response) => {
   try {
