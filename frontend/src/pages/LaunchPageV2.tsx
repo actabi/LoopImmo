@@ -523,15 +523,13 @@ export const LaunchPageV2: React.FC = () => {
           </div>
 
           {/* Exemple concret épuré */}
-          {/* Exemple concret épuré */}
-          <div className="bg-white rounded-2xl p-4 sm:p-8 mb-8 max-w-4xl mx-auto shadow-lg">
+          {/* <div className="bg-white rounded-2xl p-4 sm:p-8 mb-8 max-w-4xl mx-auto shadow-lg">
             <div className="text-center mb-6 sm:mb-8">
               <h3 className="text-lg sm:text-2xl font-bold text-gray-900 mb-2">
                 Exemple concret : Appartement 300 000€
               </h3>
             </div>
             <div className="grid grid-cols-2 gap-4 mb-6">
-              {/* Agence traditionnelle */}
               <div className="text-center p-4 bg-red-50 rounded-xl">
                 <p className="text-gray-600 text-xs mb-2">
                   Agence traditionnelle (5%)
@@ -539,7 +537,6 @@ export const LaunchPageV2: React.FC = () => {
                 <p className="text-2xl font-bold text-red-500">15 000€</p>
               </div>
 
-              {/* LoopImmo */}
               <div className="text-center p-4 bg-green-50 rounded-xl">
                 <p className="text-gray-600 text-xs mb-2">
                   LoopImmo (forfait palier)
@@ -548,7 +545,6 @@ export const LaunchPageV2: React.FC = () => {
               </div>
             </div>
 
-            {/* Résultat simple */}
             <div className="text-center pt-4 sm:pt-6 border-t border-gray-200">
               <p className="text-base sm:text-lg text-gray-700 mb-4 px-2">
                 <strong className="text-green-600">11 000€ d'économie</strong>{" "}
@@ -562,7 +558,7 @@ export const LaunchPageV2: React.FC = () => {
                 -73% par rapport à une agence
               </span>
             </div>
-          </div>
+          </div> */}
 
           <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-sm font-semibold">
             <Zap className="w-4 h-4 mr-2" />
@@ -855,7 +851,6 @@ export const LaunchPageV2: React.FC = () => {
                   </p>
                 </div>
               </div>
-
               <div className="bg-white rounded-2xl p-6 shadow-lg">
                 <h3 className="text-xl font-semibold mb-4 text-gray-900">
                   Simulez vos gains Looper :
