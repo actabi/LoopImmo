@@ -32,6 +32,7 @@ export const LaunchPageV2: React.FC = () => {
   const [showReferralSuccess, setShowReferralSuccess] = useState(false);
   const [showReferralPopup, setShowReferralPopup] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const altchaRef = useRef<{ value: string | null }>(null);
 
   useEffect(() => {
     const ref = searchParams.get("ref");
@@ -53,12 +54,14 @@ export const LaunchPageV2: React.FC = () => {
       return;
     }
 
+    const token = altchaRef.current?.value;
+
     setIsLoading(true);
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/subscribe`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, referredBy: referralCode, role }),
+        body: JSON.stringify({ email, referredBy: referralCode, role, token }),
       });
 
       if (res.status === 409) {
@@ -227,13 +230,6 @@ export const LaunchPageV2: React.FC = () => {
       </div>
     </div>
   );
-
-  const altchaRef = useRef<HTMLInputElement>(null);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Altcha payload:", altchaRef.current?.value);
-  };
 
   return (
     <div className="min-h-screen bg-white">
