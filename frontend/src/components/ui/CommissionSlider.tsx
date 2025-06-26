@@ -34,32 +34,32 @@ export function CommissionSlider() {
         onChange={e => setPrice(Number(e.target.value))}
         className="w-full accent-blue-600"
       />
-<div className="flex flex-row items-center justify-between mt-4 gap-2 md:gap-4">
-  {/* Agence */}
-  <div className="flex-1 flex flex-col items-center min-w-0">
-    <span className="block text-gray-500 text-xs mb-1 truncate">
-      Agence classique (5 %)
-    </span>
-    <span className="text-red-600 text-lg md:text-2xl font-bold truncate">
-      {fees.agence.toLocaleString()} €
-    </span>
-  </div>
+      <div className="grid grid-cols-3 items-center mt-4 gap-2 md:gap-4 text-center">
+        {/* Agence */}
+        <div className="space-y-1 min-w-0">
+          <span className="block text-gray-500 text-xs truncate">
+            Agence classique (5 %)
+          </span>
+          <span className="text-red-600 text-lg md:text-2xl font-bold truncate">
+            {fees.agence.toLocaleString()} €
+          </span>
+        </div>
 
-  {/* Flèche centrée */}
-  <div className="flex items-center justify-center mx-1 md:mx-4">
-    <ArrowRight className="w-5 h-5 md:w-8 md:h-8 text-green-400" />
-  </div>
+        {/* Flèche centrée */}
+        <div className="flex justify-center">
+          <ArrowRight className="w-5 h-5 md:w-8 md:h-8 text-green-400" />
+        </div>
 
-  {/* Bloc économie */}
-  <div className="flex-1 flex flex-col items-center min-w-0">
-    <span className="block text-gray-500 text-xs mb-1 truncate">
-      LoopImmo fait économiser jusqu'à
-    </span>
-    <span className="text-green-600 text-lg md:text-2xl font-bold whitespace-nowrap truncate">
-      {amountEconomy} € &nbsp;({percentEconomy} %)
-    </span>
-  </div>
-</div>
+        {/* Bloc économie */}
+        <div className="space-y-1 min-w-0">
+          <span className="block text-gray-500 text-xs truncate">
+            LoopImmo fait économiser jusqu'à
+          </span>
+          <span className="text-green-600 text-lg md:text-2xl font-bold whitespace-nowrap truncate">
+            {amountEconomy} €  ({percentEconomy} %)
+          </span>
+        </div>
+      </div>
 
     </div>
   );
