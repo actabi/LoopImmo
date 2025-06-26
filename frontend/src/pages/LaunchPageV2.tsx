@@ -55,7 +55,8 @@ export const LaunchPageV2: React.FC = () => {
 
     setIsLoading(true);
     try {
-      const res = await fetch("/api/subscribe", {
+      // ✅ Utiliser l'URL du backend au lieu de l'URL relative
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/subscribe`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, referredBy: referralCode, role }),
@@ -950,7 +951,7 @@ export const LaunchPageV2: React.FC = () => {
                     <div>
                       {" "}
                       <fieldset>
-                        <Altcha ref={altchaRef}/>
+                        <Altcha ref={altchaRef} />
                       </fieldset>
                     </div>
                   )}
