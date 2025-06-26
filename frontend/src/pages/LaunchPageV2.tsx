@@ -184,7 +184,7 @@ export const LaunchPageV2: React.FC = () => {
             <h4 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">
               Vos gains
             </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-2">
               <div className="bg-purple-50 rounded-lg p-3 text-center border border-purple-100">
                 <p className="text-2xl font-bold text-purple-600">10%</p>
                 <p className="text-xs font-medium text-gray-700">
@@ -219,7 +219,7 @@ export const LaunchPageV2: React.FC = () => {
                 Exemple : Bien vendu à 400 000€
               </h4>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-center">
+            <div className="grid grid-cols-2 gap-3 text-center">
               <div>
                 <p className="text-xs text-gray-600">Vous touchez</p>
                 <p className="text-lg font-bold text-yellow-700">500€ HT</p>
@@ -284,30 +284,30 @@ export const LaunchPageV2: React.FC = () => {
             et en accompagnant les visites.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center mb-16 max-w-4xl mx-auto px-2 sm:px-4">
+          <div className="flex flex-col gap-4 justify-center mb-16 max-w-4xl mx-auto px-4">
             <button
               onClick={() => scrollToSection("vendeur-section")}
-              className="px-3 sm:px-6 py-3 sm:py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all transform hover:scale-105 flex items-center justify-center text-xs sm:text-sm md:text-base flex-1 sm:flex-none"
+              className="px-6 sm:px-6 py-4 sm:py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all transform hover:scale-105 flex items-center justify-center text-sm sm:text-sm md:text-base flex-1 sm:flex-none min-h-[60px]"
             >
-              <Home className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+              <Home className="w-5 h-5 sm:w-5 sm:h-5 mr-2 sm:mr-2 flex-shrink-0" />
               <span className="text-center leading-tight">
                 Je vends, ça m'intéresse
               </span>
             </button>
             <button
               onClick={() => scrollToSection("looper-section")}
-              className="px-3 sm:px-6 py-3 sm:py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-all transform hover:scale-105 flex items-center justify-center text-xs sm:text-sm md:text-base flex-1 sm:flex-none"
+              className="px-6 sm:px-6 py-4 sm:py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-all transform hover:scale-105 flex items-center justify-center text-sm sm:text-sm md:text-base flex-1 sm:flex-none min-h-[60px]"
             >
-              <Award className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+              <Award className="w-5 h-5 sm:w-5 sm:h-5 mr-2 sm:mr-2 flex-shrink-0" />
               <span className="text-center leading-tight">
                 Devenir Looper, avoir un complément de revenus
               </span>
             </button>
             <button
               onClick={() => scrollToSection("acheteur-section")}
-              className="px-3 sm:px-6 py-3 sm:py-4 bg-yellow-600 text-white font-semibold rounded-xl hover:bg-yellow-700 transition-all transform hover:scale-105 flex items-center justify-center text-xs sm:text-sm md:text-base flex-1 sm:flex-none"
+              className="px-6 sm:px-6 py-4 sm:py-4 bg-yellow-600 text-white font-semibold rounded-xl hover:bg-yellow-700 transition-all transform hover:scale-105 flex items-center justify-center text-sm sm:text-sm md:text-base flex-1 sm:flex-none min-h-[60px]"
             >
-              <Search className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+              <Search className="w-5 h-5 sm:w-5 sm:h-5 mr-2 sm:mr-2 flex-shrink-0" />
               <span className="text-center leading-tight">
                 Je cherche un bien
               </span>
@@ -325,7 +325,7 @@ export const LaunchPageV2: React.FC = () => {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto px-4">
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 md:p-6 shadow-lg">
               <h3 className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">
                 -72%
@@ -520,35 +520,43 @@ export const LaunchPageV2: React.FC = () => {
             </p>
           </div>
 
-{/* Exemple concret épuré */}
-          <div className="bg-white rounded-2xl p-8 mb-8 max-w-4xl mx-auto shadow-lg">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+          {/* Exemple concret épuré */}
+          {/* Exemple concret épuré */}
+          <div className="bg-white rounded-2xl p-4 sm:p-8 mb-8 max-w-4xl mx-auto shadow-lg">
+            <div className="text-center mb-6 sm:mb-8">
+              <h3 className="text-lg sm:text-2xl font-bold text-gray-900 mb-2">
                 Exemple concret : Appartement 300 000€
               </h3>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div className="grid grid-cols-2 gap-4 mb-6">
               {/* Agence traditionnelle */}
-              <div className="text-center p-6">
-                <p className="text-gray-600 text-sm mb-2">Agence traditionnelle (5%)</p>
-                <p className="text-4xl font-bold text-red-500 mb-2">15 000€</p>
+              <div className="text-center p-4 bg-red-50 rounded-xl">
+                <p className="text-gray-600 text-xs mb-2">
+                  Agence traditionnelle (5%)
+                </p>
+                <p className="text-2xl font-bold text-red-500">15 000€</p>
               </div>
 
               {/* LoopImmo */}
-              <div className="text-center p-6">
-                <p className="text-gray-600 text-sm mb-2">LoopImmo (forfait palier)</p>
-                <p className="text-4xl font-bold text-green-600 mb-2">4 000€</p>
+              <div className="text-center p-4 bg-green-50 rounded-xl">
+                <p className="text-gray-600 text-xs mb-2">
+                  LoopImmo (forfait palier)
+                </p>
+                <p className="text-2xl font-bold text-green-600">4 000€</p>
               </div>
             </div>
 
             {/* Résultat simple */}
-            <div className="text-center pt-6 border-t border-gray-200">
-              <p className="text-lg text-gray-700 mb-4">
-                <strong className="text-green-600">11 000€ d'économie</strong> pour le vendeur + 
-                <strong className="text-blue-600"> 1 400€ partagés</strong> entre les Loopers
+            <div className="text-center pt-4 sm:pt-6 border-t border-gray-200">
+              <p className="text-base sm:text-lg text-gray-700 mb-4 px-2">
+                <strong className="text-green-600">11 000€ d'économie</strong>{" "}
+                pour le vendeur
+                <br className="sm:hidden" />
+                <span className="hidden sm:inline"> + </span>
+                <strong className="text-blue-600">1 400€ partagés</strong> entre
+                les Loopers
               </p>
-              <span className="bg-gray-100 text-gray-800 px-4 py-2 rounded-full text-sm font-semibold">
+              <span className="bg-gray-100 text-gray-800 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold">
                 -73% par rapport à une agence
               </span>
             </div>
@@ -613,7 +621,7 @@ export const LaunchPageV2: React.FC = () => {
                 <h3 className="text-lg md:text-xl font-semibold mb-4 text-gray-900">
                   Étapes simplifiées :
                 </h3>
-                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 items-start sm:items-center">
+                <div className="flex flex-col gap-2">
                   <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
                     1. Estimation IA
                   </span>
@@ -862,9 +870,9 @@ export const LaunchPageV2: React.FC = () => {
                 <h3 className="text-xl font-semibold mb-4 text-gray-900">
                   Rémunération Looper :
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                <div className="grid grid-cols-3 gap-2 text-center">
                   <div>
-                    <div className="text-xl md:text-2xl font-bold text-green-600">
+                    <div className="text-base font-bold text-green-600">
                       300€
                     </div>
                     <div className="text-xs md:text-sm text-gray-600">
@@ -872,7 +880,7 @@ export const LaunchPageV2: React.FC = () => {
                     </div>
                   </div>
                   <div>
-                    <div className="text-xl md:text-2xl font-bold text-green-600">
+                    <div className="text-base font-bold text-green-600">
                       800€
                     </div>
                     <div className="text-xs md:text-sm text-gray-600">
@@ -880,7 +888,7 @@ export const LaunchPageV2: React.FC = () => {
                     </div>
                   </div>
                   <div>
-                    <div className="text-xl md:text-2xl font-bold text-green-600">
+                    <div className="text-base font-bold text-green-600">
                       1500€
                     </div>
                     <div className="text-xs md:text-sm text-gray-600">
@@ -946,7 +954,7 @@ export const LaunchPageV2: React.FC = () => {
                 <h3 className="text-xl font-semibold mb-4 text-gray-900">
                   Avantages acheteur :
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">
+                <div className="grid grid-cols-2 gap-2">
                   <div className="flex items-center">
                     <Shield className="w-4 h-4 md:w-5 md:h-5 text-yellow-600 mr-2" />
                     <span className="text-xs md:text-sm font-medium">
@@ -1078,7 +1086,7 @@ export const LaunchPageV2: React.FC = () => {
           </div>
 
           {/* 3 colonnes compactes */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="space-y-6 md:grid md:grid-cols-3 md:gap-8 md:space-y-0">
             {/* Vendeurs */}
             <div className="bg-white rounded-xl p-6 shadow-lg">
               <div className="flex items-center mb-4">
@@ -1246,7 +1254,7 @@ export const LaunchPageV2: React.FC = () => {
             </blockquote>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8 mb-12">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               <Heart className="w-8 h-8 text-white mx-auto mb-3" />
               <h3 className="text-xl font-semibold text-white mb-2">
