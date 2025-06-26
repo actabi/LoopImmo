@@ -265,7 +265,7 @@ export const TerritoryMapView: React.FC = () => {
                           )}
                           {territory.ambassadors && (
                             <p className="flex items-center justify-between">
-                              <span className="text-gray-600">Ambassadeurs:</span>
+                              <span className="text-gray-600">Loopers:</span>
                               <span className="font-medium">{territory.ambassadors}</span>
                             </p>
                           )}
@@ -436,7 +436,7 @@ export const TerritoryMapView: React.FC = () => {
                     <span className="text-xs text-yellow-600 font-medium">Équipe</span>
                   </div>
                   <p className="text-2xl font-bold text-gray-900">{selectedTerritory.ambassadors}</p>
-                  <p className="text-xs text-gray-600 mt-1">Ambassadeurs</p>
+                  <p className="text-xs text-gray-600 mt-1">Loopers</p>
                 </div>
               )}
             </div>
@@ -447,7 +447,7 @@ export const TerritoryMapView: React.FC = () => {
                   <AlertCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                   <div className="text-sm">
                     <p className="font-medium text-green-900">Zone exclusive</p>
-                    <p className="text-green-700">Vous êtes le seul ambassadeur sur cette zone de 300m de rayon.</p>
+                    <p className="text-green-700">Vous êtes le seul looper sur cette zone de 300m de rayon.</p>
                   </div>
                 </div>
               </div>

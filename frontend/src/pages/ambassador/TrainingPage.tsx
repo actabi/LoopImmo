@@ -65,7 +65,7 @@ const courses: Course[] = [
   {
     id: '1',
     title: 'Fondamentaux LoopImmo',
-    description: 'Découvrez le modèle LoopImmo et votre rôle d\'ambassadeur',
+    description: 'Découvrez le modèle LoopImmo et votre rôle d\'looper',
     category: 'basics',
     duration: 45,
     progress: 100,
@@ -77,7 +77,7 @@ const courses: Course[] = [
     modules: [
       { id: '1-1', title: 'Bienvenue chez LoopImmo', duration: 10, type: 'video', completed: true },
       { id: '1-2', title: 'Le modèle économique', duration: 15, type: 'video', completed: true },
-      { id: '1-3', title: 'Votre rôle d\'ambassadeur', duration: 15, type: 'text', completed: true },
+      { id: '1-3', title: 'Votre rôle d\'looper', duration: 15, type: 'text', completed: true },
       { id: '1-4', title: 'Quiz de validation', duration: 5, type: 'quiz', completed: true }
     ]
   },
@@ -748,7 +748,7 @@ export const TrainingPage: React.FC = () => {
                       <div className="space-y-2">
                         <a href="#" className="flex items-center text-sm text-blue-600 hover:text-blue-700">
                           <ChevronRight className="w-4 h-4 mr-1" />
-                          FAQ Ambassadeurs
+                          FAQ Loopers
                         </a>
                         <a href="#" className="flex items-center text-sm text-blue-600 hover:text-blue-700">
                           <ChevronRight className="w-4 h-4 mr-1" />
@@ -830,7 +830,7 @@ export const TrainingPage: React.FC = () => {
               <div>
                 <h3 className="text-xl font-bold mb-2">Continuez à apprendre !</h3>
                 <p className="text-primary-100">
-                  Les ambassadeurs les mieux formés réalisent 3x plus de ventes en moyenne.
+                  Les loopers les mieux formés réalisent 3x plus de ventes en moyenne.
                 </p>
               </div>
               <Brain className="w-16 h-16 text-primary-200" />

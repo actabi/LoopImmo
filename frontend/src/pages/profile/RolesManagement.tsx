@@ -46,7 +46,7 @@ const rolesInfo: RoleInfo[] = [
   {
     role: 'buyer',
     title: 'Acheteur',
-    description: 'Trouvez le bien de vos rêves avec notre réseau d\'ambassadeurs',
+    description: 'Trouvez le bien de vos rêves avec notre réseau d\'loopers',
     icon: Search,
     benefits: [
       'Accès exclusif aux biens',
@@ -61,7 +61,7 @@ const rolesInfo: RoleInfo[] = [
   },
   {
     role: 'ambassador',
-    title: 'Ambassadeur',
+    title: 'Looper',
     description: 'Gagnez des revenus en accompagnant les visites dans votre quartier',
     icon: Users,
     benefits: [
@@ -78,7 +78,7 @@ const rolesInfo: RoleInfo[] = [
     ],
     stats: [
       { label: 'Revenu moyen', value: '1 850€/mois' },
-      { label: 'Ambassadeurs actifs', value: '347' }
+      { label: 'Loopers actifs', value: '347' }
     ]
   }
 ];

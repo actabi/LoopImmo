@@ -179,7 +179,7 @@ const CommissionItem: React.FC<{ commission: Commission }> = ({ commission }) =>
             {commission.referredTo && (
               <>
                 <span>•</span>
-                <span>Ambassadeur: {commission.referredTo}</span>
+                <span>Looper: {commission.referredTo}</span>
               </>
             )}
             <span>•</span>
@@ -574,7 +574,7 @@ export const CommissionsPage: React.FC = () => {
                 <h3 className="font-semibold text-gray-900 mb-2">Comment sont calculées vos commissions ?</h3>
                 <div className="space-y-2 text-sm text-gray-700">
                   <p>• <strong>Ventes directes :</strong> 0.8% à 1.2% du prix de vente selon le montant</p>
-                  <p>• <strong>Parrainages :</strong> 0.3% quand vous amenez un acheteur à un autre ambassadeur</p>
+                  <p>• <strong>Parrainages :</strong> 0.3% quand vous amenez un acheteur à un autre looper</p>
                   <p>• <strong>Bonus :</strong> Primes de performance selon vos objectifs mensuels et trimestriels</p>
                   <p>• <strong>Paiement :</strong> Versement automatique le 15 de chaque mois</p>
                 </div>

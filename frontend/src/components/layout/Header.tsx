@@ -42,8 +42,8 @@ export const Header: React.FC<HeaderProps> = ({ onMenuToggle, isMenuOpen }) => {
             <Link to="/vendre" className="text-gray-700 hover:text-primary-600 font-medium">
               Vendre
             </Link>
-            <Link to="/ambassadeurs" className="text-gray-700 hover:text-primary-600 font-medium">
-              Ambassadeurs
+            <Link to="/loopers" className="text-gray-700 hover:text-primary-600 font-medium">
+              Loopers
             </Link>
             <Link to="/a-propos" className="text-gray-700 hover:text-primary-600 font-medium">
               À propos

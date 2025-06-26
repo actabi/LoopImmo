@@ -13,8 +13,8 @@ export const Testimonials: React.FC = () => {
     },
     {
       name: "Thomas Martin",
-      role: "Ambassadeur à Paris",
-      content: "En tant qu'ambassadeur, j'ai gagné 2 500€ en 3 mois en aidant mes voisins à vendre. C'est gratifiant et rémunérateur!",
+      role: "Looper à Paris",
+      content: "En tant qu'looper, j'ai gagné 2 500€ en 3 mois en aidant mes voisins à vendre. C'est gratifiant et rémunérateur!",
       rating: 5,
       earnings: "2 500€ gagnés",
       image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400"
@@ -37,7 +37,7 @@ export const Testimonials: React.FC = () => {
             Ils ont choisi LoopImmo
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Découvrez les témoignages de nos vendeurs et ambassadeurs satisfaits
+            Découvrez les témoignages de nos vendeurs et loopers satisfaits
           </p>
         </div>
 

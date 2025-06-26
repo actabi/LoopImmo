@@ -5,7 +5,7 @@ import { Footer } from '../components/layout/Footer';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
 
-export const AmbassadeurPage: React.FC = () => {
+export const LooperPage: React.FC = () => {
   const benefits = [
     {
       icon: Euro,
@@ -102,11 +102,11 @@ export const AmbassadeurPage: React.FC = () => {
             <div>
               <div className="inline-flex items-center gap-2 bg-secondary-100 text-secondary-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
                 <Award className="w-4 h-4" />
-                <span>Rejoignez 500+ ambassadeurs actifs</span>
+                <span>Rejoignez 500+ loopers actifs</span>
               </div>
               
               <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-                Devenez <span className="text-secondary-600">ambassadeur</span> de votre quartier
+                Devenez <span className="text-secondary-600">looper</span> de votre quartier
               </h1>
               <p className="text-xl text-gray-600 mb-8">
                 Transformez votre connaissance locale en revenus complémentaires. 
@@ -116,7 +116,7 @@ export const AmbassadeurPage: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
                 <Button size="lg" variant="secondary" className="px-8">
                   <Briefcase className="w-5 h-5 mr-2" />
-                  Devenir ambassadeur
+                  Devenir looper
                 </Button>
                 <Button 
                   size="lg" 
@@ -130,7 +130,7 @@ export const AmbassadeurPage: React.FC = () => {
               <div className="grid grid-cols-3 gap-6">
                 <div className="text-center">
                   <p className="text-4xl font-bold text-secondary-600">500+</p>
-                  <p className="text-sm text-gray-600">Ambassadeurs</p>
+                  <p className="text-sm text-gray-600">Loopers</p>
                 </div>
                 <div className="text-center">
                   <p className="text-4xl font-bold text-primary-600">2 400€</p>
@@ -146,7 +146,7 @@ export const AmbassadeurPage: React.FC = () => {
             <div className="relative">
               <img 
                 src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Ambassadeurs LoopImmo"
+                alt="Loopers LoopImmo"
                 className="rounded-2xl shadow-2xl"
               />
               <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-6">
@@ -168,7 +168,7 @@ export const AmbassadeurPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Les avantages d'être ambassadeur
+              Les avantages d'être looper
             </h2>
             <p className="text-xl text-gray-600">
               Une activité flexible, valorisante et rémunératrice
@@ -201,7 +201,7 @@ export const AmbassadeurPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Comment devenir ambassadeur ?
+              Comment devenir looper ?
             </h2>
             <p className="text-xl text-gray-600">
               Un processus simple et rapide
@@ -241,7 +241,7 @@ export const AmbassadeurPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Nos ambassadeurs témoignent
+              Nos loopers témoignent
             </h2>
             <p className="text-xl text-gray-600">
               Découvrez leurs parcours inspirants
@@ -306,7 +306,7 @@ export const AmbassadeurPage: React.FC = () => {
               },
               {
                 question: "Combien de temps cela prend-il ?",
-                answer: "C'est vous qui décidez ! En moyenne, nos ambassadeurs consacrent 5 à 10 heures par mois à cette activité."
+                answer: "C'est vous qui décidez ! En moyenne, nos loopers consacrent 5 à 10 heures par mois à cette activité."
               },
               {
                 question: "Comment sont calculées les commissions ?",
@@ -331,7 +331,7 @@ export const AmbassadeurPage: React.FC = () => {
         <div className="absolute inset-0 bg-pattern opacity-10"></div>
         <div className="relative max-w-4xl mx-auto text-center px-4">
           <h2 className="text-4xl font-bold mb-6">
-            Prêt à devenir ambassadeur ?
+            Prêt à devenir looper ?
           </h2>
           <p className="text-xl mb-10 text-secondary-100">
             Rejoignez notre communauté et commencez à gagner dès maintenant

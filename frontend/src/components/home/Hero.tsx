@@ -24,7 +24,7 @@ export const Hero: React.FC = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
-            LoopImmo révolutionne l'immobilier : un forfait transparent, une communauté d'ambassadeurs, 
+            LoopImmo révolutionne l'immobilier : un forfait transparent, une communauté d'loopers, 
             et des économies exceptionnelles.
           </p>
 
@@ -35,10 +35,10 @@ export const Hero: React.FC = () => {
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Link to="/ambassadeur">
+            <Link to="/looper">
               <Button size="lg" variant="outline">
                 <Users className="mr-2 w-5 h-5" />
-                Devenir ambassadeur
+                Devenir looper
               </Button>
             </Link>
           </div>

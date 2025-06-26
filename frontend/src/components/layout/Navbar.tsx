@@ -29,9 +29,9 @@ export const Navbar: React.FC = () => {
               <Home className="w-4 h-4" />
               <span>Vendre</span>
             </Link>
-            <Link to="/ambassadeur" className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 transition-colors">
+            <Link to="/looper" className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 transition-colors">
               <Users className="w-4 h-4" />
-              <span>Devenir Ambassadeur</span>
+              <span>Devenir Looper</span>
             </Link>
             <Link to="/connexion">
               <Button variant="outline" size="sm">
@@ -74,12 +74,12 @@ export const Navbar: React.FC = () => {
               <span>Vendre</span>
             </Link>
             <Link
-              to="/ambassadeur"
+              to="/looper"
               className="flex items-center space-x-2 px-3 py-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-50"
               onClick={() => setIsOpen(false)}
             >
               <Users className="w-4 h-4" />
-              <span>Devenir Ambassadeur</span>
+              <span>Devenir Looper</span>
             </Link>
             <Link
               to="/connexion"

@@ -238,7 +238,7 @@ export const LaunchPage: React.FC = () => {
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Communauté active</h3>
             <p className="text-gray-700 mb-4">
-              Des ambassadeurs locaux motivés, rémunérés pour chaque vente,
+              Des loopers locaux motivés, rémunérés pour chaque vente,
               font vivre votre annonce et trouvent les acheteurs dans leur
               réseau.
             </p>
@@ -294,11 +294,11 @@ export const LaunchPage: React.FC = () => {
                 <Users className="w-6 h-6 text-primary-600 mr-3 flex-shrink-0 mt-1" />
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1">
-                    Ambassadeurs proches ou pourquoi pas vous ?
+                    Loopers proches ou pourquoi pas vous ?
                   </h4>
                   <p className="text-gray-600">
                     Des experts de votre quartier pour valoriser votre bien ou
-                    soyez votre propre ambassadeur
+                    soyez votre propre looper
                   </p>
                 </div>
               </div>
@@ -381,12 +381,12 @@ export const LaunchPage: React.FC = () => {
         </div>
       </section>
 
-			{/*  Section Ambassadeurs*/}
+			{/*  Section Loopers*/}
     <section className="py-20 bg-gradient-to-b from-accent-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Devenez ambassadeur LoopImmo
+            Devenez looper LoopImmo
           </h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Transformez votre réseau en opportunité et soyez récompensé pour
@@ -395,7 +395,7 @@ export const LaunchPage: React.FC = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Avantages Ambassadeurs */}
+          {/* Avantages Loopers */}
           <div>
             <div className="space-y-4">
               <div className="flex items-start">
@@ -433,7 +433,7 @@ export const LaunchPage: React.FC = () => {
                   </h4>
                   <p className="text-gray-600">
                     Accès à nos programmes de formation pour maîtriser le rôle
-                    d'ambassadeur
+                    d'looper
                   </p>
                 </div>
               </div>
@@ -473,7 +473,7 @@ export const LaunchPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Trust Manager Ambassadeurs */}
+        {/* Trust Manager Loopers */}
         <div className="mt-8 bg-gradient-to-r from-accent-50 to-accent-100 rounded-xl p-4 flex items-center justify-center">
           <Lock className="w-5 h-5 text-accent-700 mr-2" />
           <p className="text-accent-700 font-medium text-sm">
@@ -516,7 +516,7 @@ export const LaunchPage: React.FC = () => {
                     2
                   </div>
                   <p className="text-gray-800">
-                    Visitez avec un ambassadeur local
+                    Visitez avec un looper local
                   </p>
                 </div>
                 <div className="flex items-center">
@@ -616,7 +616,7 @@ export const LaunchPage: React.FC = () => {
                 "Nous croyons que vendre un bien immobilier est avant tout un
                 moment de vie à valeur humaine. LoopImmo redonne du sens à la
                 transaction en créant des liens authentiques entre vendeurs,
-                acheteurs et ambassadeurs locaux."
+                acheteurs et loopers locaux."
               </p>
               <div className="flex items-center justify-center">
                 <Shield className="w-6 h-6 mr-2" />

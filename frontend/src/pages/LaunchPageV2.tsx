@@ -600,7 +600,7 @@ export const LaunchPageV2: React.FC = () => {
                   <CheckCircle className="w-6 h-6 text-blue-600 mt-1 mr-3 flex-shrink-0" />
                   <p className="text-lg text-gray-700">
                     <strong>Communauté locale activée</strong> : chaque voisin,
-                    ancien occupant ou contact peut devenir ambassadeur et être
+                    ancien occupant ou contact peut devenir looper et être
                     récompensé.
                   </p>
                 </div>

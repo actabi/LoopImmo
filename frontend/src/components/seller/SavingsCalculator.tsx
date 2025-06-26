@@ -126,7 +126,7 @@ export const SavingsCalculator: React.FC<SavingsCalculatorProps> = ({ property }
                 <ul className="space-y-1 text-gray-600">
                   <li>• Pas de local commercial coûteux</li>
                   <li>• Technologie qui automatise les tâches répétitives</li>
-                  <li>• Réseau d'ambassadeurs indépendants</li>
+                  <li>• Réseau d'loopers indépendants</li>
                   <li>• Forfait fixe transparent, pas de % sur le prix</li>
                 </ul>
               </div>

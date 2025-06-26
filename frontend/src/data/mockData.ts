@@ -303,7 +303,7 @@ export const mockUsers: User[] = [
   },
   {
     id: 'amb1',
-    email: 'ambassadeur@test.com',
+    email: 'looper@test.com',
     firstName: 'Jean',
     lastName: 'Bernard',
     roles: ['ambassador'],
@@ -312,7 +312,7 @@ export const mockUsers: User[] = [
   },
   {
     id: 'amb2',
-    email: 'ambassadeur2@test.com',
+    email: 'looper2@test.com',
     firstName: 'Sophie',
     lastName: 'Martin',
     roles: ['ambassador'],
@@ -321,7 +321,7 @@ export const mockUsers: User[] = [
   },
   {
     id: 'amb3',
-    email: 'ambassadeur3@test.com',
+    email: 'looper3@test.com',
     firstName: 'Pierre',
     lastName: 'Bernard',
     roles: ['ambassador'],
@@ -330,7 +330,7 @@ export const mockUsers: User[] = [
   },
   {
     id: 'amb4',
-    email: 'ambassadeur4@test.com',
+    email: 'looper4@test.com',
     firstName: 'Marc',
     lastName: 'Dubois',
     roles: ['ambassador'],
@@ -339,7 +339,7 @@ export const mockUsers: User[] = [
   },
   {
     id: 'amb5',
-    email: 'ambassadeur5@test.com',
+    email: 'looper5@test.com',
     firstName: 'Claire',
     lastName: 'Durand',
     roles: ['ambassador'],
@@ -368,7 +368,7 @@ export const mockAmbassadors: Ambassador[] = [
     rating: 4.8,
     specialties: ['Appartements', 'Investissement locatif'],
     availability: 'Disponible 7j/7',
-    bio: 'Ambassadeur passionné du 6ème arrondissement depuis 3 ans.',
+    bio: 'Looper passionné du 6ème arrondissement depuis 3 ans.',
     verifiedProperties: ['1'],
     completedVisits: 45,
     activeProperties: 3
@@ -413,7 +413,7 @@ export const mockAmbassadors: Ambassador[] = [
     rating: 4.9,
     specialties: ['Tous types de biens'],
     availability: 'Disponible sur rendez-vous',
-    bio: 'Ambassadeur historique avec un large réseau.',
+    bio: 'Looper historique avec un large réseau.',
     verifiedProperties: [],
     completedVisits: 70,
     activeProperties: 5

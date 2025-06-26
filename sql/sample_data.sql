@@ -4,13 +4,13 @@
 INSERT INTO users (id, email, first_name, last_name, roles, phone, avatar, referral_code, referred_by, created_at) VALUES
   ('1', 'vendeur@test.com', 'Pierre', 'Dupont', ARRAY['seller','ambassador'], '0612345678', NULL, 'CODE01', NULL, '2024-01-01'),
   ('buyer1', 'acheteur@test.com', 'Marie', 'Martin', ARRAY['buyer'], '0687654321', NULL, 'CODE02', NULL, '2024-01-05'),
-  ('amb1', 'ambassadeur@test.com', 'Jean', 'Bernard', ARRAY['ambassador'], '0698765432', NULL, 'CODE03', NULL, '2023-12-01'),
-  ('amb2', 'ambassadeur2@test.com', 'Sophie', 'Martin', ARRAY['ambassador'], '0698765433', NULL, 'CODE04', NULL, '2023-12-05'),
+  ('amb1', 'looper@test.com', 'Jean', 'Bernard', ARRAY['ambassador'], '0698765432', NULL, 'CODE03', NULL, '2023-12-01'),
+  ('amb2', 'looper2@test.com', 'Sophie', 'Martin', ARRAY['ambassador'], '0698765433', NULL, 'CODE04', NULL, '2023-12-05'),
   ('trust1', 'trust@test.com', 'Alice', 'Trusted', ARRAY['trust_manager'], '0600000000', NULL, 'CODE05', NULL, '2024-01-10');
 
 -- Ambassadors
 INSERT INTO ambassadors (id, user_id, zone, commission, total_sales, total_earnings, rating, availability, bio) VALUES
-  ('amb1', 'amb1', 'Lyon 6ème', 0.3, 8, 19200, 4.8, 'Disponible 7j/7', 'Ambassadeur passionné du 6ème arrondissement depuis 3 ans.'),
+  ('amb1', 'amb1', 'Lyon 6ème', 0.3, 8, 19200, 4.8, 'Disponible 7j/7', 'Looper passionné du 6ème arrondissement depuis 3 ans.'),
   ('amb2', 'amb2', 'Lyon Ouest', 0.25, 5, 12500, 4.6, 'Disponible en semaine', 'Expert du secteur ouest lyonnais depuis 2 ans.');
 
 INSERT INTO ambassador_specialties (ambassador_id, specialty) VALUES

@@ -42,7 +42,7 @@ const roleCards = [
   {
     role: 'ambassador' as UserRole,
     icon: Handshake,
-    title: 'Je veux être ambassadeur',
+    title: 'Je veux être looper',
     description: 'Aidez vos voisins à vendre et gagnez des commissions attractives',
     color: 'bg-accent-500'
   }

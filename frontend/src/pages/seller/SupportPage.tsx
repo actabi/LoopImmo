@@ -37,20 +37,20 @@ export function SupportPage() {
 
   const faqs = [
     {
-      question: "Comment fonctionne le système d'ambassadeur ?",
-      answer: "L'ambassadeur vous accompagne tout au long de la vente. Il gère les visites, prend les photos professionnelles et vous conseille sur la mise en valeur de votre bien."
+      question: "Comment fonctionne le système d'looper ?",
+      answer: "L'looper vous accompagne tout au long de la vente. Il gère les visites, prend les photos professionnelles et vous conseille sur la mise en valeur de votre bien."
     },
     {
       question: "Quels sont les frais de commission ?",
-      answer: "Notre commission est de 2% du prix de vente, partagée entre la plateforme et votre ambassadeur. C'est l'une des plus basses du marché."
+      answer: "Notre commission est de 2% du prix de vente, partagée entre la plateforme et votre looper. C'est l'une des plus basses du marché."
     },
     {
       question: "Combien de temps prend une vente en moyenne ?",
       answer: "En moyenne, nos biens se vendent en 45 jours. Cela dépend du prix, de la localisation et de la qualité de présentation du bien."
     },
     {
-      question: "Puis-je changer d'ambassadeur ?",
-      answer: "Oui, si vous n'êtes pas satisfait, vous pouvez demander un changement d'ambassadeur. Contactez notre support pour en discuter."
+      question: "Puis-je changer d'looper ?",
+      answer: "Oui, si vous n'êtes pas satisfait, vous pouvez demander un changement d'looper. Contactez notre support pour en discuter."
     }
   ];
 
@@ -193,7 +193,7 @@ export function SupportPage() {
                     <option>Question générale</option>
                     <option>Problème technique</option>
                     <option>Facturation</option>
-                    <option>Ambassadeur</option>
+                    <option>Looper</option>
                     <option>Autre</option>
                   </select>
                 </div>
@@ -257,7 +257,7 @@ export function SupportPage() {
                 <h3 className="font-semibold text-gray-900 mb-2">Besoin d'aide urgente ?</h3>
                 <p className="text-gray-600 mb-4">
                   Si vous rencontrez un problème urgent avec une visite ou une transaction, 
-                  contactez directement votre ambassadeur ou appelez notre hotline.
+                  contactez directement votre looper ou appelez notre hotline.
                 </p>
                 <div className="flex items-center gap-2 text-red-600 font-medium">
                   <AlertCircle className="w-5 h-5" />

@@ -16,7 +16,7 @@ interface RoleOption {
 const roleOptions: RoleOption[] = [
   { role: 'seller', label: 'Mode Vendeur', icon: Home, path: '/seller/dashboard' },
   { role: 'buyer', label: 'Mode Acheteur', icon: Search, path: '/buyer/dashboard' },
-  { role: 'ambassador', label: 'Mode Ambassadeur', icon: Users, path: '/ambassador/dashboard' },
+  { role: 'ambassador', label: 'Mode Looper', icon: Users, path: '/ambassador/dashboard' },
   { role: 'trust_manager', label: 'Mode Trust Manager', icon: Shield, path: '/trust-manager/dashboard' },
 ];
 

@@ -6,7 +6,7 @@ export const Features: React.FC = () => {
     {
       icon: Zap,
       title: "Vente rapide",
-      description: "Grâce à notre réseau d'ambassadeurs, votre bien gagne en visibilité instantanément",
+      description: "Grâce à notre réseau d'loopers, votre bien gagne en visibilité instantanément",
       color: "from-yellow-400 to-orange-500"
     },
     {
@@ -18,7 +18,7 @@ export const Features: React.FC = () => {
     {
       icon: Users,
       title: "Communauté active",
-      description: "Des milliers d'ambassadeurs motivés pour faire connaître votre bien",
+      description: "Des milliers d'loopers motivés pour faire connaître votre bien",
       color: "from-purple-400 to-pink-500"
     },
     {

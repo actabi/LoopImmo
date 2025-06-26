@@ -112,7 +112,7 @@ const guideSteps: GuideStep[] = [
       { title: 'Définir les créneaux de visite', completed: false },
       { title: 'Préparer le parcours de visite', completed: false },
       { title: 'Créer une fiche descriptive', completed: false },
-      { title: 'Former l\'ambassadeur', completed: false }
+      { title: 'Former l\'looper', completed: false }
     ],
     tips: [
       'Les visites groupées créent un sentiment d\'urgence',

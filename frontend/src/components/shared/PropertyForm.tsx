@@ -223,7 +223,7 @@ export const PropertyForm: React.FC<PropertyFormProps> = ({
                     <div>
                       <p className="text-sm font-medium text-blue-900">Information importante</p>
                       <p className="text-sm text-blue-700 mt-1">
-                        En tant qu'ambassadeur, vous créez cette annonce pour le compte du vendeur. 
+                        En tant qu'looper, vous créez cette annonce pour le compte du vendeur. 
                         Il pourra la modifier et la compléter une fois connecté.
                       </p>
                     </div>

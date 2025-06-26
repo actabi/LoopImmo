@@ -138,7 +138,7 @@ const rankings: Ranking[] = [
   {
     position: 5,
     total: 24,
-    category: 'Nouveaux ambassadeurs',
+    category: 'Nouveaux loopers',
     evolution: 'up',
     evolutionValue: 3
   }

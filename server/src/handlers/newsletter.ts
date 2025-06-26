@@ -307,7 +307,7 @@ export const subscribeNewsletter = async (req: Request, res: Response) => {
                 </div>
                 <div class="benefit-item">
                   <span class="benefit-icon">🤝</span>
-                  vos ambassadeurs pour un suivi humain, digital et personnalisé.
+                  vos loopers pour un suivi humain, digital et personnalisé.
                 </div>
                 <div class="benefit-item">
                   <span class="benefit-icon">📈</span>
