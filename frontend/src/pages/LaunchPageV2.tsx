@@ -25,6 +25,8 @@ import {
   Share2,
 } from "lucide-react";
 import Altcha from "../components/shared/Altcha";
+import { CommissionSlider } from "../components/ui/CommissionSlider";
+import { LooperEarningsSlider } from "../components/ui/LooperEarningsSlider";
 
 export const LaunchPageV2: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -578,66 +580,54 @@ export const LaunchPageV2: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Vendeurs, économisez gros
+                Vendez malin, vendez communautaire.
               </h2>
               <div className="space-y-4 mb-8">
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-blue-600 mt-1 mr-3 flex-shrink-0" />
                   <p className="text-lg text-gray-700">
-                    <strong>Forfait unique à paliers</strong> - Transparence
-                    totale
+                    <strong>Forfait ultra-compétitif à paliers</strong> :{" "}
+                    <span className="underline">
+                      toujours 15–30&nbsp;% moins cher que les agences
+                      traditionnelles et néo-agences
+                    </span>
                   </p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-blue-600 mt-1 mr-3 flex-shrink-0" />
                   <p className="text-lg text-gray-700">
-                    <strong>Loopers locaux</strong> pour vous aider dans vos
-                    démarches
+                    <strong>Zéro commission surprise</strong> : tout est
+                    annoncé, tout est maîtrisé.
                   </p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-blue-600 mt-1 mr-3 flex-shrink-0" />
                   <p className="text-lg text-gray-700">
-                    <strong>Sécurité légale garantie</strong> par nos expert en
-                    interne
+                    <strong>Communauté locale activée</strong> : chaque voisin,
+                    ancien occupant ou contact peut devenir ambassadeur et être
+                    récompensé.
                   </p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-blue-600 mt-1 mr-3 flex-shrink-0" />
                   <p className="text-lg text-gray-700">
-                    <strong>Zéro commission surprise</strong> - Ce que vous
-                    voyez, c'est ce que vous payez
-                  </p>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-blue-600 mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-lg text-gray-700">
-                    <strong>IA experte</strong> : juridique, annonce et photos
+                    <strong>Accompagnement complet & digitalisé</strong> :
+                    estimation IA, diffusion multi-plateformes, support
+                    juridique et gestion des offres intégrés.
                   </p>
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl p-4 md:p-6 shadow-lg">
+              {/* Comparateur dynamique */}
+              <div className="bg-white rounded-2xl p-4 md:p-6 shadow-lg mb-8">
                 <h3 className="text-lg md:text-xl font-semibold mb-4 text-gray-900">
-                  Étapes simplifiées :
+                  Comparez les frais en 2 secondes&nbsp;:
                 </h3>
-                <div className="flex flex-col gap-2">
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
-                    1. Estimation IA
-                  </span>
-                  <ArrowRight className="w-4 h-4 text-gray-400 hidden sm:block" />
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
-                    2. Validation de l'annonce
-                  </span>
-                  <ArrowRight className="w-4 h-4 text-gray-400 hidden sm:block" />
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
-                    3. Diffusion
-                  </span>
-                  <ArrowRight className="w-4 h-4 text-gray-400 hidden sm:block" />
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
-                    4. Signature
-                  </span>
-                </div>
+                <CommissionSlider />
+                <p className="text-sm text-gray-600 mt-2">
+                  Bougez le curseur pour voir l’économie réalisée sur votre bien
+                  selon les principaux acteurs du marché.
+                </p>
               </div>
             </div>
 
@@ -868,34 +858,13 @@ export const LaunchPageV2: React.FC = () => {
 
               <div className="bg-white rounded-2xl p-6 shadow-lg">
                 <h3 className="text-xl font-semibold mb-4 text-gray-900">
-                  Rémunération Looper :
+                  Simulez vos gains Looper :
                 </h3>
-                <div className="grid grid-cols-3 gap-2 text-center">
-                  <div>
-                    <div className="text-base font-bold text-green-600">
-                      300€
-                    </div>
-                    <div className="text-xs md:text-sm text-gray-600">
-                      Mise en relation
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-base font-bold text-green-600">
-                      800€
-                    </div>
-                    <div className="text-xs md:text-sm text-gray-600">
-                      Accompagnement
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-base font-bold text-green-600">
-                      1500€
-                    </div>
-                    <div className="text-xs md:text-sm text-gray-600">
-                      Vente complète
-                    </div>
-                  </div>
-                </div>
+                <LooperEarningsSlider />
+                <p className="text-sm text-gray-600 mt-2">
+                  Déplacez le curseur : découvrez ce que vous pouvez gagner par
+                  vente signée (aucun plafond, aucune exclusivité).
+                </p>
               </div>
             </div>
           </div>
