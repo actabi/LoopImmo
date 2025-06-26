@@ -47,7 +47,7 @@ export function CommissionSlider() {
 
         {/* Flèche centrée */}
         <div className="flex justify-center">
-          <ArrowRight className="w-5 h-5 md:w-8 md:h-8 text-green-400" />
+          <ArrowRight className="w-5 h-5 md:w-8 md:h-8 text-green-400" /> 
         </div>
 
         {/* Bloc économie */}

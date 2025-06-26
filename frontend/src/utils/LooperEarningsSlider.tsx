@@ -21,7 +21,7 @@ export function LooperEarningsSlider() {
       <label htmlFor="looper-price" className="block mb-2 text-gray-700 font-medium">
         Prix du bien vendu : <span className="text-green-700">{price.toLocaleString()} €</span>
       </label>
-      <input
+      <input 
         type="range"
         id="looper-price"
         min={50000}

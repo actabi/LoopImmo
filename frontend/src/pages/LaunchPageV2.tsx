@@ -25,8 +25,8 @@ import {
   Share2,
 } from "lucide-react";
 import Altcha from "../components/shared/Altcha";
-import { CommissionSlider } from "../components/ui/CommissionSlider";
-import { LooperEarningsSlider } from "../components/ui/LooperEarningsSlider";
+import { CommissionSlider } from "../utils/CommissionSlider";
+import { LooperEarningsSlider } from "../utils/LooperEarningsSlider";
 
 export const LaunchPageV2: React.FC = () => {
   const [searchParams] = useSearchParams();
