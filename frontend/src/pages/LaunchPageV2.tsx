@@ -819,7 +819,7 @@ export const LaunchPageV2: React.FC = () => {
                 >
                   (1)
                 </a>{" "}
-                et touchez jusqu'à 1 500 € par vente
+                et augmentez vos revenus
               </h2>
               <div className="space-y-4 mb-8">
                 <div className="flex items-start">
