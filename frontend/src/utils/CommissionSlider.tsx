@@ -52,7 +52,7 @@ export function CommissionSlider() {
 
         {/* Bloc économie */}
         <div className="space-y-1 min-w-0">
-          <span className="block text-gray-500 text-xs truncate">
+          <span className="block text-gray-500 text-xs">
             LoopImmo fait économiser jusqu'à
           </span>
           <span className="text-green-600 text-lg md:text-2xl font-bold whitespace-nowrap truncate">
