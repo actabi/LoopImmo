@@ -812,7 +812,14 @@ export const LaunchPageV2: React.FC = () => {
 
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Devenez Looper et touchez jusqu'à 1 500 € par vente
+                Devenez Looper
+                <a
+                  href="#looper-disclaimer"
+                  className="text-xs align-super ml-1"
+                >
+                  (1)
+                </a>{" "}
+                et touchez jusqu'à 1 500 € par vente
               </h2>
               <div className="space-y-4 mb-8">
                 <div className="flex items-start">
@@ -1263,10 +1270,18 @@ export const LaunchPageV2: React.FC = () => {
           </div>
         </div>
       </section>
-      <footer className="bg-gray-100 text-gray-600 text-xs text-center py-4 px-4">
-        Devenir Looper LoopImmo, c’est s’engager dans une activité réglementée par la loi française.
-Vous devrez être inscrit au Registre Spécial des Agents Commerciaux (RSAC) avec un coût d’inscription d’environ 25 €, et bénéficier d’une assurance responsabilité civile professionnelle prise en charge par LoopImmo.
-LoopImmo vous accompagne pas à pas dans ces démarches administratives afin que vous puissiez vous concentrer sur votre activité et votre réseau, en toute légalité et sérénité
+      <footer
+        id="looper-disclaimer"
+        className="bg-gray-100 text-gray-600 text-xs text-center py-4 px-4"
+      >
+        <span className="font-bold mr-1">1)</span>Devenir Looper LoopImmo, c’est
+        s’engager dans une activité réglementée par la loi française.
+        Vous devrez être inscrit au Registre Spécial des Agents Commerciaux (RSAC)
+        avec un coût d’inscription d’environ 25 €, et bénéficier d’une assurance
+        responsabilité civile professionnelle prise en charge par LoopImmo.
+        LoopImmo vous accompagne pas à pas dans ces démarches administratives afin
+        que vous puissiez vous concentrer sur votre activité et votre réseau, en
+        toute légalité et sérénité
       </footer>
     </div>
   );
