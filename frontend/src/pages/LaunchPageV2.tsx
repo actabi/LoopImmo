@@ -1263,6 +1263,11 @@ export const LaunchPageV2: React.FC = () => {
           </div>
         </div>
       </section>
+      <footer className="bg-gray-100 text-gray-600 text-xs text-center py-4 px-4">
+        Devenir Looper LoopImmo, c’est s’engager dans une activité réglementée par la loi française.
+Vous devrez être inscrit au Registre Spécial des Agents Commerciaux (RSAC) avec un coût d’inscription d’environ 25 €, et bénéficier d’une assurance responsabilité civile professionnelle prise en charge par LoopImmo.
+LoopImmo vous accompagne pas à pas dans ces démarches administratives afin que vous puissiez vous concentrer sur votre activité et votre réseau, en toute légalité et sérénité
+      </footer>
     </div>
   );
 };
