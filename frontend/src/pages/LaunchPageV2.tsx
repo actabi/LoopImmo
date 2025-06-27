@@ -1263,6 +1263,9 @@ export const LaunchPageV2: React.FC = () => {
           </div>
         </div>
       </section>
+      <footer className="bg-gray-100 text-gray-600 text-xs text-center py-4 px-4">
+        Sous réserve des démarches réglementaires (RSAC, assurance RCP, contrat d’agent commercial), qui seront expliquées une fois inscrit.
+      </footer>
     </div>
   );
 };
