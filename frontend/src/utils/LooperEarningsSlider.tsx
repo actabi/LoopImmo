@@ -17,7 +17,7 @@ export function LooperEarningsSlider() {
   const looperEarning = Math.round(fee * 0.35);
 
   return (
-    <div>
+    <div className="w-full">
       <label htmlFor="looper-price" className="block mb-2 text-gray-700 font-medium">
         Prix du bien vendu : <span className="text-green-700">{price.toLocaleString()} €</span>
       </label>
@@ -31,18 +31,18 @@ export function LooperEarningsSlider() {
         onChange={e => setPrice(Number(e.target.value))}
         className="w-full accent-green-600"
       />
-      <div className="flex flex-col md:flex-row items-center justify-between mt-4 gap-4">
+      <div className="flex flex-col md:flex-row items-center justify-between mt-4 gap-4 w-full">
         {/* <div className="mb-2 md:mb-0">
           <span className="block text-gray-500 text-xs">Forfait LoopImmo</span>
           <span className="text-green-900 text-lg font-bold">{fee.toLocaleString()} €</span>
         </div>
         <ArrowRight className="w-6 h-6 text-green-400 mx-2" /> */}
-        <div className="flex-1 text-center">
+        <div className="flex-1 text-center w-full">
           <span className="block text-gray-500 text-xs">Votre gain (35 %)</span>
           <span className="text-green-600 text-2xl font-bold">{looperEarning.toLocaleString()} €</span>
         </div>
       </div>
-      <div className="mt-2 text-xs text-gray-500">
+      <div className="mt-2 text-xs text-gray-500 w-full">
         <span className="font-semibold text-green-600">Jusqu’à {looperEarning.toLocaleString()} € par transaction,</span>
         payé automatiquement après la signature du compromis.
       </div>
