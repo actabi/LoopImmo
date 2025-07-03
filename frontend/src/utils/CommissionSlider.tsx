@@ -34,13 +34,13 @@ export function CommissionSlider() {
         onChange={e => setPrice(Number(e.target.value))}
         className="w-full accent-blue-600"
       />
-      <div className="grid grid-cols-3 items-center mt-4 gap-2 md:gap-4 text-center">
+      <div className="grid grid-cols-1 sm:grid-cols-3 items-center mt-4 gap-4 sm:gap-2 md:gap-4 text-center">
         {/* Agence */}
         <div className="space-y-1 min-w-0">
-          <span className="block text-gray-500 text-xs truncate">
+          <span className="block text-gray-500 text-xs">
             Agence classique (5 %)
           </span>
-          <span className="text-red-600 text-lg md:text-2xl font-bold truncate">
+          <span className="text-red-600 text-lg md:text-2xl font-bold">
             {fees.agence.toLocaleString()} €
           </span>
         </div>
@@ -52,10 +52,10 @@ export function CommissionSlider() {
 
         {/* Bloc économie */}
         <div className="space-y-1 min-w-0">
-          <span className="block text-gray-500 text-xs truncate">
+          <span className="block text-gray-500 text-xs">
             LoopImmo fait économiser jusqu'à
           </span>
-          <span className="text-green-600 text-lg md:text-2xl font-bold whitespace-nowrap truncate">
+          <span className="text-green-600 text-lg md:text-2xl font-bold">
             {amountEconomy} €  ({percentEconomy} %)
           </span>
         </div>
