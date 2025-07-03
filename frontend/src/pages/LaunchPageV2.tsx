@@ -327,7 +327,7 @@ export const LaunchPageV2: React.FC = () => {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto px-4">
+          <div className="grid sm:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto px-4">
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 md:p-6 shadow-lg">
               <h3 className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">
                 -72%
