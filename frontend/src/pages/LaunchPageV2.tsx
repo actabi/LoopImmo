@@ -584,8 +584,8 @@ export const LaunchPageV2: React.FC = () => {
                   <p className="text-lg text-gray-700">
                     <strong>Forfait ultra-compétitif à paliers</strong> :{" "}
                     <span className="underline">
-                      toujours 15–30&nbsp;% moins cher que les agences
-                      traditionnelles et néo-agences
+                      toujours 60–70&nbsp;% moins cher que les agences
+                      traditionnelles
                     </span>
                   </p>
                 </div>
