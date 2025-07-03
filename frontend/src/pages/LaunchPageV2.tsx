@@ -286,7 +286,7 @@ export const LaunchPageV2: React.FC = () => {
             et en accompagnant les visites.
           </p>
 
-          <div className="flex flex-col gap-4 justify-center mb-16 max-w-4xl mx-auto px-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 max-w-4xl mx-auto px-4">
             <button
               onClick={() => scrollToSection("vendeur-section")}
               className="px-6 sm:px-6 py-4 sm:py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all transform hover:scale-105 flex items-center justify-center text-sm sm:text-sm md:text-base flex-1 sm:flex-none min-h-[60px]"
