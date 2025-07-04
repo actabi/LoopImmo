@@ -722,7 +722,7 @@ export const LaunchPageV2: React.FC = () => {
         className="py-20 bg-gradient-to-br from-green-50 to-green-100"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="bg-white rounded-3xl p-8 shadow-2xl">
               <div className="text-center">
                 <div className="flex items-center justify-center mb-4">
@@ -879,7 +879,7 @@ export const LaunchPageV2: React.FC = () => {
         className="py-20 bg-gradient-to-br from-yellow-50 to-yellow-100"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
                 Acheteurs, trouvez votre bonheur en toute sécurité
