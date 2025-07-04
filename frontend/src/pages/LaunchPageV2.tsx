@@ -280,10 +280,10 @@ export const LaunchPageV2: React.FC = () => {
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl lg:text-2xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed px-4">
-            Avec LoopImmo, votre voisin, vos amis et vous-même devenez des{" "}
-            <strong>Loopers</strong> : gagnez des primes en diffusant l'annonce
-            et en accompagnant les visites.
+        <p className="text-lg md:text-xl lg:text-2xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed px-4">
+            <strong>Et si vendre un bien devenait une aventure collective ?</strong> {" "}
+            Chez LoopImmo, vendeurs, voisins et anciens habitants s’unissent pour vendre un bien{" "}
+            plus vite et à moindre coût – tout en étant rémunérés.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 max-w-4xl mx-auto px-4">
