@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User, UserRole } from '../types';
 import { getUsers } from '../services/dataService';
+import { apiUrl } from '../utils/api';
 
 const useMocks = import.meta.env.VITE_USE_MOCKS !== 'false';
 
@@ -74,7 +75,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
    const register = async (data: RegisterData) => {
     if (!useMocks) {
-      const res = await fetch('/api/register', {
+      const res = await fetch(apiUrl('/api/register'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

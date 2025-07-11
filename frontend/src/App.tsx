@@ -6,6 +6,7 @@ import { LaunchPageV2 } from './pages/LaunchPageV2';
 import { LoginPage } from './pages/auth/LoginPage';
 import { RegisterPage } from './pages/auth/RegisterPage';
 import { AcheterPage } from './pages/AcheterPage';
+import { apiUrl } from './utils/api';
 import { VendrePage } from './pages/VendrePage';
 import { LooperPage } from './pages/LooperPage';
 import { PropertyDetailPage } from './pages/PropertyDetailPage';
@@ -27,7 +28,7 @@ function App() {
 
 useEffect(() => {
   // Preload backend connection without exposing environment details in the console
-  fetch('/api/users', { method: 'GET' }).catch(() => {
+  fetch(apiUrl('/api/users'), { method: 'GET' }).catch(() => {
     // Silently ignore connection errors
   });
 }, []);

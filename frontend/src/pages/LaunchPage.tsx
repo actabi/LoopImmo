@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { apiUrl } from "../utils/api";
 import {
   Calendar,
   Users,
@@ -55,7 +56,7 @@ export const LaunchPage: React.FC = () => {
     }
     setIsLoading(true);
     try {
-      const res = await fetch("/api/subscribe", {
+      const res = await fetch(apiUrl("/api/subscribe"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, role, referredBy }),

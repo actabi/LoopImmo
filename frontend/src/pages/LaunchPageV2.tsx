@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
+import { apiUrl } from "../utils/api";
 import {
   ArrowRight,
   Users,
@@ -68,7 +69,7 @@ export const LaunchPageV2: React.FC = () => {
 
     setIsLoading(true);
     try {
-      const res = await fetch('/api/subscribe', {
+      const res = await fetch(apiUrl('/api/subscribe'), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, referredBy: referralCode, role, token }),
