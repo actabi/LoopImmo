@@ -1,0 +1,17 @@
+[variables]
+NODE_ENV = "production"
+
+[phases.setup]
+nixPkgs = ['nodejs_18', 'npm-9_x']
+
+[phases.install]
+cmds = ['npm install --prefix server']
+
+[phases.build]
+cmds = [
+  'npm install --prefix server typescript',
+  'npx --prefix server tsc'
+]
+
+[start]
+cmd = 'npm start --prefix server'
