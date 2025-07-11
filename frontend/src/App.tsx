@@ -27,9 +27,7 @@ function App() {
 
 useEffect(() => {
   // Preload backend connection without exposing environment details in the console
-  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-
-  fetch(apiUrl, { method: 'GET' }).catch(() => {
+  fetch('/api/users', { method: 'GET' }).catch(() => {
     // Silently ignore connection errors
   });
 }, []);

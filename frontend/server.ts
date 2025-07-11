@@ -12,7 +12,6 @@ const BACKEND_URL = process.env.BACKEND_URL || 'http://backend.railway.internal:
 app.use('/api', createProxyMiddleware({
   target: BACKEND_URL,
   changeOrigin: true,
-  pathRewrite: { '^/api': '' },
 }))
 
 app.use(express.static(path.join(__dirname, 'dist')))

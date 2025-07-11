@@ -32,6 +32,15 @@ resolved correctly.
 
 Vite is configured to proxy `/api` requests to this server during development.
 The proxy target is read from the `VITE_API_URL` variable.
+After building, start the proxy server with:
+
+```bash
+npm start
+```
+
+This `server.ts` script serves the static files from `dist` and forwards all
+`/api` requests to the backend specified by the `BACKEND_URL` environment
+variable.
 
 Build for production:
 
