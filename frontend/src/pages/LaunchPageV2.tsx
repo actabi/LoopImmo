@@ -68,7 +68,7 @@ export const LaunchPageV2: React.FC = () => {
 
     setIsLoading(true);
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/subscribe`, {
+      const res = await fetch('/api/subscribe', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, referredBy: referralCode, role, token }),
