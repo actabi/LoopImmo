@@ -38,9 +38,9 @@ After building, start the proxy server with:
 npm start
 ```
 
-This `server.ts` script serves the static files from `dist` and forwards all
+The `server.js` script now serves the static files from `dist` and proxies
 `/api` requests to the backend specified by the `BACKEND_URL` environment
-variable.
+variable. It listens on IPv6 to support Railway's private networking.
 
 Build for production:
 

@@ -68,7 +68,7 @@ app.use(Sentry.Handlers.errorHandler());
 
 connectDb()
   .then(() => {
-    app.listen(port, () => {
+    app.listen(port, '::', () => {
       log(`Server listening on port ${port}`);
     });
   })
