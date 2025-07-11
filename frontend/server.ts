@@ -12,6 +12,7 @@ const BACKEND_URL = process.env.BACKEND_URL || 'http://backend.railway.internal:
 app.use('/api', createProxyMiddleware({
   target: BACKEND_URL,
   changeOrigin: true,
+  pathRewrite: { '^/api': '' },
 }))
 
 app.use(express.static(path.join(__dirname, 'dist')))
@@ -20,6 +21,6 @@ app.get('*', (_req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
-app.listen(PORT, () => {
+app.listen(PORT, '::', () => {
   console.log(`Frontend server running on port ${PORT}`)
 })
