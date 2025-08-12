@@ -4,14 +4,14 @@ import {
   mockProperties,
   mockUsers,
   mockAmbassadors,
-  PRICE_TIERS
+  PRICE_TIERS,
 } from '../data/mockData';
 import {
   mockServiceProviders,
   mockServiceProposals,
   subscriptionFeatures,
   mockSubscriptions,
-  subscriptionPlans
+  subscriptionPlans,
 } from '../data/mockServiceProviders';
 import { mockReferrals, mockTerritoryProperties } from '../data/mockReferrals';
 import {
@@ -27,58 +27,73 @@ import {
   mockLeads,
   mockDashboardCommissions,
   mockManagedProperties,
-  mockEnrichedLeads
+  mockEnrichedLeads,
 } from '../mocks';
 
 function apiNotImplemented(name: string): never {
   throw new Error(`API for ${name} not implemented`);
 }
 
-export const getProperties = () =>
-  useMocks ? mockProperties : apiNotImplemented('getProperties');
-export const getUsers = () =>
-  useMocks ? mockUsers : apiNotImplemented('getUsers');
-export const getAmbassadors = () =>
-  useMocks ? mockAmbassadors : apiNotImplemented('getAmbassadors');
-export const getPriceTiers = () =>
-  useMocks ? PRICE_TIERS : apiNotImplemented('getPriceTiers');
-export const getPayments = () =>
-  useMocks ? mockPayments : apiNotImplemented('getPayments');
-export const getContracts = () =>
-  useMocks ? mockContracts : apiNotImplemented('getContracts');
-export const getTimelines = () =>
-  useMocks ? mockTimelines : apiNotImplemented('getTimelines');
-export const getVisits = () =>
-  useMocks ? mockVisits : apiNotImplemented('getVisits');
-export const getZones = () =>
-  useMocks ? mockZones : apiNotImplemented('getZones');
-export const getCommissions = () =>
-  useMocks ? mockCommissions : apiNotImplemented('getCommissions');
-export const getPropertyPhotos = () =>
-  useMocks ? mockPropertyPhotos : apiNotImplemented('getPropertyPhotos');
-export const getProposals = () =>
-  useMocks ? mockProposals : apiNotImplemented('getProposals');
-export const getStats = () =>
-  useMocks ? mockStats : apiNotImplemented('getStats');
-export const getLeads = () =>
-  useMocks ? mockLeads : apiNotImplemented('getLeads');
-export const getDashboardCommissions = () =>
-  useMocks ? mockDashboardCommissions : apiNotImplemented('getDashboardCommissions');
-export const getManagedProperties = () =>
-  useMocks ? mockManagedProperties : apiNotImplemented('getManagedProperties');
-export const getEnrichedLeads = () =>
-  useMocks ? mockEnrichedLeads : apiNotImplemented('getEnrichedLeads');
-export const getReferrals = () =>
-  useMocks ? mockReferrals : apiNotImplemented('getReferrals');
-export const getTerritoryProperties = () =>
-  useMocks ? mockTerritoryProperties : apiNotImplemented('getTerritoryProperties');
-export const getServiceProviders = () =>
-  useMocks ? mockServiceProviders : apiNotImplemented('getServiceProviders');
-export const getServiceProposals = () =>
-  useMocks ? mockServiceProposals : apiNotImplemented('getServiceProposals');
-export const getSubscriptionFeatures = () =>
-  useMocks ? subscriptionFeatures : apiNotImplemented('getSubscriptionFeatures');
-export const getSubscriptions = () =>
-  useMocks ? mockSubscriptions : apiNotImplemented('getSubscriptions');
-export const getSubscriptionPlans = () =>
-  useMocks ? subscriptionPlans : apiNotImplemented('getSubscriptionPlans');
+const createMockService = <T>(data: T, name: string) => () =>
+  useMocks ? data : apiNotImplemented(name);
+
+export const getProperties = createMockService(mockProperties, 'getProperties');
+export const getUsers = createMockService(mockUsers, 'getUsers');
+export const getAmbassadors = createMockService(
+  mockAmbassadors,
+  'getAmbassadors',
+);
+export const getPriceTiers = createMockService(PRICE_TIERS, 'getPriceTiers');
+export const getPayments = createMockService(mockPayments, 'getPayments');
+export const getContracts = createMockService(mockContracts, 'getContracts');
+export const getTimelines = createMockService(mockTimelines, 'getTimelines');
+export const getVisits = createMockService(mockVisits, 'getVisits');
+export const getZones = createMockService(mockZones, 'getZones');
+export const getCommissions = createMockService(
+  mockCommissions,
+  'getCommissions',
+);
+export const getPropertyPhotos = createMockService(
+  mockPropertyPhotos,
+  'getPropertyPhotos',
+);
+export const getProposals = createMockService(mockProposals, 'getProposals');
+export const getStats = createMockService(mockStats, 'getStats');
+export const getLeads = createMockService(mockLeads, 'getLeads');
+export const getDashboardCommissions = createMockService(
+  mockDashboardCommissions,
+  'getDashboardCommissions',
+);
+export const getManagedProperties = createMockService(
+  mockManagedProperties,
+  'getManagedProperties',
+);
+export const getEnrichedLeads = createMockService(
+  mockEnrichedLeads,
+  'getEnrichedLeads',
+);
+export const getReferrals = createMockService(mockReferrals, 'getReferrals');
+export const getTerritoryProperties = createMockService(
+  mockTerritoryProperties,
+  'getTerritoryProperties',
+);
+export const getServiceProviders = createMockService(
+  mockServiceProviders,
+  'getServiceProviders',
+);
+export const getServiceProposals = createMockService(
+  mockServiceProposals,
+  'getServiceProposals',
+);
+export const getSubscriptionFeatures = createMockService(
+  subscriptionFeatures,
+  'getSubscriptionFeatures',
+);
+export const getSubscriptions = createMockService(
+  mockSubscriptions,
+  'getSubscriptions',
+);
+export const getSubscriptionPlans = createMockService(
+  subscriptionPlans,
+  'getSubscriptionPlans',
+);
