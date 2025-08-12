@@ -1,0 +1,21 @@
+{
+  "name": "LoopImmo",
+  "short_name": "LoopImmo",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "description": "LoopImmo - La vente immobilière communautaire",
+  "icons": [
+    {
+      "src": "/logoS.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/logoS.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
