@@ -262,7 +262,7 @@ export const LaunchPageV2: React.FC = () => {
           {/* Logo */}
           <div className="mb-8">
             <img
-              src="/logo.svg"
+              src="/logoS.svg"
               alt="LoopImmo"
               className="h-24 md:h-32 lg:h-40 mx-auto"
             />
@@ -449,7 +449,7 @@ export const LaunchPageV2: React.FC = () => {
           {/* Logo */}
           <div className="mb-8">
             <img
-              src="/logo.svg"
+              src="/logoS.svg"
               alt="LoopImmo"
               className="h-16 md:h-20 lg:h-24 mx-auto"
             />
@@ -1212,7 +1212,7 @@ export const LaunchPageV2: React.FC = () => {
           {/* Logo */}
           <div className="mb-8">
             <img
-              src="/logo.svg"
+              src="/logoS.svg"
               alt="LoopImmo"
               className="h-12 md:h-16 mx-auto filter brightness-0 invert"
             />
